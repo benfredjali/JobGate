@@ -1,0 +1,490 @@
+<div class="page-loading">
+  <img src="/assets/images/loader.gif" alt=""/>
+</div>
+
+<div class="theme-layout" id="scrollup">
+
+  <app-navbar ></app-navbar>
+
+  <app-container></app-container>
+
+
+
+</div>
+
+<div class="account-popup-area signin-popup-box">
+  <div class="account-popup">
+    <span class="close-popup"><i class="la la-close"></i></span>
+    <h3>User Login</h3>
+    <span>Click To Login With Demo User</span>
+    <div class="select-user">
+
+    </div>
+    <form [formGroup]="loginForm" (ngSubmit)="onlogin()">
+      <div class="cfield">
+        <input type="text" formControlName="username" placeholder="Username" [ngClass]="{ 'is-invalid': submitted && b.username.errors }" />
+        <div *ngIf="submitted && b.username.errors" class="invalid-feedback">
+          <div *ngIf="b.username.errors.required">Nom d'utilisateur est obligatoire</div>
+        <i class="la la-user"></i>
+      </div>
+      </div>
+      <div class="cfield">
+        <input type="password" placeholder="********" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && b.password.errors }"/>
+        <div *ngIf="submitted && b.password.errors" class="invalid-feedback">
+          <div *ngIf="b.password.errors.required">Mot de passe obligatoire</div>
+          <i class="la la-key"></i>
+        </div>
+      </div>
+      <p class="remember-label">
+        <input type="checkbox" name="cb" id="cb1"><label for="cb1">Remember me</label>
+      </p>
+      <a href="#" title="">Forgot Password?</a>
+      <button type="submit">Login</button>
+    </form>
+    <div class="extra-login">
+      <span>Or</span>
+      <div class="login-social">
+        <a class="fb-login" href="#" title=""><i class="fa fa-facebook"></i></a>
+        <a class="tw-login" href="#" title=""><i class="fa fa-twitter"></i></a>
+      </div>
+    </div>
+  </div>
+</div><!-- LOGIN POPUP -->
+
+<div class="account-popup-area signup-popup-box">
+  <div class="account-popup">
+    <span class="close-popup" ><i class="la la-close"></i></span>
+    <h3>Sign Up</h3>
+    <div class="row clearfix">
+
+
+    <div class="select-user">
+      <span (click)="choisircandiat()">Candidate</span>
+      <span (click)="choisircentre()">centre</span>
+      <span (click)="choisirsocite()">societe</span>
+    </div>
+      </div>
+    <form *ngIf="choix=='candidat'" [formGroup]="registerCandidatForm">
+
+      <div class="row clearfix">
+
+        <div class="col-md-6 col-sm-12">
+        <div class="cfield">
+        <input type="text" placeholder="Username"  formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+        <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+          <div *ngIf="f.username.errors.required">First Name is required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+          </div>
+        <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="nom"  formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
+        <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
+          <div *ngIf="f.nom.errors.required">nom est incorrect</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+        </div>
+
+      </div>
+      <div class="row clearfix">
+      <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="prenom"  formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" />
+        <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
+          <div *ngIf="f.prenom.errors.required">prenom est incorrect</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="adresse"  formControlName="adresse" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }" />
+        <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback">
+          <div *ngIf="f.adresse.errors.required">adresseis required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+      </div>
+
+        <div class="col-md-12 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="description"  formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+        <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+          <div *ngIf="f.description.errors.required">description is required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+        </div>
+      </div>
+      <div class="row clearfix">
+      <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="compteLinkedin"  formControlName="compteLinkedin" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.compteLinkedin.errors }" />
+        <div *ngIf="submitted && f.compteLinkedin.errors" class="invalid-feedback">
+          <div *ngIf="f.compteLinkedin.errors.required">compteLinkedin is required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="siteWeb"  formControlName="siteWeb" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.siteWeb.errors }" />
+        <div *ngIf="submitted && f.siteWeb.errors" class="invalid-feedback">
+          <div *ngIf="f.siteWeb.errors.required">adresseis required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+      </div>
+      </div>
+      <div class="row clearfix">
+      <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="telephone"  formControlName="telephone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.telephone.errors }" />
+        <div *ngIf="submitted && f.telephone.errors" class="invalid-feedback">
+          <div *ngIf="f.telephone.errors.required">telephone is required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="niveauEtude"  formControlName="niveauEtude" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.niveauEtude.errors }" />
+        <div *ngIf="submitted && f.niveauEtude.errors" class="invalid-feedback">
+          <div *ngIf="f.niveauEtude.errors.required">telephone is required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+      </div>
+      </div>
+      <div class="row clearfix">
+      <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="date"  formControlName="dateNaiss" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.dateNaiss.errors }" />
+        <div *ngIf="submitted && f.dateNaiss.errors" class="invalid-feedback">
+          <div *ngIf="f.dateNaiss.errors.required">dateNaiss is required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+      </div>
+
+
+
+      <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+          <div *ngIf="f.email.errors.email">Email est incorrect</div>
+        </div>
+        <i class="la la-envelope-o"></i>
+      </div>
+      </div>
+      </div>
+
+
+      <div class="row clearfix">
+      <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input [type]="getType()" placeholder="Password" formControlName="password" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+        <i class="la la-eye" (click)="toggleTextPassword()"></i>
+      </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input [type]="getType()" placeholder="ConfirmPassword" formControlName="confirmpassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }" />
+        <div *ngIf="submitted && f.confirmpassword.errors" class="invalid-feedback">
+          <div *ngIf="f.confirmpassword.errors.required">Confirm Password est incorrect</div>
+          <!--<div *ngIf="f.confirmpassword.errors.mustMatch">Passwords must match</div>-->
+        </div>
+        <i class="la la-eye" (click)="toggleTextPassword()"></i>
+      </div>
+      </div>
+      </div>
+
+      <button (click)="registercandidat()" type="submit">Signup</button>
+      <button  type="reset" (click)="reset()">cancel</button>
+    </form>
+
+    <form *ngIf="choix=='societe'" [formGroup]="registerSocieteForm">
+
+
+      <div class="row clearfix">
+        <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="Username"  formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && x.username.errors }" />
+        <div *ngIf="submitted && x.username.errors" class="invalid-feedback">
+          <div *ngIf="x.username.errors.required">First Name is required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+        </div>
+
+
+      <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="nom"  formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && x.nom.errors }" />
+        <div *ngIf="submitted && x.nom.errors" class="invalid-feedback">
+          <div *ngIf="x.nom.errors.required">nom est incorrect</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+      </div>
+      </div>
+      <div class="row clearfix">
+        <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="prenom"  formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && x.prenom.errors }" />
+        <div *ngIf="submitted && x.prenom.errors" class="invalid-feedback">
+          <div *ngIf="x.prenom.errors.required">prenom est incorrect</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="adresse"  formControlName="adresse" class="form-control" [ngClass]="{ 'is-invalid': submitted && x.adresse.errors }" />
+        <div *ngIf="submitted && x.adresse.errors" class="invalid-feedback">
+          <div *ngIf="x.adresse.errors.required">adresseis required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="col-md-12 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="description"  formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && x.description.errors }" />
+        <div *ngIf="submitted && x.description.errors" class="invalid-feedback">
+          <div *ngIf="x.description.errors.required">Description est incorrect</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+        </div>
+      </div>
+      <div class="row clearfix">
+        <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="siteWeb" formControlName="siteWeb" class="form-control" [ngClass]="{ 'is-invalid': submitted && x.siteWeb.errors }" />
+        <div *ngIf="submitted && x.siteWeb.errors" class="invalid-feedback">
+          <div *ngIf="x.siteWeb.errors.required">siteWeb est incorrect</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+        </div>
+
+
+        <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="logo"  formControlName="logo" class="form-control" [ngClass]="{ 'is-invalid': submitted && v.logo.errors }" />
+        <div *ngIf="submitted && v.logo.errors" class="invalid-feedback">
+          <div *ngIf="v.logo.errors.required">logo is required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+        </div>
+      </div>
+
+      <div class="row clearfix">
+        <div class="col-md-6 col-sm-12">
+
+      <div class="cfield">
+        <input type="text" placeholder="telephone"  formControlName="telephone" class="form-control" [ngClass]="{ 'is-invalid': submitted && v.telephone.errors }" />
+        <div *ngIf="submitted && v.telephone.errors" class="invalid-feedback">
+          <div *ngIf="v.telephone.errors.required">telephone is required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+        </div>
+
+          <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && v.email.errors }" />
+        <div *ngIf="submitted && v.email.errors" class="invalid-feedback">
+          <div *ngIf="v.email.errors.required">Email is required</div>
+          <div *ngIf="v.email.errors.email">Email est incorrect</div>
+        </div>
+        <i class="la la-envelope-o"></i>
+      </div>
+          </div>
+      </div>
+          <div class="row clearfix">
+            <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input [type]="getType()" placeholder="Password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && x.password.errors }" />
+        <div *ngIf="submitted && x.password.errors" class="invalid-feedback">
+          <div *ngIf="x.password.errors.required">Password is required</div>
+          <div *ngIf="x.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+        <i class="la la-eye" (click)="toggleTextPassword()"></i>
+      </div>
+            </div>
+
+              <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input [type]="getType()" placeholder="ConfirmPassword" formControlName="confirmpassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && x.confirmpassword.errors }" />
+        <div *ngIf="submitted && x.confirmpassword.errors" class="invalid-feedback">
+          <div *ngIf="x.confirmpassword.errors.required">Confirm Password est incorrect</div>
+          <!--<div *ngIf="f.confirmpassword.errors.mustMatch">Passwords must match</div>-->
+        </div>
+        <i class="la la-eye" (click)="toggleTextPassword()"></i>
+      </div>
+          </div>
+        </div>
+
+
+      <button (click)="registerResponsableSociete()" type="submit" >Signup</button>
+    </form>
+
+
+    <form *ngIf="choix=='centre'" [formGroup]="registerCentreForm">
+
+      <div class="row clearfix">
+        <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="Username"  formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && v.username.errors }" />
+        <div *ngIf="submitted && v.username.errors" class="invalid-feedback">
+          <div *ngIf="v.username.errors.required">First Name is required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+        </div>
+
+          <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="nom"  formControlName="nom" class="form-control" [ngClass]="{ 'is-invalid': submitted && v.nom.errors }" />
+        <div *ngIf="submitted && v.nom.errors" class="invalid-feedback">
+          <div *ngIf="v.nom.errors.required">nom est incorrect</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+          </div>
+      </div>
+        <div class="row clearfix">
+          <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="prenom"  formControlName="prenom" class="form-control" [ngClass]="{ 'is-invalid': submitted && v.prenom.errors }" />
+        <div *ngIf="submitted && v.prenom.errors" class="invalid-feedback">
+          <div *ngIf="v.prenom.errors.required">prenom est incorrect</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+          </div>
+
+            <div class="col-md-6 col-sm-12">
+
+      <div class="cfield">
+        <input type="text" placeholder="adresse"  formControlName="adresse" class="form-control" [ngClass]="{ 'is-invalid': submitted && v.adresse.errors }" />
+        <div *ngIf="submitted && v.adresse.errors" class="invalid-feedback">
+          <div *ngIf="v.adresse.errors.required">adresseis required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+            </div>
+          </div>
+          <div class="row clearfix">
+            <div class="col-md-12 col-sm-12">
+
+      <div class="cfield">
+        <input type="text" placeholder="description"  formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && v.description.errors }" />
+        <div *ngIf="submitted && v.description.errors" class="invalid-feedback">
+          <div *ngIf="v.description.errors.required">description is required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+            </div>
+          </div>
+
+          <div class="row clearfix">
+            <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="siteWeb"  formControlName="siteWeb" class="form-control" [ngClass]="{ 'is-invalid': submitted && v.siteWeb.errors }" />
+        <div *ngIf="submitted && v.siteWeb.errors" class="invalid-feedback">
+          <div *ngIf="v.siteWeb.errors.required">adresseis required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+            </div>
+
+              <div class="col-md-6 col-sm-12">
+
+      <div class="cfield">
+        <input type="text" placeholder="logo"  formControlName="logo" class="form-control" [ngClass]="{ 'is-invalid': submitted && v.logo.errors }" />
+        <div *ngIf="submitted && v.logo.errors" class="invalid-feedback">
+          <div *ngIf="v.logo.errors.required">logo is required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+              </div>
+          </div>
+
+
+          <div class="row clearfix">
+            <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="telephone"  formControlName="telephone" class="form-control" [ngClass]="{ 'is-invalid': submitted && v.telephone.errors }" />
+        <div *ngIf="submitted && v.telephone.errors" class="invalid-feedback">
+          <div *ngIf="v.telephone.errors.required">telephone is required</div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
+            </div>
+
+              <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input type="text" placeholder="Email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && v.email.errors }" />
+        <div *ngIf="submitted && v.email.errors" class="invalid-feedback">
+          <div *ngIf="v.email.errors.required">Email is required</div>
+          <div *ngIf="v.email.errors.email">Email est incorrect</div>
+        </div>
+        <i class="la la-envelope-o"></i>
+      </div>
+              </div>
+          </div>
+
+
+
+          <div class="row clearfix">
+            <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input [type]="getType()" placeholder="Password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && v.password.errors }" />
+        <div *ngIf="submitted && v.password.errors" class="invalid-feedback">
+          <div *ngIf="v.password.errors.required">Password is required</div>
+          <div *ngIf="v.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+        <i class="la la-eye" (click)="toggleTextPassword()"></i>
+      </div>
+            </div>
+
+              <div class="col-md-6 col-sm-12">
+      <div class="cfield">
+        <input [type]="getType()" placeholder="ConfirmPassword" formControlName="confirmpassword" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && v.confirmpassword.errors }" />
+        <div *ngIf="submitted && v.confirmpassword.errors" class="invalid-feedback">
+          <div *ngIf="v.confirmpassword.errors.required">Confirm Password est incorrect</div>
+          <!--<div *ngIf="f.confirmpassword.errors.mustMatch">Passwords must match</div>-->
+        </div>
+        <i class="la la-eye" (click)="toggleTextPassword()"></i>
+      </div>
+              </div>
+          </div>
+
+
+
+      <button (click)="registerResponsableCentre()" type="submit">Signup</button>
+    </form>
+
+  </div>
+
+
+
+
+</div><!-- SIGNUP POPUP -->

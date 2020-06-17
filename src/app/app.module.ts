@@ -1,18 +1,52 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {HomeComponent} from './home/home.component';
+import {NavbarComponent} from './home/navbar/navbar.component';
+import {ContainerComponent} from './home/container/container.component';
+import {FooterComponent} from './home/footer/footer.component';
+import {HttpClientModule} from '@angular/common/http';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
+import {ModalModule} from 'ngx-bootstrap/modal';
+import { Erreur404Component } from './erreur404/erreur404.component';
+import { FormationComponent } from './formation/formation.component';
+import { StageComponent } from './Offre/stage/stage.component';
+import { TravailleComponent } from './Offre/travaille/travaille.component';
+import { CandidatureComponent } from './candidature/candidature.component';
+import { AjouterFormationComponent } from './formation/ajouter-formation/ajouter-formation.component';
+import { AjouterStageComponent } from './Offre/stage/ajouter-stage/ajouter-stage.component';
+import { AjouterTravailleComponent } from './Offre/travaille/ajouter-travaille/ajouter-travaille.component';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    NavbarComponent,
+    ContainerComponent,
+    FooterComponent,
+    Erreur404Component,
+    FormationComponent,
+    StageComponent,
+    TravailleComponent,
+    CandidatureComponent,
+    AjouterFormationComponent,
+    AjouterStageComponent,
+    AjouterTravailleComponent
   ],
   imports: [
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule, ModalModule.forRoot()
+
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
