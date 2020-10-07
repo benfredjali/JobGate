@@ -19,6 +19,7 @@ import { CandidatureComponent } from './candidature/candidature.component';
 import { AjouterFormationComponent } from './formation/ajouter-formation/ajouter-formation.component';
 import { AjouterStageComponent } from './Offre/stage/ajouter-stage/ajouter-stage.component';
 import { AjouterTravailleComponent } from './Offre/travaille/ajouter-travaille/ajouter-travaille.component';
+import { ModifierFormationComponent } from './formation/modifier-formation/modifier-formation.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { AjouterTravailleComponent } from './Offre/travaille/ajouter-travaille/a
     CandidatureComponent,
     AjouterFormationComponent,
     AjouterStageComponent,
-    AjouterTravailleComponent
+    AjouterTravailleComponent,
+    ModifierFormationComponent
   ],
   imports: [
     HttpClientModule,

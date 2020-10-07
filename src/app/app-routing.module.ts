@@ -14,6 +14,7 @@ const routes: Routes = [
   {path:'', component:HomeComponent},
   {path:'formation', component:FormationComponent},
   {path:'formation/ajouter', component:AjouterFormationComponent},
+  {path:'formation/modifier', component:AjouterFormationComponent},
   {path:'erreur', component:Erreur404Component},
   {path:'stage', component:StageComponent},
   {path:'stage/ajouter', component:AjouterStageComponent},

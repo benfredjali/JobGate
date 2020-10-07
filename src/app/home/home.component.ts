@@ -317,6 +317,7 @@ import {AuthentificationService} from '../services/authentification.service';
 import {MustMatch} from './must-match-directive';
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
+import { ImageService } from '../services/image.service';
 
 @Component({
   selector: 'app-home',
@@ -336,11 +337,12 @@ export class HomeComponent implements OnInit {
   nom;
   prenom;
   ison;
-
-
+  photo;
+  logo;
+  filesToUpload: Array<File>;
   choix = 'candidat';
 
-  constructor(private responsableCentreService: ResponsableCentreService,
+  constructor(private responsableCentreService: ResponsableCentreService,private imageservice:ImageService,
               private modalService: BsModalService,private authenService: AuthentificationService,
               private candudatservice: CandidatService,
               private formBuilder: FormBuilder,private router:Router,
@@ -352,9 +354,10 @@ export class HomeComponent implements OnInit {
     }
   }
 
+
   ngOnInit(): void {
     this.registerCandidatForm = this.formBuilder.group({
-      nom: ['', Validators.required],
+      nom: ['', Validators.pattern("[a-z .']+")],
       prenom: ['', Validators.required],
       username: ['', Validators.required],
       adresse: ['', Validators.required],
@@ -371,6 +374,11 @@ export class HomeComponent implements OnInit {
     }, {
       validator: MustMatch('password', 'confirmpassword')
     });
+
+
+/**  <div *ngIf="firstname.touched && firstname.invalid">
+                        <small *ngIf="firstname.errors.required" class="text-danger">Firstname is required<br></small>
+                        <small *ngIf="firstname.errors.pattern" class="text-danger">Invalid Firstname<br></small> */
 
 
     this.registerSocieteForm = this.formBuilder.group({
@@ -406,13 +414,13 @@ export class HomeComponent implements OnInit {
 
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
 
 
   }
 
-
+ 
   choisirsocite() {
     this.choix = 'societe';
 
@@ -454,7 +462,7 @@ export class HomeComponent implements OnInit {
 
     });
 
-    window.location.reload();
+    //window.location.reload();
     this.registerCandidatForm.reset();
 
   }
@@ -475,7 +483,8 @@ export class HomeComponent implements OnInit {
     this.responsabelSocietyService.register(this.registerSocieteForm.value).subscribe(result => {
       console.log(result);
     });
-    this.registerSocieteForm.reset();
+   // window.location.reload();
+    this.registerCandidatForm.reset();
 
   }
 
@@ -508,8 +517,8 @@ export class HomeComponent implements OnInit {
       console.log(result);
 
     });
-
-    this.reset();
+    //window.location.reload();
+    this.registerCandidatForm.reset();
   }
 
 
@@ -543,12 +552,7 @@ export class HomeComponent implements OnInit {
         const jwt = res.headers.get('Authorization');
         this.authenService.saveToken(jwt);
 
-
-
-
-
         this.refresh();
-
 
       }
       , error2 => {
@@ -573,5 +577,10 @@ export class HomeComponent implements OnInit {
   }
 
 
+  recuperFile(file) {
+    this.filesToUpload = <Array<File>> file.target.files;
 
+    this.photo = file.target.files[0]['name'];
+    this.logo= file.target.files[0]['name'];
+  }
 }

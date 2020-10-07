@@ -15,4 +15,8 @@ export class StageService {
 
     return this.http.get(environment.url + 'stage/all');
   }
+
+  Ajouter(data,idsociete,idsecteur) {
+    return this.http.post(environment.url + 'formation/save/'+idsecteur+'/'+idsociete, data);
+  }
 }

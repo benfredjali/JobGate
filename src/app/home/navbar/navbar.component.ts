@@ -16,7 +16,13 @@ import {AuthentificationService} from '../../services/authentification.service';
 export class NavbarComponent implements OnInit {
   connecter;
   ison;
-  nom;
+  nomuser;
+  iduser;
+  roleuser;
+  prenomuser;
+  photo;
+  logo;
+  user;
   registerCandidatForm: FormGroup;
   registerSocieteForm: FormGroup;
   registerCentreForm: FormGroup;
@@ -38,6 +44,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.roleuser=localStorage.getItem('role');
     this.registerCandidatForm = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
@@ -56,7 +63,7 @@ export class NavbarComponent implements OnInit {
     }, {
       validator: MustMatch('password', 'confirmpassword')*/
     });
-
+this.getprofile();
 
     this.registerSocieteForm = this.formBuilder.group({
       nom: ['', Validators.required],
@@ -93,7 +100,17 @@ export class NavbarComponent implements OnInit {
 
   }
 
+getprofile(){
+  this.authenService.getprofile().subscribe(res=>{
+    console.log(res);
+    this.user=res;
+    this.nomuser=res['nom'];
+    this.prenomuser=res['prenom'];
+    this.photo=res['photo'];
+    this.logo=res['logo'];
+  
 
+  })}
   choisirsocite() {
     this.choix = 'societe';
 

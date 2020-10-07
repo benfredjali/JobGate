@@ -15,9 +15,11 @@ export class FormationService {
   Ajouter(data,idcentre,idsecteur) {
     return this.http.post(environment.url + 'formation/save/'+idsecteur+'/'+idcentre, data);
   }
-
+  Modifier(data,idcentre,idsecteur) {
+    return this.http.post(environment.url + 'formation/modif/'+idsecteur+'/'+idcentre, data);
+  }
   ajouter(id, data) {
-    return this.http.post(environment.baseUrl + 'stage/add/' + id, data)
+    return this.http.post(environment.url + 'stage/add/' + id, data)
   }
 
   // getone(id){

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 import {JwtHelperService} from '@auth0/angular-jwt';
-import {Observable} from 'rxjs';
+
 import {environment} from '../../environments/environment';
 
 @Injectable({
@@ -13,17 +13,17 @@ export class AuthentificationService {
   constructor(private http: HttpClient) {
   }
 
-  basurl = 'http://localhost:8080/';
+  url = 'http://localhost:8080/';
   jwt: string;
   username: string;
-  roles: Array<string>;
+  public roles;
 
 
   private var;
 
   login(data) {
 // bech yjib lhedar de la requet post
-    return this.http.post(this.basurl + 'login', data, {observe: 'response'});
+    return this.http.post(this.url + 'login', data, {observe: 'response'});
 
   }
 
@@ -34,15 +34,19 @@ export class AuthentificationService {
     const objJWT = jwtHelper.decodeToken(this.jwt);
     this.username = objJWT.obj;
     this.roles = objJWT.roles;
+    localStorage.setItem('role',this.roles)
+
     //localStorage permet de recuperer le role de user
-    localStorage.setItem('role', this.roles)
+   // localStorage.setItem('role', this.roles)
   }
 
   saveToken(jwt: string) {
-    sessionStorage.setItem('token', jwt);
+    localStorage.setItem('token', jwt);
+    //localStorage.setItem('token', jwt);
     this.jwt = jwt;
     this.parseJWT();
   }
+
 
 // getProfil pour recupere l'utilisateur qui a connecté.
   getprofile() {
@@ -76,12 +80,14 @@ export class AuthentificationService {
   }
 
   loadToken() {
-    this.jwt = sessionStorage.getItem('token');
+    this.jwt = localStorage.getItem('token');
     this.parseJWT();
   }
 
+
   logout() {
-    sessionStorage.removeItem('token');
+    localStorage.removeItem('token');
+   // localStorage.removeItem('token');
     this.initParams();
 
   }

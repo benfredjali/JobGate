@@ -6,14 +6,18 @@
                 <a href="index.html" title=""><img class="hidesticky" src="/assets/images/resource/logo.png" alt="" /><img class="showsticky" src="/assets/images/resource/logo10.png" alt="" /></a>
             </div><!-- Logo -->
             <div class="btn-extars">
-                <a href="#" title="" class="post-job-btn"><i class="la la-plus"></i>Post Offre</a>
+                <a [hidden]="roleuser==='Candidat'" title="" class="post-job-btn"><i class="la la-plus"></i>Post Offre</a>
                 <ul class="account-btns" [hidden]="ison">
                     <li class="signup-popup"><a title=""><i class="la la-key"></i> Register</a></li>
                     <li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
                 </ul>
-              <ul class="account-btns" [hidden]="!ison">
+                <div class="my-profiles-sec" [hidden]="!ison">
+                    <span><img width="60px" height="60px" src="http://localhost:8080/upload/files/{{photo}}" alt="" />{{nomuser}}&nbsp;{{prenomuser}}
+                        <i class="la la-bars"></i> </span>
+				</div>
+             <!--  <ul class="account-btns" [hidden]="!ison">
              <li ><a (click)="deconecter()" title=""><i  class="la la-external-link-square"></i> decoonecter</a></li>
-              </ul>
+              </ul> -->
             </div><!-- Btn Extras -->
             <nav>
                 <ul>
@@ -45,8 +49,8 @@
                     <li class="menu-item-has-children">
                         <a href="#" title="">Offre</a>
                         <ul>
-                            <li><a href="candidates_list.html" title="">Travaille</a></li>
-                            <li><a href="candidates_list2.html" title="">Stage</a></li>
+                          <li><a  routerLink="/stage" title="">Stage</a></li>
+                          <li><a  routerLink="/travaille" title="">Travaille</a></li>
 
                         </ul>
                     </li>
@@ -80,3 +84,29 @@
 </header>
 
 <!-- SIGNUP POPUP -->
+<div class="profile-sidebar">
+	<span class="close-profile"><i class="la la-close"></i></span>
+	<div class="can-detail-s">
+     
+       
+
+		<div class="cst"><img src="http://localhost:8080/upload/files/{{photo}}" alt="" /></div>
+		<h3>  {{nomuser}}&nbsp;{{prenomuser}}</h3>
+		<span><i>{{user.niveauEtude}}</i> </span>
+		<p><a href="https://grandetest.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7516071014011c031019140c100706454d4d351218141c195b161a18">[email&#160;protected]</a></p>
+		<p>Member Since, 2017</p>
+		<p><i class="la la-map-marker"></i>{{user.adresse}}</p>
+	</div>
+	<div class="tree_widget-sec">
+		<ul>
+			<li><a href="candidates_profile.html" title=""><i class="la la-file-text"></i>My Profile</a></li>
+			<li><a href="candidates_my_resume.html" title=""><i class="la la-briefcase"></i>My Resume</a></li>
+			<li><a href="candidates_shortlist.html" title=""><i class="la la-money"></i>Shorlisted Job</a></li>
+			<li><a href="candidates_applied_jobs.html" title=""><i class="la la-paper-plane"></i>Applied Job</a></li>
+			<li><a href="candidates_job_alert.html" title=""><i class="la la-user"></i>Job Alerts</a></li>
+			<li><a href="candidates_cv_cover_letter.html" title=""><i class="la la-file-text"></i>Cv & Cover Letter</a></li>
+			<li><a href="candidates_change_password.html" title=""><i class="la la-flash"></i>Change Password</a></li>
+			<li><a href="#" title=""><i class="la la-unlink"></i>Logout</a></li>
+		</ul>
+	</div>
+</div><!-- Profile Sidebar -->
