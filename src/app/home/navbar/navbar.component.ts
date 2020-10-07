@@ -119,11 +119,8 @@ getprofile(){
   deconecter() {
 
     this.authenService.logout();
-
     localStorage.setItem('connecte', 'false');
     window.location.reload();
-
-
   }
 
   choisircandiat() {

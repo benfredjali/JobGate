@@ -831,7 +831,7 @@ label::after {
 .account-popup {
     position: relative;
     float: left;
-    width: 460px;
+    width: 660px;
     background: #ffffff;
     z-index: 1;
 
@@ -842,7 +842,7 @@ label::after {
     border-radius: 8px;
 
     left: 50%;
-    margin-left: -230px;
+    margin-left: -330px;
     margin-top: 140px;
     margin-bottom: 60px;
     text-align: center;
