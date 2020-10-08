@@ -15,11 +15,12 @@ import { Erreur404Component } from './erreur404/erreur404.component';
 import { FormationComponent } from './formation/formation.component';
 import { StageComponent } from './Offre/stage/stage.component';
 import { TravailleComponent } from './Offre/travaille/travaille.component';
-import { CandidatureComponent } from './candidature/candidature.component';
 import { AjouterFormationComponent } from './formation/ajouter-formation/ajouter-formation.component';
 import { AjouterStageComponent } from './Offre/stage/ajouter-stage/ajouter-stage.component';
 import { AjouterTravailleComponent } from './Offre/travaille/ajouter-travaille/ajouter-travaille.component';
 import { ModifierFormationComponent } from './formation/modifier-formation/modifier-formation.component';
+import { CandidatComponent } from './formation/candidat/candidat.component';
+import { EmployersComponent } from './offre/employers/employers.component';
 
 
 @NgModule({
@@ -33,11 +34,13 @@ import { ModifierFormationComponent } from './formation/modifier-formation/modif
     FormationComponent,
     StageComponent,
     TravailleComponent,
-    CandidatureComponent,
+
     AjouterFormationComponent,
     AjouterStageComponent,
     AjouterTravailleComponent,
-    ModifierFormationComponent
+    ModifierFormationComponent,
+    CandidatComponent,
+    EmployersComponent
   ],
   imports: [
     HttpClientModule,

@@ -8,6 +8,8 @@ import {TravailleComponent} from './Offre/travaille/travaille.component';
 import {AjouterFormationComponent} from './formation/ajouter-formation/ajouter-formation.component';
 import {AjouterStageComponent} from './Offre/stage/ajouter-stage/ajouter-stage.component';
 import {AjouterTravailleComponent} from './Offre/travaille/ajouter-travaille/ajouter-travaille.component';
+import { CandidatComponent } from './formation/candidat/candidat.component';
+
 
 
 const routes: Routes = [
@@ -15,12 +17,13 @@ const routes: Routes = [
   {path:'formation', component:FormationComponent},
   {path:'formation/ajouter', component:AjouterFormationComponent},
   {path:'formation/modifier', component:AjouterFormationComponent},
+  {path:'formation/candidat', component:CandidatComponent},
   {path:'erreur', component:Erreur404Component},
+  {path:'offre/employers', component:CandidatComponent},
   {path:'stage', component:StageComponent},
   {path:'stage/ajouter', component:AjouterStageComponent},
   {path:'travaille', component:TravailleComponent},
   {path:'travaille/ajouter', component:AjouterTravailleComponent}
-
 
 ];
 

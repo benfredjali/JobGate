@@ -11,6 +11,8 @@ import {MustMatch} from './must-match-directive';
 import Swal from 'sweetalert2';
 import {Router} from '@angular/router';
 import { ImageService } from '../services/image.service';
+import { AlertService } from '../alert.service';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -19,6 +21,7 @@ import { ImageService } from '../services/image.service';
 })
 export class HomeComponent implements OnInit {
 
+  loading = false;
   currentDate = new Date();
   loginForm: FormGroup;
   registerCandidatForm: FormGroup;
@@ -42,7 +45,7 @@ export class HomeComponent implements OnInit {
               private modalService: BsModalService,private authenService: AuthentificationService,
               private candudatservice: CandidatService,
               private formBuilder: FormBuilder,private router:Router,
-              private responsabelSocietyService: ResponsabelSocietyService) {
+              private responsabelSocietyService: ResponsabelSocietyService,private alertService: AlertService) {
     this.nom = localStorage.getItem('nom');
     this.prenom = localStorage.getItem('prenom');
     if (localStorage.getItem('connecte') === 'true') {
@@ -51,8 +54,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
-    this.currentDate;
 
     this.registerCandidatForm = this.formBuilder.group({
       nom: ['', Validators.pattern("[a-z .']+")],
@@ -185,7 +186,7 @@ export class HomeComponent implements OnInit {
 
     this.candudatservice.register(data).subscribe(result => {
       console.log(result);
-      
+     
       this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
         console.log(rest)
         // if (event.type === HttpEventType.UploadProgress) {
@@ -198,7 +199,9 @@ export class HomeComponent implements OnInit {
 
     });
 
-    //window.location.reload();
+   
+  
+   //window.location.reload();
     this.registerCandidatForm.reset();
 
   }
@@ -206,7 +209,9 @@ export class HomeComponent implements OnInit {
 
 
   registerResponsableSociete() {
+
     this.submitted = true;
+
     console.log(this.registerSocieteForm.value);
     // stop here if form is invalid
     if (this.registerSocieteForm.invalid) {
@@ -217,7 +222,7 @@ export class HomeComponent implements OnInit {
       console.log(result);
     });
    // window.location.reload();
-    this.registerCandidatForm.reset();
+    this.registerSocieteForm.reset();
 
   }
 
@@ -258,6 +263,7 @@ export class HomeComponent implements OnInit {
 
   isresponsableSociete() {
     this.authenService.isresponsableSociete();
+    
   }
 
   isresponsableCentre() {
