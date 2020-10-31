@@ -8,7 +8,7 @@
 
   <app-navbar ></app-navbar>
 
-  <app-container></app-container>
+<router-outlet></router-outlet>
 
 
 
@@ -122,7 +122,7 @@
           </div>
 
           <div class="cfield">
-            <input id="file1" type='file' (change)="recuperFile($event)" />          
+            <input  type='file' (change)="recuperFile($event)" />          
           </div>
 
           <div class="cfield">
@@ -142,12 +142,12 @@
           </div>
 
           <div class="cfield">
-            <input type="date" [max]="currentDate" formControlName="dateNaiss"  [ngClass]="{ 'is-invalid': submitted && f.dateNaiss.errors }"/>
-
+            <input type="date" formControlName="dateNaiss"  [ngClass]="{ 'is-invalid': submitted && f.dateNaiss.errors }"/>
             <div *ngIf="submitted && f.dateNaiss.errors" class="invalid-feedback">
               <div *ngIf="f.dateNaiss.errors.required">dateNaiss is required</div>
             </div>
             <i class=""></i>
+            
           </div>
 
 
@@ -239,12 +239,8 @@
 
 
           <div class="cfield">
-            <input type="text" placeholder="Logo"  formControlName="logo"  [ngClass]="{ 'is-invalid': submitted && x.logo.errors }" />
-            <div *ngIf="submitted && x.logo.errors" class="invalid-feedback">
-              <div *ngIf="x.logo.errors.required">logo is required</div>
-            </div>
-            <i class="la la-user"></i>
-        </div>
+            <input  type='file' (change)="recuperFile($event)" />          
+          </div>
 
 
           <div class="cfield">
@@ -342,11 +338,7 @@
 
 
           <div class="cfield">
-            <input type="text" placeholder="Logo"  formControlName="logo"  [ngClass]="{ 'is-invalid': submitted && v.logo.errors }" />
-            <div *ngIf="submitted && v.logo.errors" class="invalid-feedback">
-              <div *ngIf="v.logo.errors.required">logo is required</div>
-            </div>
-            <i class="la la-user"></i>
+            <input  type='file' (change)="recuperFile($event)" />          
           </div>
 
           <div class="cfield">
@@ -376,8 +368,7 @@
           </div>
 
           <div class="cfield">
-            <input [type]="getType()" placeholder="Confirm Password" formControlName="confirmpassword" class="form-control"
-                   [ngClass]="{ 'is-invalid': submitted && v.confirmpassword.errors }" />
+            <input [type]="getType()" placeholder="Confirm Password" formControlName="confirmpassword"  [ngClass]="{ 'is-invalid': submitted && v.confirmpassword.errors }" />
             <div *ngIf="submitted && v.confirmpassword.errors" class="invalid-feedback">
               <div *ngIf="v.confirmpassword.errors.required">Confirm Password est incorrect</div>
               <!--<div *ngIf="f.confirmpassword.errors.mustMatch">Passwords must match</div>-->
@@ -394,6 +385,9 @@
 
 
 </div><!-- SIGNUP POPUP -->
+
+<app-footer></app-footer>
+
 
 <!-- <div class="row clearfix">
   <div class="col-md-6 col-sm-12">

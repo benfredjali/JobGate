@@ -21,6 +21,10 @@ import { first } from 'rxjs/operators';
 })
 export class HomeComponent implements OnInit {
 
+
+  minDate: Date;
+  maxDate: Date;
+
   loading = false;
   currentDate = new Date();
   loginForm: FormGroup;
@@ -37,9 +41,7 @@ export class HomeComponent implements OnInit {
   logo;
   filesToUpload: Array<File>;
   choix = 'candidat';
-  public minDate: Date = new Date ("05/07/1990");
-  public maxDate: Date = new Date ("05/27/2010");
-  public  Date = new Date ();
+
 
   constructor(private responsableCentreService: ResponsableCentreService,private imageservice:ImageService,
               private modalService: BsModalService,private authenService: AuthentificationService,
@@ -51,6 +53,8 @@ export class HomeComponent implements OnInit {
     if (localStorage.getItem('connecte') === 'true') {
       this.ison = true;
     }
+    this.maxDate = new Date();
+
   }
 
   ngOnInit(): void {
@@ -96,6 +100,9 @@ export class HomeComponent implements OnInit {
     }, {
       validator: MustMatch('password', 'confirmpassword')
     });
+
+
+
     this.registerCentreForm = this.formBuilder.group({
       nom: ['', Validators.required],
       prenom: ['', Validators.required],
@@ -189,17 +196,11 @@ export class HomeComponent implements OnInit {
      
       this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
         console.log(rest)
-        // if (event.type === HttpEventType.UploadProgress) {
-        //   this.progress.percentage = Math.round(100 * event.loaded / event.total);
-        // } else if (event instanceof HttpResponse) {
-        //   console.log('File is completely uploaded!');
-        // }
+       
       });
 
 
     });
-
-   
   
    //window.location.reload();
     this.registerCandidatForm.reset();
@@ -209,22 +210,84 @@ export class HomeComponent implements OnInit {
 
 
   registerResponsableSociete() {
+    const data = {
+      nom: this.registerSocieteForm.value["nom"],
+      prenom: this.registerSocieteForm.value["prenom"],
+      username: this.registerSocieteForm.value["username"],
+      adresse: this.registerSocieteForm.value["adresse"],
+      description: this.registerSocieteForm.value["description"],
+      siteWeb: this.registerSocieteForm.value["siteWeb"],
+      logo: this.filesToUpload[0].name,
+      telephone: this.registerSocieteForm.value["telephone"],
+      email: this.registerSocieteForm.value["email"],
+      password: this.registerSocieteForm.value["password"],
+      confirmpassword: this.registerSocieteForm.value["confirmpassword"],
+
+    }
 
     this.submitted = true;
-
     console.log(this.registerSocieteForm.value);
     // stop here if form is invalid
     if (this.registerSocieteForm.invalid) {
       return;
     }
 
-    this.responsabelSocietyService.register(this.registerSocieteForm.value).subscribe(result => {
+    this.responsabelSocietyService.register(data).subscribe(result => {
       console.log(result);
-    });
-   // window.location.reload();
-    this.registerSocieteForm.reset();
+     
+      this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
+        console.log(rest)
+       
+      });
 
+
+    });
+  
+   //window.location.reload();
+    this.registerSocieteForm.reset(); 
+   }
+
+
+  
+  registerResponsableCentre() {
+    const data = {
+      nom: this.registerCentreForm.value["nom"],
+      prenom: this.registerCentreForm.value["prenom"],
+      username: this.registerCentreForm.value["username"],
+      adresse: this.registerCentreForm.value["adresse"],
+      description: this.registerCentreForm.value["description"],
+      siteWeb: this.registerCentreForm.value["siteWeb"],
+      logo: this.filesToUpload[0].name,
+      telephone: this.registerCentreForm.value["telephone"],
+      email: this.registerCentreForm.value["email"],
+      password: this.registerCentreForm.value["password"],
+      confirmpassword: this.registerCentreForm.value["confirmpassword"],
+
+    }
+
+    this.submitted = true;
+    console.log(this.registerCentreForm.value);
+    // stop here if form is invalid
+    if (this.registerCentreForm.invalid) {
+      return;
+    }
+
+    this.responsableCentreService.register(data).subscribe(result => {
+      console.log(result);
+     
+      this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
+        console.log(rest)
+       
+      });
+
+
+    });
+  
+   //window.location.reload();
+    this.registerCentreForm.reset(); 
   }
+
+
 
   public toggleTextPassword(): void {
     this.isActiveToggleTextPassword = (this.isActiveToggleTextPassword !== true);
@@ -238,22 +301,6 @@ export class HomeComponent implements OnInit {
   reset() {
     this.submitted = false;
     this.registerCentreForm.reset();
-  }
-
-  registerResponsableCentre() {
-    this.submitted = true;
-    console.log(this.registerCentreForm.value);
-    // stop here if form is invalid
-    if (this.registerCentreForm.invalid) {
-      return;
-    }
-
-    this.responsableCentreService.register(this.registerCentreForm.value).subscribe(result => {
-      console.log(result);
-
-    });
-    //window.location.reload();
-    this.registerCandidatForm.reset();
   }
 
 
@@ -314,8 +361,8 @@ export class HomeComponent implements OnInit {
 
 
   recuperFile(file) {
-    this.filesToUpload = <Array<File>> file.target.files;
-
+    this.filesToUpload = file.target.files;
+console.log(this.filesToUpload);
     this.photo = file.target.files[0]['name'];
     this.logo= file.target.files[0]['name'];
   }

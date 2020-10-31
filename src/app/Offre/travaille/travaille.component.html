@@ -25,7 +25,7 @@
             <div class="widget">
               <div class="search_widget_job">
                 <div class="field_w_search">
-                  <input type="text" placeholder="Search Keywords" />
+                  <input type="text" [(ngModel)]="termTravaille" placeholder="Search Keywords" />
                   <i class="la la-search"></i>
                 </div><!-- Search Widget -->
                 <div class="field_w_search">
@@ -186,7 +186,7 @@
             </div><!-- MOdern Job LIst -->
             <div class="job-list-modern">
               <div class="job-listings-sec">
-                <div class="job-listing wtabs" *ngFor=" let e of listtravaille">
+                <div class="job-listing wtabs" *ngFor=" let e of listtravaille| travaille:termTravaille">
                   <div class="job-title-sec" >
                     <div class="c-logo"> <img src="/assets/images/resource/l1.png" alt="" /> </div>
                     <h3><a href="#" title="">Web Designer / Developer</a></h3>

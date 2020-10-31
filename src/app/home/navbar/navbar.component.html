@@ -142,8 +142,25 @@
                     <li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
                 </ul>
                 <div class="my-profiles-sec" [hidden]="!ison">
-                    <span><img width="60px" height="60px" src="http://localhost:8080/upload/files/{{photo}}" alt="" />{{nomuser}}&nbsp;{{prenomuser}}
+                    <span><img  width="60px" height="60px" src="http://localhost:8080/upload/files/{{photo}}" alt="" />{{nomuser}}&nbsp;{{prenomuser}}
                         <i class="la la-bars"></i> </span>
+				</div>
+				<div class="wishlist-dropsec" [hidden]="!ison">
+					<span><i class="la la-heart"></i><strong>{{listfavoriebycandidat?.length}}</strong></span>
+					<div class="wishlist-dropdown">
+						<ul class="scrollbar">
+							<li>
+								<div class="job-listing">
+									<div class="job-title-sec" *ngFor="let f of listfavoriebycandidat">
+										<div class="c-logo"> <img src="http://localhost:8080/upload/files/{{f?.offre?.responsableSociete?.logo}}" alt="" /> </div>
+										<h3><a href="#" title="">{{f?.offre.titre}}</a></h3>
+										<span>{{f?.offre.responsableSociete?.nom}}</span>
+									
+									</div>
+								</div><!-- Job -->
+							</li>
+						</ul>
+					</div>
 				</div>
              <!--  <ul class="account-btns" [hidden]="!ison">
              <li ><a (click)="deconecter()" title=""><i  class="la la-external-link-square"></i> decoonecter</a></li>
@@ -152,13 +169,13 @@
             <nav>
                 <ul>
                     <li class="menu-item-has-children">
-                        <a href="#" title="">Home</a>
+                        <a href="" [routerLink]="['']" title="">Home</a>
                         <ul>
-                            <li><a href="index.html" title="">Home Layout 1</a></li>
-                            <li><a href="index2.html" title="">Home Layout 2</a></li>
+                       
 
                         </ul>
-                    </li>
+					</li>
+					
                     <li class="menu-item-has-children">
                         <a href="#" title="">Category</a>
                         <ul>
@@ -225,11 +242,11 @@
        
 
 		<div class="cst"><img src="http://localhost:8080/upload/files/{{photo}}" alt="" /></div>
-		<h3>  {{nomuser}}&nbsp;{{prenomuser}}</h3>
-		<span><i>{{user.niveauEtude}}</i> </span>
+		<h3 class="menu-item-has-children">  {{nomuser}}&nbsp;{{prenomuser}}</h3>
+		<span><i>{{user?.niveauEtude}}</i> </span>
 		<p><a href="https://grandetest.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7516071014011c031019140c100706454d4d351218141c195b161a18">[email&#160;protected]</a></p>
 		<p>Member Since, 2017</p>
-		<p><i class="la la-map-marker"></i>{{user.adresse}}</p>
+		<p><i class="la la-map-marker"></i>{{user?.adresse}}</p>
 	</div>
 	<div class="tree_widget-sec">
 		<ul>

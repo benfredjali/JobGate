@@ -24,14 +24,7 @@ export class ImageService {
   }
 
  
-  private upload(formData: FormData): Observable<HttpEvent<{}>> {
-    const request = new HttpRequest("POST", 'http://localhost:8080/upload/post', formData, {
-      reportProgress: true,
-      responseType: "text"
-    });
-
-    return this.http.request(request);
-  }
+ 
   /* uploadFolder(folder: FileList): Observable<HttpEvent<{}>> {
     const formData = new FormData();
 
@@ -41,12 +34,17 @@ export class ImageService {
 
     return this.upload(formData);
   } */
- 
-  uploadFile(file: File): Observable<HttpEvent<{}>> {
-    const formData = new FormData();
-    formData.append("data", file);
+  uploadFile(file): Observable<HttpEvent<{}>> {
 
-    return this.upload(formData);
+    const formdata: FormData = new FormData();
+    formdata.append("file", file);
+
+    const req = new HttpRequest('POST', 'http://localhost:8080/upload/post', formdata, {
+      reportProgress: true,
+      responseType: 'text'
+    });
+
+    return this.http.request(req);
   }
 
 

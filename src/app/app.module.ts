@@ -21,6 +21,8 @@ import { AjouterTravailleComponent } from './Offre/travaille/ajouter-travaille/a
 import { ModifierFormationComponent } from './formation/modifier-formation/modifier-formation.component';
 import { CandidatComponent } from './formation/candidat/candidat.component';
 import { EmployersComponent } from './offre/employers/employers.component';
+import { StagePipe } from './recherche/stage.pipe';
+import { TravaillePipe } from './recherche/travaille.pipe';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { EmployersComponent } from './offre/employers/employers.component';
     AjouterTravailleComponent,
     ModifierFormationComponent,
     CandidatComponent,
-    EmployersComponent
+    EmployersComponent,
+    StagePipe,
+    TravaillePipe
   ],
   imports: [
     HttpClientModule,

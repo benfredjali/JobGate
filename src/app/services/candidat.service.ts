@@ -13,8 +13,14 @@ export class CandidatService {
   getall() {
     return this.http.get(environment.url + 'candidat/all');
   }
+  getfavoriebycandidat(idcandidat) {
+    return this.http.get(environment.url + 'favorie/getfavoriebycandidat/'+idcandidat);
+  }
 
   register(data) {
     return this.http.post(environment.url + 'candidat/save', data);
+  }
+  addfavorie(data,idoffre,idcandidat){
+    return this.http.post(environment.url + 'favorie/save/'+idoffre+'/'+idcandidat,data )
   }
 }

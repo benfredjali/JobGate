@@ -5,6 +5,7 @@
                 <div class="col-lg-12">
                     <div class="main-featured-sec">
                         <ul class="main-slider-sec text-arrows">
+                            <button type="button"  class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;">Previous</button>
                             <li class="slideHome"><img src="/assets/images/resource/mslider3.jpg" alt="" /></li>
                             <li class="slideHome"><img src="/assets/images/resource/mslider2.jpg" alt="" /></li>
                             <li class="slideHome"><img src="/assets/images/resource/mslider1.jpg" alt="" /></li>
@@ -179,13 +180,19 @@
                     <div class="job-listings-sec"  *ngFor=" let e of listannonce">
                         <div class="job-listing">
                             <div class="job-title-sec">
-                                <div class="c-logo"> <img src="/assets/images/resource/l1.png" alt="" /> </div>
-                                <h3><a href="#" title="">Web Designer / Developer</a></h3>
-                                <span>{{e.titre}}</span>
+                                <div class="c-logo"> <img src="http://localhost:8080/upload/files/{{e.responsableSociete.logo}}" alt="" /> </div>
+                                <h3><a  title="">{{e?.titre}}</a></h3>
+                                <span>{{e?.responsableSociete?.nom}}</span>
                             </div>
-                            <span class="job-lctn"><i class="la la-map-marker"></i>Sacramento, California</span>
+                            <span class="job-lctn"><i class="la la-map-marker"></i>{{e?.adresse}}</span>
                             <span class="fav-job"><i class="la la-heart-o"></i></span>
-                            <span class="job-is ft">FULL TIME</span>
+                            <span class="job-is pt" *ngIf="e.type==='PART TIME'" >{{e.type}}</span>
+                            <span class="job-is ft" *ngIf="e.type === 'FULL TIME'">{{e.type}}</span>
+                            <span class="job-is fl" *ngIf="e.type==='FREELANCE'" >{{e.type}}</span>
+                            <span class="job-is pt" *ngIf="e.type==='TEMPORARY'" >{{e.type}}</span>
+
+
+
                         </div><!-- Job -->
 
 

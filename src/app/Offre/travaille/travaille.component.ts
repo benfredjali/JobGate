@@ -8,6 +8,7 @@ import {TravailleService} from '../../services/travaille.service';
 })
 export class TravailleComponent implements OnInit {
 
+  termTravaille;
   listtravaille;
   constructor(private travailleservice: TravailleService) { }
 

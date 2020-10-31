@@ -7,6 +7,7 @@ import {ResponsableCentreService} from '../../services/responsabelcentre.service
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {UtilisateurService} from '../../services/utilisateur.service';
 import {AuthentificationService} from '../../services/authentification.service';
+import { CounterService } from 'src/app/services/counter.service';
 
 @Component({
   selector: 'app-navbar',
@@ -30,11 +31,11 @@ export class NavbarComponent implements OnInit {
   isActiveToggleTextPassword = true;
   modalRef: BsModalRef;
   choix = 'candidat';
-
+listfavoriebycandidat;
   constructor(private responsableCentreService: ResponsableCentreService, private modalService: BsModalService,
               private candudatservice: CandidatService,
               private formBuilder: FormBuilder, private authenService: AuthentificationService,
-              private responsabelSocietyService: ResponsabelSocietyService) {
+              private responsabelSocietyService: ResponsabelSocietyService,private counterService: CounterService) {
     if (localStorage.getItem('connecte') === 'true') {
       this.ison = true;
     } else {
@@ -44,6 +45,7 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getfavoriebycandidat();
     this.roleuser=localStorage.getItem('role');
     this.registerCandidatForm = this.formBuilder.group({
       nom: ['', Validators.required],
@@ -99,18 +101,12 @@ this.getprofile();
     });
 
   }
-
-getprofile(){
-  this.authenService.getprofile().subscribe(res=>{
+getfavoriebycandidat(){
+  this.candudatservice.getfavoriebycandidat(localStorage.getItem('iduser')).subscribe(res=>{
     console.log(res);
-    this.user=res;
-    this.nomuser=res['nom'];
-    this.prenomuser=res['prenom'];
-    this.photo=res['photo'];
-    this.logo=res['logo'];
-  
-
-  })}
+    this.listfavoriebycandidat=res;
+  })
+}
   choisirsocite() {
     this.choix = 'societe';
 
@@ -210,6 +206,26 @@ getprofile(){
 
     this.reset();
   }
+  
+  public getCount() {
+    return this.counterService.count
+  }
+  public incCount(){
+    this.counterService.count += 1;
+  }
+  
+getprofile(){
+  this.authenService.getprofile().subscribe(res=>{
+    console.log(res);
+    this.user=res;
+    localStorage.setItem('iduser',this.user['id']);
+    this.nomuser=res['nom'];
+    this.prenomuser=res['prenom'];
+    this.photo=res['photo'];
+    this.logo=res['logo'];
+  
+
+  })}
 
   //   MustMatch(controlName: string, matchingControlName: string) {
   //     return (formGroup: FormGroup) => {

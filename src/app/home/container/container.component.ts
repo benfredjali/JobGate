@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormationService} from '../../services/Formation/formation.service';
+import { OffreService } from 'src/app/services/offre.service';
 
 @Component({
   selector: 'app-container',
@@ -10,7 +11,7 @@ export class ContainerComponent implements OnInit {
   listannonce;
 
 
-  constructor(private formationservice: FormationService) {
+  constructor(private offreservice: OffreService) {
   }
 
   ngOnInit() {
@@ -18,10 +19,12 @@ export class ContainerComponent implements OnInit {
   }
 
   all() {
-    this.formationservice.getall().subscribe(res => {
+    this.offreservice.getall().subscribe(res => {
       console.log(res);
       this.listannonce = res;
     });
 
   }
+
+ 
 }
