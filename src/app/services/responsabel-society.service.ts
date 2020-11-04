@@ -19,4 +19,5 @@ export class ResponsabelSocietyService {
     return this.http.post(environment.url + 'responsableSociete/save', data);
 }
 
+
 }

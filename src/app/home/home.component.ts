@@ -22,11 +22,8 @@ import { first } from 'rxjs/operators';
 export class HomeComponent implements OnInit {
 
 
-  minDate: Date;
-  maxDate: Date;
 
   loading = false;
-  currentDate = new Date();
   loginForm: FormGroup;
   registerCandidatForm: FormGroup;
   registerSocieteForm: FormGroup;
@@ -53,7 +50,6 @@ export class HomeComponent implements OnInit {
     if (localStorage.getItem('connecte') === 'true') {
       this.ison = true;
     }
-    this.maxDate = new Date();
 
   }
 
@@ -86,7 +82,7 @@ export class HomeComponent implements OnInit {
 
 
     this.registerSocieteForm = this.formBuilder.group({
-      nom: ['', Validators.required],
+      nom: ['', Validators.pattern("[a-z .']+")],
       prenom: ['', Validators.required],
       username: ['', Validators.required],
       adresse: ['', Validators.required],
@@ -119,11 +115,12 @@ export class HomeComponent implements OnInit {
       validator:MustMatch('password', 'confirmpassword')
     });
 
+
     this.loginForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
-
+this.reset();
 
   }
 
@@ -202,7 +199,7 @@ export class HomeComponent implements OnInit {
 
     });
   
-   //window.location.reload();
+   window.location.reload();
     this.registerCandidatForm.reset();
 
   }
@@ -210,6 +207,7 @@ export class HomeComponent implements OnInit {
 
 
   registerResponsableSociete() {
+
     const data = {
       nom: this.registerSocieteForm.value["nom"],
       prenom: this.registerSocieteForm.value["prenom"],
@@ -244,8 +242,9 @@ export class HomeComponent implements OnInit {
     });
   
    //window.location.reload();
-    this.registerSocieteForm.reset(); 
-   }
+    this.registerSocieteForm.reset();
+
+  }
 
 
   
@@ -262,6 +261,7 @@ export class HomeComponent implements OnInit {
       email: this.registerCentreForm.value["email"],
       password: this.registerCentreForm.value["password"],
       confirmpassword: this.registerCentreForm.value["confirmpassword"],
+
 
     }
 

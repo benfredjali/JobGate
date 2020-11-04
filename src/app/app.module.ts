@@ -23,6 +23,8 @@ import { CandidatComponent } from './formation/candidat/candidat.component';
 import { EmployersComponent } from './offre/employers/employers.component';
 import { StagePipe } from './recherche/stage.pipe';
 import { TravaillePipe } from './recherche/travaille.pipe';
+import { ListComponent } from './candidat/list/list.component';
+import { ProfilComponent } from './candidat/profil/profil.component';
 
 
 @NgModule({
@@ -44,7 +46,9 @@ import { TravaillePipe } from './recherche/travaille.pipe';
     CandidatComponent,
     EmployersComponent,
     StagePipe,
-    TravaillePipe
+    TravaillePipe,
+    ListComponent,
+    ProfilComponent
   ],
   imports: [
     HttpClientModule,

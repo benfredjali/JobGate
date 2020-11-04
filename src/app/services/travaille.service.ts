@@ -15,4 +15,9 @@ export class TravailleService {
 
     return this.http.get(environment.url + 'travaille/all');
   }
+  
+
+  Ajouter(data,idsociete,idsecteur) {
+    return this.http.post(environment.url + 'travaille/save/'+idsecteur+'/'+idsociete, data);
+  }
 }

@@ -77,4 +77,9 @@ export class AjouterStageComponent implements OnInit {
     this.AjouterStageForm.reset();
 
   }
+
+  reset() {
+    this.submitted = false;
+    this.AjouterStageForm.reset();
+  }
 }

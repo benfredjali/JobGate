@@ -78,4 +78,9 @@ export class AjouterFormationComponent implements OnInit {
     this.AjouterFormationForm.reset();
 
   }
+
+  reset() {
+    this.submitted = false;
+    this.AjouterFormationForm.reset();
+  }
 }

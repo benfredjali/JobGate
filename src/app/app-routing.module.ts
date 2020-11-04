@@ -11,6 +11,7 @@ import {AjouterTravailleComponent} from './Offre/travaille/ajouter-travaille/ajo
 import { CandidatComponent } from './formation/candidat/candidat.component';
 import { EmployersComponent } from './offre/employers/employers.component';
 import { ContainerComponent } from './home/container/container.component';
+import { ProfilComponent } from './candidat/profil/profil.component';
 
 
 
@@ -26,7 +27,10 @@ const routes: Routes = [
   {path:'stage', component:StageComponent},
   {path:'stage/ajouter', component:AjouterStageComponent},
   {path:'travaille', component:TravailleComponent},
-  {path:'travaille/ajouter', component:AjouterTravailleComponent}
+  {path:'travaille/ajouter', component:AjouterTravailleComponent},
+  {path:'candidat/profil', component:ProfilComponent}
+
+  
 ]},
  
 
