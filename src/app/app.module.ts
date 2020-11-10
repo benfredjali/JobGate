@@ -18,14 +18,16 @@ import { TravailleComponent } from './Offre/travaille/travaille.component';
 import { AjouterFormationComponent } from './formation/ajouter-formation/ajouter-formation.component';
 import { AjouterStageComponent } from './Offre/stage/ajouter-stage/ajouter-stage.component';
 import { AjouterTravailleComponent } from './Offre/travaille/ajouter-travaille/ajouter-travaille.component';
-import { ModifierFormationComponent } from './formation/modifier-formation/modifier-formation.component';
 import { CandidatComponent } from './formation/candidat/candidat.component';
 import { EmployersComponent } from './offre/employers/employers.component';
 import { StagePipe } from './recherche/stage.pipe';
 import { TravaillePipe } from './recherche/travaille.pipe';
 import { ListComponent } from './candidat/list/list.component';
 import { ProfilComponent } from './candidat/profil/profil.component';
-
+import { FormationdetailComponent } from './formationdetail/formationdetail.component';
+import { PeopleListComponent } from './people-list/people-list.component';
+import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
+import { UpdateComponent } from './formation/update/update.component';
 
 @NgModule({
   declarations: [
@@ -42,20 +44,23 @@ import { ProfilComponent } from './candidat/profil/profil.component';
     AjouterFormationComponent,
     AjouterStageComponent,
     AjouterTravailleComponent,
-    ModifierFormationComponent,
     CandidatComponent,
     EmployersComponent,
     StagePipe,
     TravaillePipe,
     ListComponent,
-    ProfilComponent
+    ProfilComponent,
+    FormationdetailComponent,
+    PeopleListComponent,
+    UpdateComponent
   ],
   imports: [
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
     BrowserModule,
-    AppRoutingModule, ModalModule.forRoot()
+    AppRoutingModule, ModalModule.forRoot(),
+    ToastrModule.forRoot()
 
   ],
   providers: [],

@@ -12,6 +12,10 @@ export class FormationService {
 
     return this.http.get(environment.url + 'formation/all');
   }
+  getbyid(id) {
+
+    return this.http.get(environment.url + 'formation/getone/'+id);
+  }
   Ajouter(data,idcentre,idsecteur) {
     return this.http.post(environment.url + 'formation/save/'+idsecteur+'/'+idcentre, data);
   }

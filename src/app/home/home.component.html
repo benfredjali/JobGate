@@ -1,6 +1,5 @@
 
-      
-<div class="page-loading">
+      <div class="page-loading">
   <img src="/assets/images/loader.gif" alt=""/>
 </div>
 
@@ -71,7 +70,8 @@
 
         
           <div class="cfield">
-            <input type="text" placeholder="Username"  formControlName="username"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
+            <input type="text" placeholder="Username" 
+             formControlName="username"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
             <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
               <div *ngIf="f.username.errors.required">First Name is required</div>
             </div>
@@ -175,7 +175,7 @@
             <input [type]="getType()" placeholder="Confirm Password" formControlName="confirmpassword" [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }" />
             <div *ngIf="submitted && f.confirmpassword.errors" class="invalid-feedback">
               <div *ngIf="f.confirmpassword.errors.required">Confirm Password est incorrect</div>
-              <!--<div *ngIf="f.confirmpassword.errors.mustMatch">Passwords must match</div>-->
+            <div *ngIf="f.confirmpassword.errors.mustMatch">Passwords must match</div>
             </div>
             <i class="la la-eye" (click)="toggleTextPassword()"></i>
           </div>
@@ -188,109 +188,125 @@
     <form *ngIf="choix=='societe'" [formGroup]="registerSocieteForm">
 
 
-          <div class="cfield">
-            <input type="text" placeholder="Username"  formControlName="username"  [ngClass]="{ 'is-invalid': submitted && x.username.errors }" />
-            <div *ngIf="submitted && x.username.errors" class="invalid-feedback">
-              <div *ngIf="x.username.errors.required">First Name is required</div>
-            </div>
-            <i class="la la-user-times"></i>
+      <div class="cfield">
+        <input type="text" placeholder="Username"  formControlName="username" [ngClass]="{ 'is-invalid': submitted && x.username.errors }" />
+        <div *ngIf="submitted && x.username.errors" class="invalid-feedback">
+          <div *ngIf="x.username.errors.required">username is required</div>
+          <div *ngIf="x.username.errors.pattern">Invalid username</div>
+          <div *ngIf="x.username.errors.minlength">username must contain two characters at least</div>
         </div>
+        <i class="la la-user-times"></i>
+      </div>
+
+      <div class="cfield">
+        <input type="text" placeholder="First Name"  formControlName="nom" [ngClass]="{ 'is-invalid': submitted && x.nom.errors }" />
+        <div *ngIf="submitted && x.nom.errors" class="invalid-feedback">
+          <div *ngIf="x.nom.errors.required">name is required</div>
+          <div *ngIf="x.nom.errors.pattern">Invalid name</div>
+          <div *ngIf="x.nom.errors.minlength">name must contain two characters at least</div>
 
 
-          <div class="cfield">
-            <input type="text" placeholder="First Name"  formControlName="nom"  [ngClass]="{ 'is-invalid': submitted && x.nom.errors }" />
-            <div *ngIf="submitted && x.nom.errors" class="invalid-feedback">
-              <div *ngIf="x.nom.errors.required">nom est incorrect</div>
-            </div>
-            <i class="la la-user"></i>
-          </div>
+        </div>
+        <i class="la la-user"></i>
+      </div>
 
-          <div class="cfield">
-            <input type="text" placeholder="Last Name"  formControlName="prenom"  [ngClass]="{ 'is-invalid': submitted && x.prenom.errors }" />
-            <div *ngIf="submitted && x.prenom.errors" class="invalid-feedback">
-              <div *ngIf="x.prenom.errors.required">prenom est incorrect</div>
-            </div>
-            <i class="la la-users"></i>
-          </div>
-
-          <div class="cfield">
-            <input type="text" placeholder="Adress"  formControlName="adresse"  [ngClass]="{ 'is-invalid': submitted && x.adresse.errors }" />
-            <div *ngIf="submitted && x.adresse.errors" class="invalid-feedback">
-              <div *ngIf="x.adresse.errors.required">adresseis required</div>
-            </div>
-            <i class="la la-map-marker"></i>
-          </div>
-
-          <div class="cfield">
-            <input type="text" placeholder="Description"  formControlName="description"  [ngClass]="{ 'is-invalid': submitted && x.description.errors }" />
-            <div *ngIf="submitted && x.description.errors" class="invalid-feedback">
-              <div *ngIf="x.description.errors.required">Description est incorrect</div>
-            </div>
-            <i class="la la-bars"></i>
-          </div>
-
-          <div class="cfield">
-            <input type="text" placeholder="Web Site" formControlName="siteWeb"  [ngClass]="{ 'is-invalid': submitted && x.siteWeb.errors }" />
-            <div *ngIf="submitted && x.siteWeb.errors" class="invalid-feedback">
-              <div *ngIf="x.siteWeb.errors.required">siteWeb est incorrect</div>
-            </div>
-            <i class="la la-user"></i>
-          </div>
+      <div class="cfield">
+        <input type="text" placeholder="Last Name"  formControlName="prenom" lass="form-control" [ngClass]="{ 'is-invalid': submitted && x.prenom.errors }" />
+        <div *ngIf="submitted && x.prenom.errors" class="invalid-feedback">
+          <div *ngIf="x.prenom.errors.required">Last Name est incorrect</div>
+          <div *ngIf="x.nom.errors.pattern">Invalid Last Name </div>
+          <div *ngIf="x.nom.errors.minlength">Last Name  must contain two characters at least</div>
+        </div>
+        <i class="la la-users"></i>
+      </div>
 
 
-          <div class="cfield">
-            <input  type='file' (change)="recuperFile($event)" />          
-          </div>
+      <div class="cfield">
+        <input type="text" placeholder="Adress"  formControlName="adresse"  [ngClass]="{ 'is-invalid': submitted && x.adresse.errors }" />
+        <div *ngIf="submitted && x.adresse.errors" class="invalid-feedback">
+          <div *ngIf="x.adresse.errors.required">adresseis required</div>
+          <div *ngIf="x.adresse.errors.minlength">Adresse  must contain ten characters at least</div>
+
+        </div>
+        <i class="la la-map-marker"></i>
+      </div>
+
+      <div class="cfield">
+        <input type="text" placeholder="Description"  formControlName="description"  [ngClass]="{ 'is-invalid': submitted && x.description.errors }" />
+        <div *ngIf="submitted && x.description.errors" class="invalid-feedback">
+          <div *ngIf="x.description.errors.required">description is required</div>
+          <div *ngIf="x.description.errors.minlength">description must contain 30 characters at least</div>
+
+        </div>
+        <i class="la la-bars"></i>
+      </div>
+
+      <div class="cfield">
+        <input type="text" placeholder="Web Site"  formControlName="siteWeb"  [ngClass]="{ 'is-invalid': submitted && x.siteWeb.errors }" />
+        <div *ngIf="submitted && x.siteWeb.errors" class="invalid-feedback">
+          <div *ngIf="x.siteWeb.errors.required">Web Site is required</div>
+
+        </div>
+        <i class="la la-user"></i>
+      </div>
 
 
-          <div class="cfield">
-            <input type="text" placeholder="Phone Number"  formControlName="telephone"  [ngClass]="{ 'is-invalid': submitted && x.telephone.errors }" />
-            <div *ngIf="submitted && x.telephone.errors" class="invalid-feedback">
-              <div *ngIf="x.telephone.errors.required">telephone is required</div>
-            </div>
-            <i class="la la-phone"></i>
-          </div>
+      <div class="cfield">
+        <input  type='file' (change)="recuperFile($event)" />          
+      </div>
 
-          <div class="cfield">
-            <input type="text" placeholder="Email" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && x.email.errors }" />
-            <div *ngIf="submitted && x.email.errors" class="invalid-feedback">
-              <div *ngIf="x.email.errors.required">Email is required</div>
-              <div *ngIf="x.email.errors.email">Email est incorrect</div>
-            </div>
-            <i class="la la-envelope-o"></i>
-          </div>
+      <div class="cfield">
+        <input type="text" placeholder="Phone Number"  formControlName="telephone"  [ngClass]="{ 'is-invalid': submitted && x.telephone.errors }" />
+        <div *ngIf="submitted && x.telephone.errors" class="invalid-feedback">
+          <div *ngIf="x.telephone.errors.required">Phone Number is required</div>
+          <div *ngIf="x.telephone.errors.pattern">Invalid Phone Number </div>
+          <div *ngIf="x.telephone.errors.minlength">Phone Number  must contain two characters at least</div>
+        </div>
+        <i class="la la-phone"></i>
+      </div>
 
-          <div class="cfield">
-            <input [type]="getType()" placeholder="Password" formControlName="password"  [ngClass]="{ 'is-invalid': submitted && x.password.errors }" />
-            <div *ngIf="submitted && x.password.errors" class="invalid-feedback">
-              <div *ngIf="x.password.errors.required">Password is required</div>
-              <div *ngIf="x.password.errors.minlength">Password must be at least 6 characters</div>
-            </div>
-            <i class="la la-eye" (click)="toggleTextPassword()"></i>
-          </div>
+      <div class="cfield">
+        <input type="text" placeholder="Email" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && x.email.errors }" />
+        <div *ngIf="submitted && x.email.errors" class="invalid-feedback">
+          <div *ngIf="x.email.errors.required">Email is required</div>
+          <div *ngIf="x.email.errors.email">Email est incorrect</div>
+        </div>
+        <i class="la la-envelope-o"></i>
+      </div>
 
-          <div class="cfield">
-            <input [type]="getType()" placeholder="Confirm Password" formControlName="confirmpassword"  [ngClass]="{ 'is-invalid': submitted && x.confirmpassword.errors }" />
-            <div *ngIf="submitted && x.confirmpassword.errors" class="invalid-feedback">
-              <div *ngIf="x.confirmpassword.errors.required">Confirm Password est incorrect</div>
-              <!--<div *ngIf="f.confirmpassword.errors.mustMatch">Passwords must match</div>-->
-            </div>
-            <i class="la la-eye" (click)="toggleTextPassword()"></i>
-          </div>
+      <div class="cfield">
+        <input [type]="getType()" placeholder="Password" formControlName="password" [ngClass]="{ 'is-invalid': submitted && x.password.errors }" />
+        <div *ngIf="submitted && x.password.errors" class="invalid-feedback">
+          <div *ngIf="x.password.errors.required">Password is required</div>
+          <div *ngIf="x.password.errors.minlength">Password must be at least 6 characters</div>
+        </div>
+        <i class="la la-eye" (click)="toggleTextPassword()"></i>
+      </div>
+
+      <div class="cfield">
+        <input [type]="getType()" placeholder="Confirm Password" formControlName="confirmpassword"  [ngClass]="{ 'is-invalid': submitted && x.confirmpassword.errors }" />
+        <div *ngIf="submitted && x.confirmpassword.errors" class="invalid-feedback">
+          <div *ngIf="x.confirmpassword.errors.required">Confirm Password est incorrect</div>
+          <!--<div *ngIf="f.confirmpassword.errors.mustMatch">Passwords must match</div>-->
+        </div>
+        <i class="la la-eye" (click)="toggleTextPassword()"></i>
+      </div>
 
 
-      <button (click)="registerResponsableSociete()" type="submit" >Signup</button>
+      <button type="submit"  (click)="registerResponsableSociete()" >Signup</button>
       <button  type="reset" (click)="reset()">Cancel</button>
 
     </form>
 
 
-    <form *ngIf="choix=='centre'" [formGroup]="registerCentreForm">
+    <form *ngIf="choix=='centre'" [formGroup]="registerCentreForm" >
 
           <div class="cfield">
             <input type="text" placeholder="Username"  formControlName="username" [ngClass]="{ 'is-invalid': submitted && v.username.errors }" />
             <div *ngIf="submitted && v.username.errors" class="invalid-feedback">
-              <div *ngIf="v.username.errors.required">First Name is required</div>
+              <div *ngIf="v.username.errors.required">username is required</div>
+              <div *ngIf="v.username.errors.pattern">Invalid username</div>
+              <div *ngIf="v.username.errors.minlength">username must contain two characters at least</div>
             </div>
             <i class="la la-user-times"></i>
           </div>
@@ -298,7 +314,11 @@
           <div class="cfield">
             <input type="text" placeholder="First Name"  formControlName="nom" [ngClass]="{ 'is-invalid': submitted && v.nom.errors }" />
             <div *ngIf="submitted && v.nom.errors" class="invalid-feedback">
-              <div *ngIf="v.nom.errors.required">nom est incorrect</div>
+              <div *ngIf="v.nom.errors.required">name is required</div>
+              <div *ngIf="v.nom.errors.pattern">Invalid name</div>
+              <div *ngIf="v.nom.errors.minlength">name must contain two characters at least</div>
+
+
             </div>
             <i class="la la-user"></i>
           </div>
@@ -306,7 +326,9 @@
           <div class="cfield">
             <input type="text" placeholder="Last Name"  formControlName="prenom" lass="form-control" [ngClass]="{ 'is-invalid': submitted && v.prenom.errors }" />
             <div *ngIf="submitted && v.prenom.errors" class="invalid-feedback">
-              <div *ngIf="v.prenom.errors.required">prenom est incorrect</div>
+              <div *ngIf="v.prenom.errors.required">Last Name est incorrect</div>
+              <div *ngIf="v.nom.errors.pattern">Invalid Last Name </div>
+              <div *ngIf="v.nom.errors.minlength">Last Name  must contain two characters at least</div>
             </div>
             <i class="la la-users"></i>
           </div>
@@ -316,6 +338,8 @@
             <input type="text" placeholder="Adress"  formControlName="adresse"  [ngClass]="{ 'is-invalid': submitted && v.adresse.errors }" />
             <div *ngIf="submitted && v.adresse.errors" class="invalid-feedback">
               <div *ngIf="v.adresse.errors.required">adresseis required</div>
+              <div *ngIf="v.adresse.errors.minlength">Adresse  must contain ten characters at least</div>
+
             </div>
             <i class="la la-map-marker"></i>
           </div>
@@ -324,6 +348,8 @@
             <input type="text" placeholder="Description"  formControlName="description"  [ngClass]="{ 'is-invalid': submitted && v.description.errors }" />
             <div *ngIf="submitted && v.description.errors" class="invalid-feedback">
               <div *ngIf="v.description.errors.required">description is required</div>
+              <div *ngIf="v.description.errors.minlength">description must contain 30 characters at least</div>
+
             </div>
             <i class="la la-bars"></i>
           </div>
@@ -331,7 +357,8 @@
           <div class="cfield">
             <input type="text" placeholder="Web Site"  formControlName="siteWeb"  [ngClass]="{ 'is-invalid': submitted && v.siteWeb.errors }" />
             <div *ngIf="submitted && v.siteWeb.errors" class="invalid-feedback">
-              <div *ngIf="v.siteWeb.errors.required">adresseis required</div>
+              <div *ngIf="v.siteWeb.errors.required">Web Site is required</div>
+
             </div>
             <i class="la la-user"></i>
           </div>
@@ -344,7 +371,9 @@
           <div class="cfield">
             <input type="text" placeholder="Phone Number"  formControlName="telephone"  [ngClass]="{ 'is-invalid': submitted && v.telephone.errors }" />
             <div *ngIf="submitted && v.telephone.errors" class="invalid-feedback">
-              <div *ngIf="v.telephone.errors.required">telephone is required</div>
+              <div *ngIf="v.telephone.errors.required">Phone Number is required</div>
+              <div *ngIf="v.telephone.errors.pattern">Invalid Phone Number </div>
+              <div *ngIf="v.telephone.errors.minlength">Phone Number  must contain two characters at least</div>
             </div>
             <i class="la la-phone"></i>
           </div>
@@ -376,7 +405,7 @@
             <i class="la la-eye" (click)="toggleTextPassword()"></i>
           </div>
 
-      <button (click)="registerResponsableCentre()" type="submit">Signup</button>
+      <button  type="submit" (click)="registerResponsableCentre()">Signup</button>
       <button  type="reset" (click)="reset()">cancel</button>
 
     </form>

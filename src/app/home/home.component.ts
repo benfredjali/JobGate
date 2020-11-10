@@ -1,7 +1,7 @@
 
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {CandidatService} from '../services/candidat.service';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {ResponsableCentreService} from '../services/responsabelcentre.service';
 import {ResponsabelSocietyService} from '../services/responsabel-society.service';
 
@@ -13,6 +13,8 @@ import {Router} from '@angular/router';
 import { ImageService } from '../services/image.service';
 import { AlertService } from '../alert.service';
 import { first } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
+import { NotificationService } from '../notification.service';
 
 @Component({
   selector: 'app-home',
@@ -44,7 +46,9 @@ export class HomeComponent implements OnInit {
               private modalService: BsModalService,private authenService: AuthentificationService,
               private candudatservice: CandidatService,
               private formBuilder: FormBuilder,private router:Router,
-              private responsabelSocietyService: ResponsabelSocietyService,private alertService: AlertService) {
+              private responsabelSocietyService: ResponsabelSocietyService,
+              private toastr: ToastrService) {
+
     this.nom = localStorage.getItem('nom');
     this.prenom = localStorage.getItem('prenom');
     if (localStorage.getItem('connecte') === 'true') {
@@ -82,32 +86,65 @@ export class HomeComponent implements OnInit {
 
 
     this.registerSocieteForm = this.formBuilder.group({
-      nom: ['', Validators.pattern("[a-z .']+")],
-      prenom: ['', Validators.required],
-      username: ['', Validators.required],
-      adresse: ['', Validators.required],
-      description: ['', Validators.required],
+      nom: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+      ])),
+      prenom: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+      ])),
+      username: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+      ])),
+      adresse: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-z .'-]+"),Validators.minLength(5)
+      ])),
+      description: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-z .'-]+"),Validators.minLength(5)
+      ])),
       siteWeb: ['', Validators.required],
-      logo: ['', Validators.required],
-      telephone: ['', Validators.required],
+      telephone:new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-z .'-]+"),Validators.minLength(6)
+      ])),
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmpassword: ['', Validators.required],
     }, {
-      validator: MustMatch('password', 'confirmpassword')
+      validator:MustMatch('password', 'confirmpassword')
     });
 
 
-
     this.registerCentreForm = this.formBuilder.group({
-      nom: ['', Validators.required],
-      prenom: ['', Validators.required],
-      username: ['', Validators.required],
-      adresse: ['', Validators.required],
-      description: ['', Validators.required],
-      logo: ['', Validators.required],
+      nom: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+      ])),
+      prenom: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+      ])),
+      username: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+      ])),
+      adresse: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-z .'-]+"),Validators.minLength(5)
+      ])),
+      description: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-z .'-]+"),Validators.minLength(5)
+      ])),
       siteWeb: ['', Validators.required],
-      telephone: ['', Validators.required],
+      telephone:new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-z .'-]+"),Validators.minLength(6)
+      ])),
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmpassword: ['', Validators.required],
@@ -173,7 +210,7 @@ this.reset();
       niveauEtude: this.registerCandidatForm.value["niveauEtude"],
       compteLinkedin: this.registerCandidatForm.value["compteLinkedin"],
       description: this.registerCandidatForm.value["description"],
-      photo: this.filesToUpload[0].name,
+     // photo: this.filesToUpload[0].name,
       telephone: this.registerCandidatForm.value["telephone"],
       email: this.registerCandidatForm.value["email"],
       password: this.registerCandidatForm.value["password"],
@@ -191,15 +228,15 @@ this.reset();
     this.candudatservice.register(data).subscribe(result => {
       console.log(result);
      
-      this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
+     /* this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
         console.log(rest)
        
-      });
+      });*/
 
 
     });
   
-   window.location.reload();
+   //window.location.reload();
     this.registerCandidatForm.reset();
 
   }
@@ -215,7 +252,7 @@ this.reset();
       adresse: this.registerSocieteForm.value["adresse"],
       description: this.registerSocieteForm.value["description"],
       siteWeb: this.registerSocieteForm.value["siteWeb"],
-      logo: this.filesToUpload[0].name,
+     // logo: this.filesToUpload[0].name,
       telephone: this.registerSocieteForm.value["telephone"],
       email: this.registerSocieteForm.value["email"],
       password: this.registerSocieteForm.value["password"],
@@ -231,12 +268,16 @@ this.reset();
     }
 
     this.responsabelSocietyService.register(data).subscribe(result => {
+      this.toastr.success('successful registration', 'Welcome!');
+
       console.log(result);
+      this.toastr.success('successful registration', 'Welcome!');
+
      
-      this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
+    /*  this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
         console.log(rest)
        
-      });
+      });*/
 
 
     });
@@ -256,7 +297,7 @@ this.reset();
       adresse: this.registerCentreForm.value["adresse"],
       description: this.registerCentreForm.value["description"],
       siteWeb: this.registerCentreForm.value["siteWeb"],
-      logo: this.filesToUpload[0].name,
+      //photo: this.filesToUpload[0].name,
       telephone: this.registerCentreForm.value["telephone"],
       email: this.registerCentreForm.value["email"],
       password: this.registerCentreForm.value["password"],
@@ -266,25 +307,29 @@ this.reset();
     }
 
     this.submitted = true;
-    console.log(this.registerCentreForm.value);
+    console.log(data);
     // stop here if form is invalid
     if (this.registerCentreForm.invalid) {
       return;
     }
 
     this.responsableCentreService.register(data).subscribe(result => {
+      this.toastr.success('successful registration', 'Toastr fun!');
       console.log(result);
-     
-      this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
+      this.toastr.success('successful registration', 'Toastr fun!');
+
+     /* this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
         console.log(rest)
        
-      });
+      });*/
 
 
     });
-  
-   //window.location.reload();
     this.registerCentreForm.reset(); 
+  // window.location.reload();
+  // this.toastr.success('successful ali registration', 'Toastr fun!');
+
+
   }
 
 
@@ -364,6 +409,6 @@ this.reset();
     this.filesToUpload = file.target.files;
 console.log(this.filesToUpload);
     this.photo = file.target.files[0]['name'];
-    this.logo= file.target.files[0]['name'];
+    //this.logo= file.target.files[0]['name'];
   }
 }

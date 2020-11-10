@@ -1,26 +1,35 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../environments/environment';
+import { AuthentificationService } from './authentification.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CandidatService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private authService:AuthentificationService) {
   }
 
   getall() {
-    return this.http.get(environment.url + 'candidat/all');
+    let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
+
+    return this.http.get(environment.url + 'candidat/all',{headers: headers});
   }
   getfavoriebycandidat(idcandidat) {
-    return this.http.get(environment.url + 'favorie/getfavoriebycandidat/'+idcandidat);
+    let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
+
+    return this.http.get(environment.url + 'favorie/getfavoriebycandidat/'+idcandidat,{headers: headers});
   }
 
   register(data) {
-    return this.http.post(environment.url + 'candidat/save', data);
+    let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
+
+    return this.http.post(environment.url + 'candidat/save', data,{headers: headers});
   }
   addfavorie(data,idoffre,idcandidat){
-    return this.http.post(environment.url + 'favorie/save/'+idoffre+'/'+idcandidat,data )
+    let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
+
+    return this.http.post(environment.url + 'favorie/save/'+idoffre+'/'+idcandidat,data,{headers: headers} )
   }
 }

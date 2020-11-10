@@ -50,6 +50,7 @@ export class ProfilComponent implements OnInit {
 
       this.authenService.logout();
       localStorage.setItem('connecte', 'false');
+      //this.router.navigate(['']);
       window.location.reload();
     }
 }

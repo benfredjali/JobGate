@@ -17,7 +17,7 @@ export class StageComponent implements OnInit {
     this.all();
   }
   addfavorie(idoffer){
-    this.candidatservice.addfavorie({},idoffer,localStorage.getItem('idusser')).subscribe(res=>{
+    this.candidatservice.addfavorie({},idoffer,localStorage.getItem('iduser')).subscribe(res=>{
       console.log(res);
     })  }
   all() {

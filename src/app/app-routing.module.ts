@@ -12,15 +12,24 @@ import { CandidatComponent } from './formation/candidat/candidat.component';
 import { EmployersComponent } from './offre/employers/employers.component';
 import { ContainerComponent } from './home/container/container.component';
 import { ProfilComponent } from './candidat/profil/profil.component';
+import { FormationdetailComponent } from './formationdetail/formationdetail.component';
+import { PeopleListComponent } from './people-list/people-list.component';
+import { UpdateComponent } from './formation/update/update.component';
 
 
 
 const routes: Routes = [
+  {path:'people', component:PeopleListComponent},
+  //{path:'**',component:Erreur404Component},
+  
+
   {path:'', component:HomeComponent,children:
   [{path:'',component:ContainerComponent},
   {path:'formation', component:FormationComponent},
+  {path:'formation/:id', component:FormationdetailComponent},
   {path:'formation/ajouter', component:AjouterFormationComponent},
-  {path:'formation/modifier', component:AjouterFormationComponent},
+  {path:'formation/detail', component:FormationdetailComponent},
+  {path:'formation/update/:id', component:UpdateComponent},
   {path:'formation/candidat', component:CandidatComponent},
   {path:'erreur', component:Erreur404Component},
   {path:'offre/employers', component:EmployersComponent},
@@ -28,7 +37,8 @@ const routes: Routes = [
   {path:'stage/ajouter', component:AjouterStageComponent},
   {path:'travaille', component:TravailleComponent},
   {path:'travaille/ajouter', component:AjouterTravailleComponent},
-  {path:'candidat/profil', component:ProfilComponent}
+  {path:'candidat/profil', component:ProfilComponent},
+
 
   
 ]},

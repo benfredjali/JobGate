@@ -116,6 +116,8 @@ getfavoriebycandidat(){
 
     this.authenService.logout();
     localStorage.setItem('connecte', 'false');
+    localStorage.removeItem('iduser');
+    localStorage.removeItem('role');
     window.location.reload();
   }
 
