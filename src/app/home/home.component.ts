@@ -41,7 +41,6 @@ export class HomeComponent implements OnInit {
   filesToUpload: Array<File>;
   choix = 'candidat';
 
-
   constructor(private responsableCentreService: ResponsableCentreService,private imageservice:ImageService,
               private modalService: BsModalService,private authenService: AuthentificationService,
               private candudatservice: CandidatService,
@@ -60,9 +59,18 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
     this.registerCandidatForm = this.formBuilder.group({
-      nom: ['', Validators.pattern("[a-z .']+")],
-      prenom: ['', Validators.required],
-      username: ['', Validators.required],
+      nom: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+      ])),
+      prenom: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+      ])),
+      username: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+      ])),
       adresse: ['', Validators.required],
       dateNaiss: ['', Validators.required],
       niveauEtude: ['', Validators.required],
@@ -210,7 +218,7 @@ this.reset();
       niveauEtude: this.registerCandidatForm.value["niveauEtude"],
       compteLinkedin: this.registerCandidatForm.value["compteLinkedin"],
       description: this.registerCandidatForm.value["description"],
-     // photo: this.filesToUpload[0].name,
+      photo: this.filesToUpload[0].name,
       telephone: this.registerCandidatForm.value["telephone"],
       email: this.registerCandidatForm.value["email"],
       password: this.registerCandidatForm.value["password"],
@@ -226,18 +234,20 @@ this.reset();
     }
 
     this.candudatservice.register(data).subscribe(result => {
-      console.log(result);
-     
-     /* this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
-        console.log(rest)
        
-      });*/
+      this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
+        console.log(rest)   
+      })
+      console.log(result);
+      this.toastr.success('successful registration', 'Toastr fun!', {timeOut: 5000});
 
 
     });
   
-   //window.location.reload();
+    //window.location.reload();
     this.registerCandidatForm.reset();
+
+
 
   }
 
@@ -252,7 +262,7 @@ this.reset();
       adresse: this.registerSocieteForm.value["adresse"],
       description: this.registerSocieteForm.value["description"],
       siteWeb: this.registerSocieteForm.value["siteWeb"],
-     // logo: this.filesToUpload[0].name,
+     logo: this.filesToUpload[0].name,
       telephone: this.registerSocieteForm.value["telephone"],
       email: this.registerSocieteForm.value["email"],
       password: this.registerSocieteForm.value["password"],
@@ -268,16 +278,15 @@ this.reset();
     }
 
     this.responsabelSocietyService.register(data).subscribe(result => {
-      this.toastr.success('successful registration', 'Welcome!');
-
-      console.log(result);
-      this.toastr.success('successful registration', 'Welcome!');
+      this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
+        console.log("resultsavephoto",rest)
+       
+      });
+      console.log("resultsaversoc",result);
+      this.toastr.success('successful registration', 'Toastr fun!', {timeOut: 5000});
 
      
-    /*  this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
-        console.log(rest)
-       
-      });*/
+  
 
 
     });
@@ -314,21 +323,16 @@ this.reset();
     }
 
     this.responsableCentreService.register(data).subscribe(result => {
-      this.toastr.success('successful registration', 'Toastr fun!');
-      console.log(result);
-      this.toastr.success('successful registration', 'Toastr fun!');
-
-     /* this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
+    this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
         console.log(rest)
-       
-      });*/
-
-
+     
+      });
+      console.log(result);
+      this.toastr.success('successful registration', 'Welcome!', {timeOut: 5000});
+    
     });
-    this.registerCentreForm.reset(); 
   // window.location.reload();
-  // this.toastr.success('successful ali registration', 'Toastr fun!');
-
+  this.registerCentreForm.reset(); 
 
   }
 

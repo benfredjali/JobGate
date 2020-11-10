@@ -23,23 +23,19 @@ constructor(private activatedroute:ActivatedRoute,  private formbuilder: FormBui
     this.idformation=this.activatedroute.params['_value']['id'] 
   
   
-    let formControlls= {
-      description: new FormControl()
-      //price: new FormControl()
-    }
-    this.myForm= this.formbuilder.group(formControlls)
-  
+ 
   
   
   }
 
-  get description(){
-    return this.myForm.get('description');
-  }
+
 
   ngOnInit(): void {
-this.savecommentaire();
-this.save();
+    this.getone(this.idformation);
+    this.getallcomentaire();
+    this.myForm=this.formbuilder.group({
+      description:['',Validators.required]
+    })
    }
 
 
@@ -53,7 +49,7 @@ this.formation=res;
   const data={ description: this.myForm.value["description"],}
   console.log(data)
 
-    this.commentaire.addcommentaire(this.idformation.value,localStorage.getItem('iduser'),data).subscribe(res=>{
+    this.commentaire.addcommentaire(data,this.idformation,localStorage.getItem('iduser')).subscribe(res=>{
       console.log(res);
       this.getallcomentaire();
     })  
@@ -66,7 +62,5 @@ getallcomentaire(){
   })
 }
 
-save(){
-  console.log(this.myForm.value);
-}
+
 }

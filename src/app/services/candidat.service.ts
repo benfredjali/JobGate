@@ -25,7 +25,7 @@ export class CandidatService {
   register(data) {
     let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
 
-    return this.http.post(environment.url + 'candidat/save', data,{headers: headers});
+    return this.http.post(environment.url + 'candidat/save', data);
   }
   addfavorie(data,idoffre,idcandidat){
     let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
