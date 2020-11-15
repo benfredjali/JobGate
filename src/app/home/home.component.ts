@@ -149,6 +149,7 @@ export class HomeComponent implements OnInit {
         Validators.pattern("[a-z .'-]+"),Validators.minLength(5)
       ])),
       siteWeb: ['', Validators.required],
+
       telephone:new FormControl('',Validators.compose([
         Validators.required,
         Validators.pattern("[a-z .'-]+"),Validators.minLength(6)
@@ -279,15 +280,11 @@ this.reset();
 
     this.responsabelSocietyService.register(data).subscribe(result => {
       this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
-        console.log("resultsavephoto",rest)
+        console.log(rest)
        
       });
       console.log("resultsaversoc",result);
       this.toastr.success('successful registration', 'Toastr fun!', {timeOut: 5000});
-
-     
-  
-
 
     });
   
@@ -306,7 +303,7 @@ this.reset();
       adresse: this.registerCentreForm.value["adresse"],
       description: this.registerCentreForm.value["description"],
       siteWeb: this.registerCentreForm.value["siteWeb"],
-      //photo: this.filesToUpload[0].name,
+     logo: this.filesToUpload[0].name,
       telephone: this.registerCentreForm.value["telephone"],
       email: this.registerCentreForm.value["email"],
       password: this.registerCentreForm.value["password"],
@@ -413,6 +410,6 @@ this.reset();
     this.filesToUpload = file.target.files;
 console.log(this.filesToUpload);
     this.photo = file.target.files[0]['name'];
-    //this.logo= file.target.files[0]['name'];
+    this.logo= file.target.files[0]['name'];
   }
 }

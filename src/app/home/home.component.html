@@ -333,8 +333,8 @@
             <input type="text" placeholder="Last Name"  formControlName="prenom" lass="form-control" [ngClass]="{ 'is-invalid': submitted && v.prenom.errors }" />
             <div *ngIf="submitted && v.prenom.errors" class="invalid-feedback">
               <div *ngIf="v.prenom.errors.required">Last Name est incorrect</div>
-              <div *ngIf="v.nom.errors.pattern">Invalid Last Name </div>
-              <div *ngIf="v.nom.errors.minlength">Last Name  must contain two characters at least</div>
+              <div *ngIf="v.prenom.errors.pattern">Invalid Last Name </div>
+              <div *ngIf="v.prenom.errors.minlength">Last Name  must contain two characters at least</div>
             </div>
             <i class="la la-users"></i>
           </div>
@@ -368,7 +368,6 @@
             </div>
             <i class="la la-user"></i>
           </div>
-
 
           <div class="cfield">
             <input  type='file' (change)="recuperFile($event)" />          

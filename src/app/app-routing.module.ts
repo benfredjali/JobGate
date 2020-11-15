@@ -13,13 +13,12 @@ import { EmployersComponent } from './offre/employers/employers.component';
 import { ContainerComponent } from './home/container/container.component';
 import { ProfilComponent } from './candidat/profil/profil.component';
 import { FormationdetailComponent } from './formationdetail/formationdetail.component';
-import { PeopleListComponent } from './people-list/people-list.component';
 import { UpdateComponent } from './formation/update/update.component';
+import { ListComponent } from './candidat/list/list.component';
 
 
 
 const routes: Routes = [
-  {path:'people', component:PeopleListComponent},
   //{path:'**',component:Erreur404Component},
   
 
@@ -38,6 +37,8 @@ const routes: Routes = [
   {path:'travaille', component:TravailleComponent},
   {path:'travaille/ajouter', component:AjouterTravailleComponent},
   {path:'candidat/profil', component:ProfilComponent},
+  {path:'candidat/list', component:ListComponent},
+
 
 
   

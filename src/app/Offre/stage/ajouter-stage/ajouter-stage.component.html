@@ -128,7 +128,7 @@
                       <div class="col-lg-6">
                         <span class="pf-title">Secteur</span>
 
-                        <select  class="pf" formControlName="idsecteur" [ngClass]="{ 'is-invalid': submitted && f.titre.errors }" >
+                        <select placeholder="20 Per Page" class="pf" formControlName="idsecteur" [ngClass]="{ 'is-invalid': submitted && f.titre.errors }" >
 
                           <option  *ngFor=" let e of listsecteur" value="{{e.id}}"  >{{e.nom}}</option>
                         </select>

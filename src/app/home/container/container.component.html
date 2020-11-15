@@ -18,13 +18,13 @@
                                     <div class="row">
                                         <div class="col-lg-7 col-md-5 col-sm-12 col-xs-12">
                                             <div class="job-field">
-                                                <input type="text" placeholder="Job title, keywords or company name" />
+                                                <input type="text"  placeholder="Job title, keywords or company name" />
                                                 <i class="la la-keyboard-o"></i>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
                                             <div class="job-field">
-                                                <input type="text" placeholder="Job title, keywords or company name" />
+                                                <input type="text"  [(ngModel)]="term" placeholder="Job title, keywords or company name" />
                                                 <i class="la la-map-marker"></i>
                                             </div>
 
@@ -174,7 +174,7 @@
                         <h2>Featured Jobs</h2>
                         <span>Leading Employers already using job and talent.</span>
                     </div><!-- Heading -->
-                    <div class="job-listings-sec"  *ngFor=" let e of listannonce">
+                    <div class="job-listings-sec"  *ngFor=" let e of listannonce| offre:term">
                         <div class="job-listing">
                             <div class="job-title-sec">
                                 <div class="c-logo"> <img src="http://localhost:8080/upload/files/" alt="" /> </div>

@@ -26,9 +26,10 @@ import { TravaillePipe } from './recherche/travaille.pipe';
 import { ListComponent } from './candidat/list/list.component';
 import { ProfilComponent } from './candidat/profil/profil.component';
 import { FormationdetailComponent } from './formationdetail/formationdetail.component';
-import { PeopleListComponent } from './people-list/people-list.component';
 import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
 import { UpdateComponent } from './formation/update/update.component';
+import { OffrePipe } from './recherche/offre.pipe';
+import { CandidatPipe } from './recherche/candidat.pipe';
 
 @NgModule({
   declarations: [
@@ -52,8 +53,9 @@ import { UpdateComponent } from './formation/update/update.component';
     ListComponent,
     ProfilComponent,
     FormationdetailComponent,
-    PeopleListComponent,
-    UpdateComponent
+    UpdateComponent,
+    OffrePipe,
+    CandidatPipe
   ],
   imports: [
     HttpClientModule,

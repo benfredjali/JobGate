@@ -8,6 +8,8 @@ import { OffreService } from 'src/app/services/offre.service';
   styleUrls: ['./container.component.css']
 })
 export class ContainerComponent implements OnInit {
+
+  term;
   listannonce;
 
 

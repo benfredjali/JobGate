@@ -21,14 +21,8 @@ constructor(private activatedroute:ActivatedRoute,  private formbuilder: FormBui
    
   console.log(this.activatedroute.params)
     this.idformation=this.activatedroute.params['_value']['id'] 
-  
-  
- 
-  
-  
+   
   }
-
-
 
   ngOnInit(): void {
     this.getone(this.idformation);
@@ -37,7 +31,6 @@ constructor(private activatedroute:ActivatedRoute,  private formbuilder: FormBui
       description:['',Validators.required]
     })
    }
-
 
 getone(id){
   this.formationservice.getbyid(id).subscribe(res=>{
