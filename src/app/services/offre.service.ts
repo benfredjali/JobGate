@@ -14,4 +14,5 @@ export class OffreService {
 
     return this.http.get(environment.url + 'offre/all');
   }
+ 
 }

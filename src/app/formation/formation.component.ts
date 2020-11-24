@@ -10,8 +10,8 @@ import { OffreService } from '../services/offre.service';
 })
 export class FormationComponent implements OnInit {
   listformation;
-
-
+  term;
+  p=1;
 
   constructor(private formationservice: FormationService,
     private candidatservice:CandidatService) {

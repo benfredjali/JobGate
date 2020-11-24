@@ -10,13 +10,17 @@ export class TravailleService {
   constructor(private http: HttpClient) {
 
   }
-
+  postuler(idcandidat,idoffer,data){
+    return this.http.post(environment.url+'postuler/add/'+idoffer+'/'+idcandidat,data);
+  }
   getall() {
 
     return this.http.get(environment.url + 'travaille/all');
   }
-  
-
+  getone(id)
+{
+  return this.http.get(environment.url+'travaille/getone/'+id);
+}
   Ajouter(data,idsociete,idsecteur) {
     return this.http.post(environment.url + 'travaille/save/'+idsecteur+'/'+idsociete, data);
   }

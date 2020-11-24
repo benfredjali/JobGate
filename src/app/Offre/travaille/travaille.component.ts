@@ -10,6 +10,7 @@ export class TravailleComponent implements OnInit {
 
   termTravaille;
   listtravaille;
+  p=1;
   constructor(private travailleservice: TravailleService) { }
 
   ngOnInit() {

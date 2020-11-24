@@ -10,7 +10,13 @@ export class StageService {
   constructor(private http: HttpClient) {
 
   }
-
+  postuler(idoffer,idcandidat,data){
+    return this.http.post(environment.url+'postuler/add/'+idoffer+'/'+idcandidat,data);
+  }
+  getone(id)
+{
+  return this.http.get(environment.url+'stage/getone/'+id);
+}
   getall() {
 
     return this.http.get(environment.url + 'stage/all');

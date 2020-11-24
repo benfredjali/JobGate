@@ -10,6 +10,7 @@ import {StageService} from '../../services/stage.service';
 export class StageComponent implements OnInit {
   liststage;
   term;
+  p=1;
 
   constructor(private stageservice: StageService,private candidatservice:CandidatService) { }
 
@@ -19,7 +20,9 @@ export class StageComponent implements OnInit {
   addfavorie(idoffer){
     this.candidatservice.addfavorie({},idoffer,localStorage.getItem('iduser')).subscribe(res=>{
       console.log(res);
-    })  }
+    })  
+    window.location.reload();
+  }
   all() {
     this.stageservice.getall().subscribe(res => {
       console.log(res);

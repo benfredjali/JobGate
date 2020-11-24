@@ -44,8 +44,8 @@
 						</div><!-- Job Head -->
 					    </div>
 				 					<div class="col-lg-4">
-				 						<a class="apply-thisjob" href="#" title=""><i class="la la-paper-plane"></i>Apply for job</a>
-								 	
+				 						<a [hidden]="roleuser==='ResponsableCentre'" class="apply-thisjob" href="#" title=""><i class="la la-paper-plane"></i>Apply for job</a>
+										 <a [hidden]="roleuser==='Candidat'"  routerLink="/formation/update/{{formation.id}}" class="apply-thisjob" href="#" title=""><i class="la la-paper-plane"></i>Modifier Votre Formation</a>
 				 					</div>
 				 				</div>
 				 			</div>
@@ -68,7 +68,7 @@
 							 				<h3>Listes des Commntaires:</h3>
 							 				<div class="job-list-modern">
 											 	<div class="job-listings-sec no-border">
-													<div class="job-listing wtabs"  *ngFor="let comentaire of listcommentaire">
+													<div class="job-listing wtabs"  *ngFor="let comentaire of listcommentaire  | paginate: { itemsPerPage: 9, currentPage: p }">
 														<div class="job-title-sec">
 															<div class="c-logo"> <img src="http://localhost:8080/upload/files/{{comentaire.candidat.photo}}" alt="" /> </div>
 															<h3><a href="#" title="">{{comentaire.candidat.nom}} &nbsp;{{comentaire.candidat.prenom}}</a></h3>
@@ -99,7 +99,7 @@
 													
 														</div>
 														 
-															<button class="btn btn-info" type="submit" >add</button>
+															<button  class="submit" type="submit" >add</button>
 															</form> 	
 													</div>
 													
@@ -139,7 +139,13 @@
 			</div>
         </div>
         
+		<div class="pagination">
+            <ul>
            
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+            </ul>
+          </div><!-- Pagination -->
    
 	</section>
 

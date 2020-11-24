@@ -58,6 +58,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.registerCandidatForm = this.formBuilder.group({
       nom: new FormControl('',Validators.compose([
         Validators.required,
@@ -276,19 +277,25 @@ this.reset();
     // stop here if form is invalid
     if (this.registerSocieteForm.invalid) {
       return;
+      
     }
 
     this.responsabelSocietyService.register(data).subscribe(result => {
       this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
         console.log(rest)
-       
       });
       console.log("resultsaversoc",result);
-      this.toastr.success('successful registration', 'Toastr fun!', {timeOut: 5000});
 
     });
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Inscription avec succées',
+      showConfirmButton: false,
+      timer: 4000
+    })
   
-   //window.location.reload();
+   window.location.reload();
     this.registerSocieteForm.reset();
 
   }
@@ -322,10 +329,13 @@ this.reset();
     this.responsableCentreService.register(data).subscribe(result => {
     this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
         console.log(rest)
+        this.toastr.success('successful registration', 'Toastr fun!', {timeOut: 5000});
+
      
       });
+      this.toastr.success('successful registration', 'Toastr fun!', {timeOut: 5000});
+
       console.log(result);
-      this.toastr.success('successful registration', 'Welcome!', {timeOut: 5000});
     
     });
   // window.location.reload();

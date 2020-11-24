@@ -26,10 +26,16 @@ import { TravaillePipe } from './recherche/travaille.pipe';
 import { ListComponent } from './candidat/list/list.component';
 import { ProfilComponent } from './candidat/profil/profil.component';
 import { FormationdetailComponent } from './formationdetail/formationdetail.component';
-import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule } from 'ngx-toastr';
+import { ToastrModule, ToastNoAnimation, ToastNoAnimationModule, ToastrService } from 'ngx-toastr';
 import { UpdateComponent } from './formation/update/update.component';
 import { OffrePipe } from './recherche/offre.pipe';
 import { CandidatPipe } from './recherche/candidat.pipe';
+import { FavorieslistComponent } from './favorieslist/favorieslist.component';
+import { StagedetailComponent } from './Offre/stagedetail/stagedetail.component';
+import { TravaildetailComponent } from './Offre/travaildetail/travaildetail.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+
+
 
 @NgModule({
   declarations: [
@@ -55,9 +61,15 @@ import { CandidatPipe } from './recherche/candidat.pipe';
     FormationdetailComponent,
     UpdateComponent,
     OffrePipe,
-    CandidatPipe
+    CandidatPipe,
+    FavorieslistComponent,
+    StagedetailComponent,
+    TravaildetailComponent
+    
   ],
   imports: [
+    NgxPaginationModule,
+    
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
@@ -67,7 +79,9 @@ import { CandidatPipe } from './recherche/candidat.pipe';
     ToastrModule.forRoot()
 
   ],
-  providers: [],
+  providers: [
+    ToastrService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

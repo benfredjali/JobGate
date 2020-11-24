@@ -9,6 +9,7 @@ import { CandidatService } from 'src/app/services/candidat.service';
 export class ListComponent implements OnInit {
   listcandidat;
   term;
+  p=1;
   constructor( private candidatservice: CandidatService) { }
 
   ngOnInit(): void {

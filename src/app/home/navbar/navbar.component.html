@@ -141,11 +141,11 @@
                     <li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
                     <li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
                 </ul>
-                <div class="my-profiles-sec" [hidden]="!ison">
-                    <span><img  width="50px" height="50px" src="http://localhost:8080/upload/files/{{photo}}" alt="" />{{nomuser}}&nbsp;{{prenomuser}}
+                <div  class="my-profiles-sec" [hidden]="!ison">
+                    <span><img  width="50px" height="50px" src="http://localhost:8080/upload/files/{{logo}}" alt="" />{{nomuser}}&nbsp;{{prenomuser}}
                         <i class="la la-bars"></i> </span>
 				</div>
-				<div class="wishlist-dropsec" [hidden]="!ison">
+				<div class="wishlist-dropsec"  [hidden]="!ison">
 					<span><i class="la la-heart"></i><strong>{{listfavoriebycandidat?.length}}</strong></span>
 					<div class="wishlist-dropdown">
 						<ul class="scrollbar">
@@ -168,40 +168,27 @@
             <nav>
                 <ul>
                     <li class="menu-item-has-children">
-                        <a href="" [routerLink]="['']" title="">Home</a>
+                        <a  href="" title="">Accueil</a>
                        
 					</li>
 					
                     <li class="menu-item-has-children">
-                        <a href="#" title="">Category</a>
-                        <ul>
-                            <li><a href="employer_list1.html" title=""> Employer List 1</a></li>
-                            <li><a href="employer_list2.html" title="">Employer List 2</a></li>
-                            <li><a href="employer_list3.html" title="">Employer List 3</a></li>
-
-                            <li class="menu-item-has-children">
-                                <a href="#" title="">Employer Dashboard</a>
-                                <ul>
-                                    <li><a href="employer_manage_jobs.html" title="">Employer Job Manager</a></li>
-                                     <li><a href="employer_job_alert.html" title="">Employer Job Alert</a></li>
-                                    <li><a href="employer_change_password.html" title="">Employer Change Password</a></li>
-                                </ul>
-                            </li>
-                        </ul>
+                        <a  routerLink="/candidat/list" title="">Candidat</a>
+                  
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="" [routerLink]="['/offre']" title="">Offre</a>
+                        <a title="">Offre</a>
                         <ul>
-                          <li><a  [routerLink]="['/stage']" title="">Stage</a></li>
-                          <li><a  [routerLink]="['/travaille']" title="">Travaille</a></li>
+                          <li><a  routerLink="/stage" title="">Stage</a></li>
+                          <li><a  routerLink="/travaille" title="">Travaille</a></li>
                           
 
                         </ul>
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="#"  routerLink="/home/formation" title="">Formation</a>
+                        <a href="#"  routerLink="/formation" title="">Formation</a>
                         <ul>
-                            <li><a href="" [routerLink]="['/formation/candidat']"  title="">Candidat</a></li>  
+                            <li><a href="" routerLink="/formation/candidat"  title="">Candidat</a></li>  
                           </ul>
 
                     </li>
@@ -234,19 +221,15 @@
 
 		<div class="cst"><img src="http://localhost:8080/upload/files/{{photo}}" alt="" /></div>
 		<h3 class="menu-item-has-children">  {{nomuser}}&nbsp;{{prenomuser}}</h3>
-		<span><i>{{user?.niveauEtude}}</i> </span>
-		<p><a href="https://grandetest.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7516071014011c031019140c100706454d4d351218141c195b161a18">[email&#160;protected]</a></p>
-		<p>Member Since, 2017</p>
+		<p><a href="https://grandetest.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7516071014011c031019140c100706454d4d351218141c195b161a18">{{user.email}}</a></p>
 		<p><i class="la la-map-marker"></i>{{user?.adresse}}</p>
 	</div>
 	<div class="tree_widget-sec">
 		<ul>
-			<li><a href="candidates_profile.html" title=""><i class="la la-file-text"></i>My Profile</a></li>
-			<li><a href="candidates_my_resume.html" title=""><i class="la la-briefcase"></i>My Resume</a></li>
-			<li><a href="candidates_shortlist.html" title=""><i class="la la-money"></i>Shorlisted Job</a></li>
-			<li><a href="candidates_applied_jobs.html" title=""><i class="la la-paper-plane"></i>Applied Job</a></li>
-			<li><a href="candidates_job_alert.html" title=""><i class="la la-user"></i>Job Alerts</a></li>
-			<li><a href="candidates_cv_cover_letter.html" title=""><i class="la la-file-text"></i>Cv & Cover Letter</a></li>
+			<li><a href="candidates_profile.html" title=""><i class="la la-file-text"></i>Profil</a></li>
+			<li><a href="candidates_my_resume.html" title=""><i class="la la-briefcase"></i>Resume</a></li>
+			<li><a href="candidates_applied_jobs.html" title=""><i class="la la-paper-plane"></i>Mes souscriptions</a></li>
+			<li><a href="candidates_cv_cover_letter.html" title=""><i class="la la-file-text"></i>Mes inscriptions</a></li>
 			<li><a href="candidates_change_password.html" title=""><i class="la la-flash"></i>Change Password</a></li>
 			<li><a (click)="deconecter()"  title=""><i class="la la-unlink"></i>Logout</a></li>
         </ul>

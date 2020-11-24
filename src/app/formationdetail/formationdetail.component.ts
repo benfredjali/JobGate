@@ -15,6 +15,8 @@ idformation;
 formation;
 listcommentaire;
 myForm: FormGroup;
+roleuser;
+p=1;
 
 
 constructor(private activatedroute:ActivatedRoute,  private formbuilder: FormBuilder,private formationservice:FormationService,private commentaire:CommentairService) { 
@@ -25,6 +27,7 @@ constructor(private activatedroute:ActivatedRoute,  private formbuilder: FormBui
   }
 
   ngOnInit(): void {
+    this.roleuser=localStorage.getItem('role');
     this.getone(this.idformation);
     this.getallcomentaire();
     this.myForm=this.formbuilder.group({
