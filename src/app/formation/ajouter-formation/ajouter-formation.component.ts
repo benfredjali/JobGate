@@ -5,6 +5,7 @@ import {FormationService} from '../../services/Formation/formation.service';
 import {SecteurService} from '../../services/Secteur/secteur.service';
 import {Router} from '@angular/router';
 import {AuthentificationService} from '../../services/authentification.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ajouter-formation',
@@ -21,7 +22,7 @@ export class AjouterFormationComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private formationservice: FormationService,
               private router: Router, private authservice: AuthentificationService,
-              private secteurservice: SecteurService) {
+              private secteurservice: SecteurService,private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -71,6 +72,7 @@ export class AjouterFormationComponent implements OnInit {
 
     this.formationservice.Ajouter(this.AjouterFormationForm.value, localStorage.getItem('iduser'), this.AjouterFormationForm.value.idsecteur).subscribe(result => {
       console.log(result);
+      this.toastr.success(' ajouté avec succées !', 'Formation!', { timeOut: 3000, });
 
 
     });

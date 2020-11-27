@@ -145,8 +145,9 @@
                     <span><img  width="50px" height="50px" src="http://localhost:8080/upload/files/{{logo}}" alt="" />{{nomuser}}&nbsp;{{prenomuser}}
                         <i class="la la-bars"></i> </span>
 				</div>
-				<div class="wishlist-dropsec"  [hidden]="!ison">
-					<span><i class="la la-heart"></i><strong>{{listfavoriebycandidat?.length}}</strong></span>
+				<!--[hidden]="roleuser==='ResponsableCentre'" [hidden]="roleuser==='ResponsableSociete'"-->
+				<div class="wishlist-dropsec"   [hidden]="!ison">
+					<span [hidden]="roleuser !=='Candidat'"  ><i class="la la-heart"></i><strong>{{listfavoriebycandidat?.length}}</strong></span>
 					<div class="wishlist-dropdown">
 						<ul class="scrollbar">
 							<li>
@@ -196,7 +197,7 @@
                         <a href="#" title="">Contact</a>
 
                     </li>
-                    <li class="menu-item-has-children">
+                  <!--  <li class="menu-item-has-children">
                         <a href="#" title="">Pages</a>
                         <ul>
                             <li><a href="about.html" title="">About Us</a></li>
@@ -205,7 +206,7 @@
                             <li><a href="pricing.html" title="">Pricing Plans</a></li>
                             <li><a href="terms_and_condition.html" title="">Terms & Condition</a></li>
                         </ul>
-                    </li>
+                    </li>-->
                 </ul>
             </nav><!-- Menus -->
         </div>
@@ -219,18 +220,17 @@
      
        
 
-		<div class="cst"><img src="http://localhost:8080/upload/files/{{photo}}" alt="" /></div>
+		<div class="cst"><img src="http://localhost:8080/upload/files/{{logo}}" alt="" /></div>
 		<h3 class="menu-item-has-children">  {{nomuser}}&nbsp;{{prenomuser}}</h3>
-		<p><a href="https://grandetest.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7516071014011c031019140c100706454d4d351218141c195b161a18">{{user.email}}</a></p>
+		<p><a href="https://grandetest.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7516071014011c031019140c100706454d4d351218141c195b161a18">{{user?.email}}</a></p>
 		<p><i class="la la-map-marker"></i>{{user?.adresse}}</p>
 	</div>
 	<div class="tree_widget-sec">
 		<ul>
-			<li><a href="candidates_profile.html" title=""><i class="la la-file-text"></i>Profil</a></li>
+			<li><a routerLink="/candidat/profil" title=""><i class="la la-file-text"></i>Profil</a></li>
 			<li><a href="candidates_my_resume.html" title=""><i class="la la-briefcase"></i>Resume</a></li>
 			<li><a href="candidates_applied_jobs.html" title=""><i class="la la-paper-plane"></i>Mes souscriptions</a></li>
 			<li><a href="candidates_cv_cover_letter.html" title=""><i class="la la-file-text"></i>Mes inscriptions</a></li>
-			<li><a href="candidates_change_password.html" title=""><i class="la la-flash"></i>Change Password</a></li>
 			<li><a (click)="deconecter()"  title=""><i class="la la-unlink"></i>Logout</a></li>
         </ul>
 	</div>

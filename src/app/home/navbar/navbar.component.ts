@@ -223,7 +223,7 @@ getprofile(){
     localStorage.setItem('iduser',this.user['id']);
     this.nomuser=res['nom'];
     this.prenomuser=res['prenom'];
-    this.photo=res['photo'];
+    
     this.logo=res['logo'];
   
 

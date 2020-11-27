@@ -2,56 +2,50 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Candidat } from 'src/app/model/candidat';
+import { Respcentre } from 'src/app/model/respcentre';
 import { AuthentificationService } from 'src/app/services/authentification.service';
-import { CandidatService } from 'src/app/services/candidat.service';
-import { ImageService } from 'src/app/services/image.service';
+import { FormationService } from 'src/app/services/Formation/formation.service';
+import { ResponsableCentreService } from 'src/app/services/responsabelcentre.service';
 
 @Component({
-  selector: 'app-profil',
-  templateUrl: './profil.component.html',
-  styleUrls: ['./profil.component.css']
+  selector: 'app-profilresponsable-centre',
+  templateUrl: './profilresponsable-centre.component.html',
+  styleUrls: ['./profilresponsable-centre.component.css']
 })
-export class ProfilComponent implements OnInit {
+export class ProfilresponsableCentreComponent implements OnInit {
   updateUserForm: FormGroup;
   user;
+  listformation;
   nomuser;
   prenomuser;
-  photo;
-  logo; niveauEtude;
-  compteLinkedin;
+  adresse;
+  logo; 
+  siteWeb;
   telephone;
   email;
   candidat;
   id;
+  idformation;
   submitted = false;
-  detaillformation = new Candidat();
+  listformations;
+  detaillformation = new Respcentre();
 
-  constructor(private formBuilder: FormBuilder,private imageservice:ImageService,private authenService: AuthentificationService,
-    private candudatservice: CandidatService, private router:Router,private toastr: ToastrService) {
+  constructor(private formationservice: FormationService, private formBuilder: FormBuilder,private authenService: AuthentificationService,
+    private respcentreservice: ResponsableCentreService, private router:Router,private toastr: ToastrService) {
 
       this.id =  localStorage.getItem('iduser');
       this.getbyid(this.id)
+      this.idformation=localStorage.getItem('iduser');
     }
 
   ngOnInit(): void {
     this.updateUserForm = this.formBuilder.group({
-      nom: new FormControl('',Validators.compose([
-        Validators.required,
-        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
-      ])),
-      prenom: new FormControl('',Validators.compose([
-        Validators.required,
-        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
-      ])),
-      username: new FormControl('',Validators.compose([
-        Validators.required,
-        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
-      ])),
+      nom: ['', Validators.required],
+      prenom:['', Validators.required],
+      username: ['', Validators.required],
       adresse: ['', Validators.required],
-      dateNaiss: ['', Validators.required],
-      niveauEtude: ['', Validators.required],
-      compteLinkedin: ['', Validators.required],
+  
+      siteWeb: ['', Validators.required],
       description: ['', Validators.required],
 
       //siteWeb: ['', Validators.required],
@@ -68,6 +62,7 @@ export class ProfilComponent implements OnInit {
 
 
     this.getprofile();
+    this.getallcomentaire()
    
 
     
@@ -79,8 +74,8 @@ export class ProfilComponent implements OnInit {
       localStorage.setItem('iduser',this.user['id']);
       this.nomuser=res['nom'];
       this.prenomuser=res['prenom'];
-      this.niveauEtude=res['niveauEtude'];
-      this.compteLinkedin=res['compteLinkedin'];
+      this.adresse=res['adresse'];
+      this.siteWeb=res['siteWeb'];
       this.telephone=res['telephone'];
       this.email=res['email'];
       this.logo=res['logo'];
@@ -96,7 +91,7 @@ export class ProfilComponent implements OnInit {
     }
     
     getbyid(id){
-      this.candudatservice.getbyid(id).subscribe(res=>{
+      this.respcentreservice.getbyid(id).subscribe(res=>{
         console.log(res)
     this.candidat=res;
     this.updateUserForm.patchValue({
@@ -105,7 +100,7 @@ export class ProfilComponent implements OnInit {
       adresse:this.candidat.adresse,
       dateNaiss:this.candidat.dateNaiss,
       username:this.candidat.username,
-      niveauEtude:this.candidat.niveauEtude,
+      siteWeb:this.candidat.siteWeb,
       telephone:this.candidat.telephone,
       description:this.candidat.description,
       email:this.candidat.email,
@@ -117,7 +112,6 @@ export class ProfilComponent implements OnInit {
       })
     }
 
-    
      
   
   edit() {
@@ -137,19 +131,41 @@ export class ProfilComponent implements OnInit {
     }*/
     console.log(data)
    
-      this.candudatservice.modifier(localStorage.getItem('iduser'),data).subscribe(res=>{
-       
+      this.respcentreservice.modifier(localStorage.getItem('iduser'),data).subscribe(res=>{
+
             console.log(res);
+            
             this.toastr.success(' Profil Modifié  !', 'Merci!', { timeOut: 3000, });
 
        
       })
-  
+      
+   // window.location.reload();
+    
     }
 
     
       //this.submitted = false;
       //this.updateUserForm.reset();
      // window.location.reload();
-    
+     getallcomentaire(){
+  
+      this.formationservice.getformation(this.idformation).subscribe(res=>{
+        console.log(res);
+        this.listformation=res;
+      })
+    }
+
+    supprimer(id) {
+      this.formationservice.supprimer(id).subscribe(res => {
+        console.log(res);
+
+        this.toastr.error(' Formation Supprimé  !', 'Merci!', { timeOut: 3000, });
+
+        
+      });
+      
+      //window.location.reload();
+      
+    }
 }

@@ -22,7 +22,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="inner-header">
-              <h3>Welcome {{userconnectee.nom}} TUFAN</h3>
+              <h3>Welcome {{userconnectee?.nom}} </h3>
             </div>
           </div>
         </div>
@@ -84,31 +84,31 @@
                     <div class="col-lg-12">
                       <span class="pf-title">Titre</span>
                       <div class="pf-field">
-                        <input placeholder="Tooms.." formControlName="titre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.titre.errors }" type="text">
+                        <input placeholder="Tooms.." formControlName="titre"  [ngClass]="{ 'is-invalid': submitted && f.titre.errors }" type="text">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <span class="pf-title">Date Debut</span>
                       <div class="pf-field">
-                        <input placeholder="06.11.2007" type="date" class="datepicker" formControlName="date_deb" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date_deb.errors }" >
+                        <input placeholder="06.11.2007" type="date" class="datepicker" formControlName="date_deb" [ngClass]="{ 'is-invalid': submitted && f.date_deb.errors }" >
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <span class="pf-title">Date Fin</span>
                       <div class="pf-field">
-                        <input placeholder="06.11.2012" type="date" class="datepicker" formControlName="date_fin" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.date_fin.errors }" >
+                        <input placeholder="06.11.2012" type="date" class="datepicker" formControlName="date_fin"  [ngClass]="{ 'is-invalid': submitted && f.date_fin.errors }" >
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <span class="pf-title">Durée de la Formation</span>
                       <div class="pf-field">
-                        <input type="text" placeholder="duree.."class="datepicker" formControlName="duree" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.duree.errors }">
+                        <input type="text" placeholder="duree.."class="datepicker" formControlName="duree"  [ngClass]="{ 'is-invalid': submitted && f.duree.errors }">
                       </div>
                     </div>
                     <div class="col-lg-6">
                       <span class="pf-title">Nombre de Candidature</span>
                       <div class="pf-field">
-                        <input type="text" placeholder="nombre.."class="datepicker" formControlName="nombre" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" >
+                        <input type="text" placeholder="nombre.."class="datepicker" formControlName="nombre"  [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }" >
                       </div>
                     </div>
                     <div class="col-lg-6">
@@ -118,19 +118,19 @@
                       </div>
                     </div>
                     <div class="col-lg-6">
-                      <span class="pf-title">Emplacement</span>
+                      <span class="pf-title">Adresse</span>
                       <div class="pf-field">
-                        <input type="text" class="datepicker" formControlName="prix" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.prix.errors }">
+                        <input type="text" class="datepicker" formControlName="adresse"  [ngClass]="{ 'is-invalid': submitted && f.prix.errors }">
                       </div>
                     </div>
                     <div class="col-lg-12">
                       <span class="pf-title" >Description</span>
                       <div class="pf-field">
-                        <textarea    formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" ></textarea>
+                        <textarea    formControlName="description"  [ngClass]="{ 'is-invalid': submitted && f.description.errors }" ></textarea>
                       </div>
                     </div>
                     <div class="col-lg-12">
-                      <button type="submit" (click)="AjouterFormation()">Save</button>
+                      <button type="submit" (click)="AjouterFormation()">Ajouter</button>
                     </div>
                   </div>
                 </div>

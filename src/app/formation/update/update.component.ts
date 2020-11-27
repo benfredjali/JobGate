@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { FormationService } from 'src/app/services/Formation/formation.service';
 import { SecteurService } from 'src/app/services/Secteur/secteur.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update',
@@ -80,8 +81,15 @@ export class UpdateComponent implements OnInit {
     this.formationservice.Modifier(this.idformation.value, localStorage.getItem('iduser'), this.idformation.value.idsecteur).subscribe(result => {
       console.log(result);
 
-
+    
     });
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Modifié avec Succees',
+      showConfirmButton: false,
+      timer: 1500
+    })
     this.submitted = false;
     this.UpdateFormationForm.reset();
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { SecteurService } from 'src/app/services/Secteur/secteur.service';
 import { TravailleService } from 'src/app/services/travaille.service';
@@ -19,7 +20,7 @@ export class AjouterTravailleComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private travailleservice: TravailleService,
     private router: Router, private authservice: AuthentificationService,
-    private secteurservice: SecteurService) { }
+    private secteurservice: SecteurService,private toastr: ToastrService) { }
 
   ngOnInit(): void { this.getprofile();
     this.AjouterTravailleForm = this.formBuilder.group({
@@ -54,6 +55,7 @@ export class AjouterTravailleComponent implements OnInit {
       console.log(res);
       this.userconnectee = res;
       localStorage.setItem('iduser', this.userconnectee.id)
+  
     })
   }
 
@@ -67,6 +69,7 @@ export class AjouterTravailleComponent implements OnInit {
 
     this.travailleservice.Ajouter(this.AjouterTravailleForm.value, localStorage.getItem('iduser'), this.AjouterTravailleForm.value.idsecteur).subscribe(result => {
       console.log(result);
+      this.toastr.success(' ajouté avec succées !', 'Offre Travaille!', { timeOut: 3000, });
 
 
     });

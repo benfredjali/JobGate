@@ -23,8 +23,8 @@ import { NotificationService } from '../notification.service';
 })
 export class HomeComponent implements OnInit {
 
-
-
+  password;
+  Confirmpassword;
   loading = false;
   loginForm: FormGroup;
   registerCandidatForm: FormGroup;
@@ -79,7 +79,10 @@ export class HomeComponent implements OnInit {
       description: ['', Validators.required],
 
       //siteWeb: ['', Validators.required],
-      telephone: ['', Validators.required],
+      telephone: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("^[0-9]*$"),Validators.minLength(6)
+      ])),
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmpassword: ['', Validators.required],
@@ -115,10 +118,13 @@ export class HomeComponent implements OnInit {
         Validators.required,
         Validators.pattern("[a-z .'-]+"),Validators.minLength(5)
       ])),
-      siteWeb: ['', Validators.required],
+      siteWeb: new FormControl('',Validators.compose([
+         Validators.required,
+        Validators.minLength(3)
+                  ])),
       telephone:new FormControl('',Validators.compose([
         Validators.required,
-        Validators.pattern("[a-z .'-]+"),Validators.minLength(6)
+        Validators.pattern("^[0-9]*$"),Validators.minLength(6)
       ])),
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -143,17 +149,17 @@ export class HomeComponent implements OnInit {
       ])),
       adresse: new FormControl('',Validators.compose([
         Validators.required,
-        Validators.pattern("[a-z .'-]+"),Validators.minLength(5)
+        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(5)
       ])),
       description: new FormControl('',Validators.compose([
         Validators.required,
-        Validators.pattern("[a-z .'-]+"),Validators.minLength(5)
+        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(5)
       ])),
       siteWeb: ['', Validators.required],
 
       telephone:new FormControl('',Validators.compose([
         Validators.required,
-        Validators.pattern("[a-z .'-]+"),Validators.minLength(6)
+        Validators.pattern("^[0-9]*$"),Validators.minLength(8)
       ])),
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
@@ -220,13 +226,14 @@ this.reset();
       niveauEtude: this.registerCandidatForm.value["niveauEtude"],
       compteLinkedin: this.registerCandidatForm.value["compteLinkedin"],
       description: this.registerCandidatForm.value["description"],
-      photo: this.filesToUpload[0].name,
+      logo: this.filesToUpload[0].name,
       telephone: this.registerCandidatForm.value["telephone"],
       email: this.registerCandidatForm.value["email"],
       password: this.registerCandidatForm.value["password"],
       confirmpassword: this.registerCandidatForm.value["confirmpassword"],
 
     }
+    console.log(data);
 
     this.submitted = true;
     console.log(this.registerCandidatForm.value);
@@ -241,12 +248,17 @@ this.reset();
         console.log(rest)   
       })
       console.log(result);
-      this.toastr.success('successful registration', 'Toastr fun!', {timeOut: 5000});
 
 
     });
-  
-    //window.location.reload();
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Inscription avec succées',
+      showConfirmButton: false,
+      timer: 4000
+    })
+    window.location.reload();
     this.registerCandidatForm.reset();
 
 
@@ -338,7 +350,16 @@ this.reset();
       console.log(result);
     
     });
-  // window.location.reload();
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: 'Inscription avec succées',
+      showConfirmButton: true,
+      timer: 5000
+    })
+
+    
+   window.location.reload();
   this.registerCentreForm.reset(); 
 
   }
@@ -419,7 +440,7 @@ this.reset();
   recuperFile(file) {
     this.filesToUpload = file.target.files;
 console.log(this.filesToUpload);
-    this.photo = file.target.files[0]['name'];
+    //this.photo = file.target.files[0]['name'];
     this.logo= file.target.files[0]['name'];
   }
 }

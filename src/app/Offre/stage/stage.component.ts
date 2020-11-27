@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { CandidatService } from 'src/app/services/candidat.service';
 import {StageService} from '../../services/stage.service';
 
@@ -12,7 +13,7 @@ export class StageComponent implements OnInit {
   term;
   p=1;
 
-  constructor(private stageservice: StageService,private candidatservice:CandidatService) { }
+  constructor(private stageservice: StageService,private candidatservice:CandidatService,private toastr: ToastrService) { }
 
   ngOnInit() {
     this.all();

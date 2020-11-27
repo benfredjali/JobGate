@@ -1,18 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
-import { Candidat } from 'src/app/model/candidat';
+import { Respsociete } from 'src/app/model/respsociete';
 import { AuthentificationService } from 'src/app/services/authentification.service';
-import { CandidatService } from 'src/app/services/candidat.service';
-import { ImageService } from 'src/app/services/image.service';
+import { ResponsabelSocietyService } from 'src/app/services/responsabel-society.service';
 
 @Component({
-  selector: 'app-profil',
-  templateUrl: './profil.component.html',
-  styleUrls: ['./profil.component.css']
+  selector: 'app-profilresponsable-societe',
+  templateUrl: './profilresponsable-societe.component.html',
+  styleUrls: ['./profilresponsable-societe.component.css']
 })
-export class ProfilComponent implements OnInit {
+export class ProfilresponsableSocieteComponent implements OnInit {
   updateUserForm: FormGroup;
   user;
   nomuser;
@@ -25,10 +23,10 @@ export class ProfilComponent implements OnInit {
   candidat;
   id;
   submitted = false;
-  detaillformation = new Candidat();
+  detaillformation = new Respsociete();
 
-  constructor(private formBuilder: FormBuilder,private imageservice:ImageService,private authenService: AuthentificationService,
-    private candudatservice: CandidatService, private router:Router,private toastr: ToastrService) {
+  constructor(private formBuilder: FormBuilder,private authenService: AuthentificationService,
+    private respcentreservice: ResponsabelSocietyService, private router:Router) {
 
       this.id =  localStorage.getItem('iduser');
       this.getbyid(this.id)
@@ -49,9 +47,9 @@ export class ProfilComponent implements OnInit {
         Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
       ])),
       adresse: ['', Validators.required],
-      dateNaiss: ['', Validators.required],
+  
       niveauEtude: ['', Validators.required],
-      compteLinkedin: ['', Validators.required],
+      siteWeb: ['', Validators.required],
       description: ['', Validators.required],
 
       //siteWeb: ['', Validators.required],
@@ -96,7 +94,7 @@ export class ProfilComponent implements OnInit {
     }
     
     getbyid(id){
-      this.candudatservice.getbyid(id).subscribe(res=>{
+      this.respcentreservice.getbyid(id).subscribe(res=>{
         console.log(res)
     this.candidat=res;
     this.updateUserForm.patchValue({
@@ -137,11 +135,9 @@ export class ProfilComponent implements OnInit {
     }*/
     console.log(data)
    
-      this.candudatservice.modifier(localStorage.getItem('iduser'),data).subscribe(res=>{
+      this.respcentreservice.modifier(localStorage.getItem('iduser'),data).subscribe(res=>{
        
             console.log(res);
-            this.toastr.success(' Profil Modifié  !', 'Merci!', { timeOut: 3000, });
-
        
       })
   

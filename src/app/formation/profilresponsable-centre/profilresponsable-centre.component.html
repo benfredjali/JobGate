@@ -31,11 +31,9 @@
 				 				<ul>
 				 					<li><a href="candidates_profile.html" title=""><i class="la la-file-text"></i>My Profile</a></li>
 									<li><a href="candidates_my_resume.html" title=""><i class="la la-briefcase"></i>My Resume</a></li>
-									<li><a href="candidates_shortlist.html" title=""><i class="la la-money"></i>Shorlisted Job</a></li>
 									<li><a href="candidates_applied_jobs.html" title=""><i class="la la-paper-plane"></i>Applied Job</a></li>
 									<li><a href="candidates_job_alert.html" title=""><i class="la la-user"></i>Job Alerts</a></li>
-									<li><a href="candidates_cv_cover_letter.html" title=""><i class="la la-file-text"></i>Cv & Cover Letter</a></li>
-									<li><a href="candidates_change_password.html" title=""><i class="la la-flash"></i>Change Password</a></li>
+							
 									<li><a (click)="deconecter()"  title=""><i class="la la-unlink"></i>Logout</a></li>
 				 				</ul>
 				 			</div>
@@ -46,13 +44,17 @@
 		<div class="padding-left">
 			<div class="profile-title">
 				<h3>My Profile</h3>
-		
-				<div class="upload-img-bar">
-					<span class="round"><img src="http://localhost:8080/upload/files/{{logo}}" alt="" /><i>x</i></span>
-					<div class="upload-info">
-						<a href="#" title="">Browse</a>
+				<div class="job-single-head">
+					<div class="job-thumb"> <img src="http://localhost:8080/upload/files/{{logo}}" alt=""  /> </div>
+					<div class="job-head-info">
+						<h4>{{nomuser}} {{prenomuser}}</h4>
+						<span>{{adresse}}</span>
+						<p><i class="la la-unlink"></i>{{siteWeb}}</p>
+						<p><i class="la la-phone"></i> {{telephone}}</p>
+						<p><i class="la la-envelope-o"></i> <a href="https://grandetest.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1d7c71743369687b7c735d77727f75687369337e7270">{{email}}</a></p>
 					</div>
-				</div>
+				</div><!-- Job Head -->
+				
 			</div>
 			<div class="profile-form-edit">
 				<form [formGroup]="updateUserForm">
@@ -69,12 +71,7 @@
 								<input type="text" id="prenom" formControlName="prenom"  name="prenom" />
 							</div>
 						</div>
-						<div class="col-lg-6">
-							<span class="pf-title">Niveau d'étude</span>
-							<div class="pf-field">
-								<input type="text" id="niveauEtude" formControlName="niveauEtude"  name="niveauEtude" />
-								</div>
-							</div>
+						
 						<div class="col-lg-6">
 							<span class="pf-title">Adresse</span>
 							<div class="pf-field">
@@ -89,12 +86,7 @@
 						</div>
 						
 					
-						<div class="col-lg-6">
-							<span class="pf-title">Date de Naissance</span>
-								<div class="pf-field">
-								<input type="text" id="dateNaiss" formControlName="dateNaiss" name="dateNaiss" />
-							</div>
-						</div>
+					
 						
 					
 						<div class="col-lg-12">
@@ -112,7 +104,7 @@
 							<div class="col-lg-4">
 								<span class="pf-title">Phone Number</span>
 								<div class="pf-field">
-									<input type="text" formControlName="telephone" id="telephone"   name="telephone" />
+									<input type="text" id="telephone" formControlName="telephone"  name="telephone"/>
 								</div>
 							</div>
 							<div class="col-lg-4">
@@ -122,14 +114,15 @@
 								</div>
 							</div>
 							<div class="col-lg-4">
-								<span class="pf-title">LinkidIn</span>
+								<span class="pf-title">Site Web</span>
 								<div class="pf-field">
-									<input type="text" id="compteLinkedin" formControlName="compteLinkedin"   name="compteLinkedin" />
+									<input type="text" id="siteWeb" formControlName="siteWeb"  name="siteWeb" />
 								</div>
 							</div>
 						
 					
 						</div>
+					
 						<div class="col-lg-12">
 							<button type="submit" (click)="edit()">Modifier</button>
 						</div>
@@ -137,6 +130,21 @@
 					</div>
 
 				</form>
+				<div class="border-title"><h3>Listes des Formations</h3></div>
+				<div class="job-listing wtabs" *ngFor="let formation of listformation" >
+					
+
+
+					<div class="job-title-sec" >
+						<div class="c-logo"> <img src="http://localhost:8080/upload/files/{{logo}}" alt="" /> </div>
+						<h3><a href="" title="">{{formation?.titre}}</a></h3>
+						<span>{{formation?.responsableCentre?.adresse}}</span>
+						<div class="job-lctn">{{formation?.date_deb}}</div>
+					</div>
+					<div class="job-list-del">
+						<a href="" (click)="supprimer(formation.id)" title=""><i class="la la-trash-o"></i></a>
+					</div>
+				</div><!-- Job -->
 			</div>
 					 	
 					 		

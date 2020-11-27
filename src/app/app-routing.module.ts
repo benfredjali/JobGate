@@ -18,6 +18,8 @@ import { FavorieslistComponent } from './favorieslist/favorieslist.component';
 import { AjouterFormationComponent } from './formation/ajouter-formation/ajouter-formation.component';
 import { StagedetailComponent } from './Offre/stagedetail/stagedetail.component';
 import { TravaildetailComponent } from './Offre/travaildetail/travaildetail.component';
+import { ProfilresponsableCentreComponent } from './formation/profilresponsable-centre/profilresponsable-centre.component';
+import { ProfilresponsableSocieteComponent } from './Offre/profilresponsable-societe/profilresponsable-societe.component';
 
 
 
@@ -29,7 +31,7 @@ const routes: Routes = [
   [{path:'',component:ContainerComponent},
   {path:'formation', component:FormationComponent},
   {path:'formation/:id', component:FormationdetailComponent},
-  {path:'ajouterformation', component:AjouterFormationComponent},
+  {path:'fajouter', component:AjouterFormationComponent},
   //{path:'formation/detail', component:FormationdetailComponent},
   {path:'formation/update/:id', component:UpdateComponent},
   {path:'formation/candidat', component:CandidatComponent},
@@ -37,13 +39,17 @@ const routes: Routes = [
   {path:'offre/employers', component:EmployersComponent},
   {path:'stage', component:StageComponent},
   {path:'stage/:id', component:StagedetailComponent},
-  {path:'stage/ajouter', component:AjouterStageComponent},
+  {path:'sajouter', component:AjouterStageComponent},
   {path:'travaille', component:TravailleComponent},
   {path:'travaille/:id', component:TravaildetailComponent},
-  {path:'travaille/ajouter', component:AjouterTravailleComponent},
+  {path:'tajouter', component:AjouterTravailleComponent},
   {path:'candidat/profil', component:ProfilComponent},
   {path:'candidat/list', component:ListComponent},
-  {path:'favorie/list', component:FavorieslistComponent},
+  {path:'favorielist', component:FavorieslistComponent},
+  {path:'pcentre', component:ProfilresponsableCentreComponent},
+  {path:'psociete', component:ProfilresponsableSocieteComponent},
+
+
 
   
 

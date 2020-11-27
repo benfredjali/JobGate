@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {SecteurService} from '../../../services/Secteur/secteur.service';
 import {AuthentificationService} from '../../../services/authentification.service';
 import {StageService} from '../../../services/stage.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-ajouter-stage',
@@ -19,7 +20,7 @@ export class AjouterStageComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private stageservice: StageService,
               private router: Router, private authservice: AuthentificationService,
-              private secteurservice: SecteurService) {
+              private secteurservice: SecteurService,private toastr: ToastrService) {
   }
 
 
@@ -67,9 +68,11 @@ export class AjouterStageComponent implements OnInit {
     if (this.AjouterStageForm.invalid) {
       return;
     }
-
+console.log( localStorage.getItem('iduser'))
     this.stageservice.Ajouter(this.AjouterStageForm.value, localStorage.getItem('iduser'), this.AjouterStageForm.value.idsecteur).subscribe(result => {
       console.log(result);
+      this.toastr.success(' ajouté avec succées !', 'Offre Stage!', { timeOut: 3000, });
+
 
 
     });

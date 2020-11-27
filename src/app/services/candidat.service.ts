@@ -32,4 +32,13 @@ export class CandidatService {
 
     return this.http.post(environment.url + 'favorie/save/'+idoffre+'/'+idcandidat,data,{headers: headers} )
   }
+
+  modifier(id,data){
+    return this.http.put(environment.url + 'candidat/modif/'+id ,data)
+  }
+
+  getbyid(id) {
+
+    return this.http.get(environment.url + 'candidat/getone/'+id);
+  }
 }

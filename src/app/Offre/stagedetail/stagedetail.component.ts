@@ -39,6 +39,7 @@ affichcvinput=false;
 postuler(){
   const formdata=new FormData();
   formdata.append('file',this.fileToUpload)
+  
   this.stageservice.postuler(this.idstage,localStorage.getItem('iduser'),formdata).subscribe(res=>{
     console.log(res);
   })

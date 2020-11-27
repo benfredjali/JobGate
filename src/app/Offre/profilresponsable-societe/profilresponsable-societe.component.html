@@ -56,6 +56,7 @@
 			</div>
 			<div class="profile-form-edit">
 				<form [formGroup]="updateUserForm">
+					<div class="resumeadd-form">
 					<div class="row">
 						<div class="col-lg-6">
 							<span class="pf-title">Nom</span>
@@ -69,12 +70,7 @@
 								<input type="text" id="prenom" formControlName="prenom"  name="prenom" />
 							</div>
 						</div>
-						<div class="col-lg-6">
-							<span class="pf-title">Niveau d'étude</span>
-							<div class="pf-field">
-								<input type="text" id="niveauEtude" formControlName="niveauEtude"  name="niveauEtude" />
-								</div>
-							</div>
+						
 						<div class="col-lg-6">
 							<span class="pf-title">Adresse</span>
 							<div class="pf-field">
@@ -89,12 +85,7 @@
 						</div>
 						
 					
-						<div class="col-lg-6">
-							<span class="pf-title">Date de Naissance</span>
-								<div class="pf-field">
-								<input type="text" id="dateNaiss" formControlName="dateNaiss" name="dateNaiss" />
-							</div>
-						</div>
+					
 						
 					
 						<div class="col-lg-12">
@@ -112,7 +103,7 @@
 							<div class="col-lg-4">
 								<span class="pf-title">Phone Number</span>
 								<div class="pf-field">
-									<input type="text" formControlName="telephone" id="telephone"   name="telephone" />
+									<input type="text"  name="candidat.telephone" />
 								</div>
 							</div>
 							<div class="col-lg-4">
@@ -122,18 +113,20 @@
 								</div>
 							</div>
 							<div class="col-lg-4">
-								<span class="pf-title">LinkidIn</span>
+								<span class="pf-title">Site Web</span>
 								<div class="pf-field">
-									<input type="text" id="compteLinkedin" formControlName="compteLinkedin"   name="compteLinkedin" />
+									<input type="text" id="siteWeb" formControlName  name="siteWeb" />
 								</div>
 							</div>
 						
 					
 						</div>
+					
 						<div class="col-lg-12">
 							<button type="submit" (click)="edit()">Modifier</button>
 						</div>
 
+					</div>
 					</div>
 
 				</form>

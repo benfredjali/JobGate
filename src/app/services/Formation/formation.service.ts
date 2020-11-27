@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
+import { AuthentificationService } from '../authentification.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormationService {
 
-  constructor(private http: HttpClient ) {}
+  constructor(private http: HttpClient, private authService: AuthentificationService ) {}
   getall() {
 
     return this.http.get(environment.url + 'formation/all');
@@ -17,23 +18,20 @@ export class FormationService {
     return this.http.get(environment.url + 'formation/getone/'+id);
   }
   Ajouter(data,idcentre,idsecteur) {
-    return this.http.post(environment.url + 'formation/save/'+idsecteur+'/'+idcentre, data);
+    let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
+    return this.http.post(environment.url + 'formation/save/'+idsecteur+'/'+idcentre, data ,{headers: headers});
   }
   Modifier(data,idcentre,idsecteur) {
     return this.http.post(environment.url + 'formation/modif/'+idsecteur+'/'+idcentre, data);
   }
-  ajouter(id, data) {
-    return this.http.post(environment.url + 'stage/add/' + id, data)
+
+  getformation(idcentre) {
+    return this.http.get(environment.url + 'formation/getbycentre/'+idcentre);
   }
 
-  // getone(id){
-  //   let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
-  //
-  //   return this.http.get(environment.url + 'formation/getone/'+id, {headers:headers});
-  // }
+  supprimer(id) {
+    let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
 
-
- 
-
-
+    return this.http.delete(environment.url + 'formation/delete/' + id);
+  }
 }

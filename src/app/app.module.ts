@@ -34,6 +34,8 @@ import { FavorieslistComponent } from './favorieslist/favorieslist.component';
 import { StagedetailComponent } from './Offre/stagedetail/stagedetail.component';
 import { TravaildetailComponent } from './Offre/travaildetail/travaildetail.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { ProfilresponsableCentreComponent } from './formation/profilresponsable-centre/profilresponsable-centre.component';
+import { ProfilresponsableSocieteComponent } from './Offre/profilresponsable-societe/profilresponsable-societe.component';
 
 
 
@@ -64,7 +66,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
     CandidatPipe,
     FavorieslistComponent,
     StagedetailComponent,
-    TravaildetailComponent
+    TravaildetailComponent,
+    ProfilresponsableCentreComponent,
+    ProfilresponsableSocieteComponent
     
   ],
   imports: [
