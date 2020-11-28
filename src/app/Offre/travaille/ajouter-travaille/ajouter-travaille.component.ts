@@ -12,7 +12,9 @@ import { TravailleService } from 'src/app/services/travaille.service';
   styleUrls: ['./ajouter-travaille.component.css']
 })
 export class AjouterTravailleComponent implements OnInit {
-
+  seletedValue = 'info';
+  nomuser;
+  prenomuser;
   listsecteur;
   submitted = false;
   AjouterTravailleForm: FormGroup;
@@ -26,12 +28,14 @@ export class AjouterTravailleComponent implements OnInit {
     this.AjouterTravailleForm = this.formBuilder.group({
       idsecteur: ['', Validators.required],
       titre: ['', Validators.required],
+      technologie: ['', Validators.required],
       date_deb: ['', Validators.required],
-      date_fin: ['', Validators.required],
-      duree: ['', Validators.required],
-      nombre: ['', Validators.required],
-      prix: ['', Validators.required],
+      typeContrat: ['', Validators.required],
+      type: ['', Validators.required],
+      adresse: ['', Validators.required],
+      siege: ['', Validators.required],
       description: ['', Validators.required],
+      
 
 
     });
@@ -55,6 +59,9 @@ export class AjouterTravailleComponent implements OnInit {
       console.log(res);
       this.userconnectee = res;
       localStorage.setItem('iduser', this.userconnectee.id)
+      this.nomuser=res['nom'];
+      this.prenomuser=res['prenom'];
+   
   
     })
   }
@@ -83,4 +90,6 @@ export class AjouterTravailleComponent implements OnInit {
     this.submitted = false;
     this.AjouterTravailleForm.reset();
   }
+
+  
 }

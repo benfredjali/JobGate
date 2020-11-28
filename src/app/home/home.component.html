@@ -1,10 +1,10 @@
-
-      <div class="page-loading">
+<div class="page-loading">
   <img src="/assets/images/loader.gif" alt=""/>
 </div>
 
-<div class="theme-layout" id="scrollup">
 
+<div class="theme-layout" id="scrollup">
+  
   <app-navbar ></app-navbar>
 
 <router-outlet></router-outlet>
@@ -68,60 +68,60 @@
     <form *ngIf="choix=='candidat'" [formGroup]="registerCandidatForm" >
 
          <div class="cfield">
-            <input type="text" placeholder="Username" 
-             formControlName="username"  [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
-            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-              <div *ngIf="f.username.errors.required">username is required</div>
-              <div *ngIf="f.username.errors.pattern">Invalid username</div>
-              <div *ngIf="f.username.errors.minlength">username must contain two characters at least</div>
+            <input type="text" placeholder="Username"  class="form-control"
+             formControlName="username"  [ngClass]="{ 'is-invalid': f.username.touched  && f.username.errors }" />
+            <div *ngIf="f.username.touched  && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors.required">Nom d'utilisateur est obligatoire</div>
+              <div *ngIf="f.username.errors.pattern">Nom d'utilisateur invalide</div>
+              <div *ngIf="f.username.errors.minlength">Nom d'utilisateur doit contenir au moins 2 caractères</div>
             </div>
             <i class="la la-user"></i>
           
           </div>
           <div class="cfield">
-            <input type="text" placeholder="First Name"  formControlName="nom" [ngClass]="{ 'is-invalid': submitted && f.nom.errors }" />
-            <div *ngIf="submitted && f.nom.errors" class="invalid-feedback">
-              <div *ngIf="f.nom.errors.required">name is required</div>
-              <div *ngIf="f.nom.errors.pattern">Invalid name</div>
-              <div *ngIf="f.nom.errors.minlength">name must contain two characters at least</div>
+            <input type="text" placeholder="Nom"  formControlName="nom" [ngClass]="{ 'is-invalid': f.nom.touched && f.nom.errors }" />
+            <div *ngIf="f.nom.touched && f.nom.errors" class="invalid-feedback">
+              <div *ngIf="f.nom.errors.required">Nom est obligatoire</div>
+              <div *ngIf="f.nom.errors.pattern">Nom invalide</div>
+              <div *ngIf="f.nom.errors.minlength">Nom doit contenir au moins 2 caractères</div>
             </div>
             <i class="la la-user"></i>
           </div>
 
 
           <div class="cfield">
-            <input type="text" placeholder="Last Name"  formControlName="prenom"  [ngClass]="{ 'is-invalid': submitted && f.prenom.errors }" />
-            <div *ngIf="submitted && f.prenom.errors" class="invalid-feedback">
-              <div *ngIf="f.prenom.errors.required">Last Name est incorrect</div>
-              <div *ngIf="f.nom.errors.pattern">Invalid Last Name </div>
-              <div *ngIf="f.nom.errors.minlength">Last Name  must contain two characters at least</div>
+            <input type="text" placeholder="Prénom"  formControlName="prenom"  [ngClass]="{ 'is-invalid': f.prenom.touched && f.prenom.errors }" />
+            <div *ngIf="f.prenom.touched && f.prenom.errors" class="invalid-feedback">
+              <div *ngIf="f.prenom.errors.required">Prénom est obligatoire</div>
+              <div *ngIf="f.nom.errors.pattern">Prénom invalide</div>
+              <div *ngIf="f.nom.errors.minlength">Prénom doit contenir au moins 2 caractères</div>
             </div>
             <i class="la la-users"></i>
           </div>
       
           <div class="cfield">
-            <input type="text" placeholder="Adress"  formControlName="adresse"  [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }" />
-            <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback">
-              <div *ngIf="f.adresse.errors.required">adresseis required</div>
-              <div *ngIf="f.adresse.errors.minlength">Adresse  must contain ten characters at least</div>            </div>
+            <input type="text" placeholder="Adresse"  formControlName="adresse"  [ngClass]="{ 'is-invalid': f.adresse.touched && f.adresse.errors }" />
+            <div *ngIf="f.adresse.touched && f.adresse.errors" class="invalid-feedback">
+              <div *ngIf="f.adresse.errors.required">Adresse est obligatoire</div>
+              <div *ngIf="f.adresse.errors.minlength">Adresse doit contenir au moins 5 caractères</div>            </div>
             <i class="la la-map-marker"></i>
           </div>
  
 
        
           <div class="cfield">
-            <input type="text" placeholder="Description"  formControlName="description"  [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
-            <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-            <div *ngIf="f.description.errors.required">description is required</div>
-            <div *ngIf="f.description.errors.minlength">description must contain 30 characters at least</div>
+            <input type="text" placeholder="Description"  formControlName="description"  [ngClass]="{ 'is-invalid': f.description.touched && f.description.errors }" />
+            <div *ngIf="f.description.touched && f.description.errors" class="invalid-feedback">
+            <div *ngIf="f.description.errors.required">Description est obligatoire</div>
+            <div *ngIf="f.description.errors.minlength">Description doit contenir au moins 10 caractères</div>
             </div>
             <i class="la la-bars"></i>
         </div>
 
           <div class="cfield">
-            <input type="text" placeholder="Compte Linkedin"  formControlName="compteLinkedin"  [ngClass]="{ 'is-invalid': submitted && f.compteLinkedin.errors }" />
-            <div *ngIf="submitted && f.compteLinkedin.errors" class="invalid-feedback">
-              <div *ngIf="f.compteLinkedin.errors.required">compteLinkedin is required</div>
+            <input type="text" placeholder="Compte Linkedin"  formControlName="compteLinkedin"  [ngClass]="{ 'is-invalid': f.compteLinkedin.touched && f.compteLinkedin.errors }" />
+            <div *ngIf="f.compteLinkedin.touched && f.compteLinkedin.errors" class="invalid-feedback">
+              <div *ngIf="f.compteLinkedin.errors.required">CompteLinkedin est obligatoire</div>
             </div>
             <i class="la la-linkedin"></i>
           </div>
@@ -131,8 +131,8 @@
           </div>
 
           <div class="cfield">
-            <input type="text" placeholder="Phone Number"  formControlName="telephone"  [ngClass]="{ 'is-invalid': submitted && f.telephone.errors }" />
-            <div *ngIf="submitted && f.telephone.errors" class="invalid-feedback">
+            <input type="text" placeholder="Phone Number"  formControlName="telephone"  [ngClass]="{ 'is-invalid': f.telephone.touched && f.telephone.errors }" />
+            <div *ngIf="f.telephone.touched && f.telephone.errors" class="invalid-feedback">
               <div *ngIf="f.telephone.errors.pattern">Invalid Phone Number </div>
               <div *ngIf="f.telephone.errors.minlength">Phone Number  must contain two characters at least</div>
             </div>
@@ -140,16 +140,16 @@
           </div>
 
           <div class="cfield">
-            <input type="text" placeholder="Study is Level"  formControlName="niveauEtude" [ngClass]="{ 'is-invalid': submitted && f.niveauEtude.errors }" />
-            <div *ngIf="submitted && f.niveauEtude.errors" class="invalid-feedback">
+            <input type="text" placeholder="Study is Level"  formControlName="niveauEtude" [ngClass]="{ 'is-invalid': f.niveauEtude.touched && f.niveauEtude.errors }" />
+            <div *ngIf="f.niveauEtude.touched && f.niveauEtude.errors" class="invalid-feedback">
               <div *ngIf="f.niveauEtude.errors.required">Study Level is required</div>
             </div>
             <i class="la la-mortar-board"></i>
           </div>
 
           <div class="cfield">
-            <input type="date" formControlName="dateNaiss"  [ngClass]="{ 'is-invalid': submitted && f.dateNaiss.errors }"/>
-            <div *ngIf="submitted && f.dateNaiss.errors" class="invalid-feedback">
+            <input type="date" formControlName="dateNaiss"  [ngClass]="{ 'is-invalid': f.dateNaiss.touched && f.dateNaiss.errors }"/>
+            <div *ngIf="f.dateNaiss.touched && f.dateNaiss.errors" class="invalid-feedback">
               <div *ngIf="f.dateNaiss.errors.required">dateNaiss is required</div>
             </div>
             <i class=""></i>
@@ -158,9 +158,9 @@
       
 
           <div class="cfield">
-            <input type="text" placeholder="Email" formControlName="email"  [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-              <div *ngIf="f.email.errors.required">Email is required</div>
+            <input type="text" placeholder="Email" formControlName="email"  [ngClass]="{ 'is-invalid': f.email.touched  && f.email.errors }" />
+            <div *ngIf="f.email.touched && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email est obligatoire</div>
               <div *ngIf="f.email.errors.email">Email est incorrect</div>
             </div>
             <i class="la la-envelope-o"></i>
@@ -168,20 +168,20 @@
 
 
           <div class="cfield">
-            <input [type]="getType()" placeholder="Password"  formControlName="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+            <input [type]="getType()" placeholder="Mot de passe"  formControlName="password" [ngClass]="{ 'is-invalid': f.password.touched && f.password.errors }" />
 
-            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-              <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.touched  && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Mot de passe est obligatoire</div>
               <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
             </div>
             <i class="la la-eye" (click)="toggleTextPassword()"></i>
           </div>
 
           <div class="cfield">
-            <input [type]="getType()" placeholder="Confirm Password" formControlName="confirmpassword" [ngClass]="{ 'is-invalid': submitted && f.confirmpassword.errors }" />
-            <div *ngIf="submitted && f.confirmpassword.errors" class="invalid-feedback">
-              <div *ngIf="f.confirmpassword.errors.required">Confirm Password est incorrect</div>
-            <div *ngIf="f.confirmpassword.errors.mustMatch">Passwords must match</div>
+            <input [type]="getType()" placeholder="Confirm Mot de passe" formControlName="confirmpassword" [ngClass]="{ 'is-invalid': f.confirmpassword.touched && f.confirmpassword.errors }" />
+            <div *ngIf="f.confirmpassword.touched && f.confirmpassword.errors" class="invalid-feedback">
+              <div *ngIf="f.confirmpassword.errors.required">Confirme mot de passe est incorrect</div>
+            <div *ngIf="f.confirmpassword.errors.mustMatch">Mot de passe doit correspondre</div>
             </div>
             <i class="la la-eye" (click)="toggleTextPassword()"></i>
           </div>
@@ -197,19 +197,19 @@
       <div class="cfield">
         <input type="text" placeholder="Username"  formControlName="username" [ngClass]="{ 'is-invalid': x.username.touched && x.username.errors }" />
         <div *ngIf="x.username.touched && x.username.errors" class="invalid-feedback">
-          <div *ngIf="x.username.errors.required">username is required</div>
-          <div *ngIf="x.username.errors.pattern">Invalid username</div>
-          <div *ngIf="x.username.errors.minlength">username must contain two characters at least</div>
+          <div *ngIf="x.username.errors.required">le nom d'utilisateur est obligatoire</div>
+          <div *ngIf="x.username.errors.pattern"></div>
+          <div *ngIf="x.username.errors.minlength">le nom d'utilisateur doit contenir au moins 2 caractères</div>
         </div>
         <i class="la la-user-times"></i>
       </div>
 
       <div class="cfield">
-        <input type="text" placeholder="First Name"  formControlName="nom" [ngClass]="{ 'is-invalid': x.nom.touched && x.nom.errors }" />
+        <input type="text" placeholder="Nom"  formControlName="nom" [ngClass]="{ 'is-invalid': x.nom.touched && x.nom.errors }" />
         <div *ngIf="x.nom.touched && x.nom.errors" class="invalid-feedback">
-          <div *ngIf="x.nom.errors.required">name is required</div>
-          <div *ngIf="x.nom.errors.pattern">Invalid name</div>
-          <div *ngIf="x.nom.errors.minlength">name must contain two characters at least</div>
+          <div *ngIf="x.nom.errors.required">Nom est obligatoire</div>
+          <div *ngIf="x.nom.errors.pattern">nom invalide</div>
+          <div *ngIf="x.nom.errors.minlength">nom doit contenir au moins 2 caractères</div>
 
 
         </div>
@@ -217,21 +217,21 @@
       </div>
 
       <div class="cfield">
-        <input type="text" placeholder="Last Name"  formControlName="prenom" lass="form-control" [ngClass]="{ 'is-invalid': x.prenom.touched && x.prenom.errors }" />
+        <input type="text" placeholder="Prénom"  formControlName="prenom" lass="form-control" [ngClass]="{ 'is-invalid': x.prenom.touched && x.prenom.errors }" />
         <div *ngIf="x.prenom.touched && x.prenom.errors" class="invalid-feedback">
-          <div *ngIf="x.prenom.errors.required">Last Name est incorrect</div>
-          <div *ngIf="x.nom.errors.pattern">Invalid Last Name </div>
-          <div *ngIf="x.nom.errors.minlength">Last Name  must contain two characters at least</div>
+          <div *ngIf="x.prenom.errors.required">Prénom est obligatoire</div>
+          <div *ngIf="x.nom.errors.pattern">Prénom invalide</div>
+          <div *ngIf="x.nom.errors.minlength">Prénom doit contenir au moins 2 caractères</div>
         </div>
         <i class="la la-users"></i>
       </div>
 
 
       <div class="cfield">
-        <input type="text" placeholder="Adress"  formControlName="adresse"  [ngClass]="{ 'is-invalid': x.adresse.touched && x.adresse.errors }" />
+        <input type="text" placeholder="Adresse"  formControlName="adresse"  [ngClass]="{ 'is-invalid': x.adresse.touched && x.adresse.errors }" />
         <div *ngIf="x.adresse.touched && x.adresse.errors" class="invalid-feedback">
           <div *ngIf="x.adresse.errors.required">adresseis required</div>
-          <div *ngIf="x.adresse.errors.minlength">Adresse  must contain ten characters at least</div>
+          <div *ngIf="x.adresse.errors.minlength">Adresse  must contain 5 characters at least</div>
 
         </div>
         <i class="la la-map-marker"></i>
@@ -240,17 +240,17 @@
       <div class="cfield">
         <input type="text" placeholder="Description"  formControlName="description"  [ngClass]="{ 'is-invalid': x.description.touched && x.description.errors }" />
         <div *ngIf="x.description.touched && x.description.errors" class="invalid-feedback">
-          <div *ngIf="x.description.errors.required">description is required</div>
-          <div *ngIf="x.description.errors.minlength">description must contain 30 characters at least</div>
+          <div *ngIf="x.description.errors.required">Description est obligatoire</div>
+          <div *ngIf="x.description.errors.minlength">description must contain 10 characters at least</div>
 
         </div>
         <i class="la la-bars"></i>
       </div>
 
       <div class="cfield">
-        <input type="text" placeholder="Web Site"  formControlName="siteWeb"  [ngClass]="{ 'is-invalid': x.siteWeb.touched && x.siteWeb.errors }" />
+        <input type="text" placeholder="Site Web"  formControlName="siteWeb"  [ngClass]="{ 'is-invalid': x.siteWeb.touched && x.siteWeb.errors }" />
         <div *ngIf="x.siteWeb.touched && x.siteWeb.errors" class="invalid-feedback">
-          <div *ngIf="x.siteWeb.errors.required">Web Site is required</div>
+          <div *ngIf="x.siteWeb.errors.required">Site Web est obligatoire</div>
           <div *ngIf="x.siteWeb.errors.minlength">Site must contain 30 characters at least</div>
 
         </div>
@@ -263,9 +263,9 @@
       </div>
 
       <div class="cfield">
-        <input type="text" placeholder="Phone Number"  formControlName="telephone"  [ngClass]="{ 'is-invalid': x.telephone.touched && x.telephone.errors }" />
+        <input type="text" placeholder="Télephone"  formControlName="telephone"  [ngClass]="{ 'is-invalid': x.telephone.touched && x.telephone.errors }" />
         <div *ngIf="x.telephone.touched && x.telephone.errors" class="invalid-feedback">
-          <div *ngIf="x.telephone.errors.required">Phone Number is required</div>
+          <div *ngIf="x.telephone.errors.required">Numéro télephone est obligatoire</div>
           <div *ngIf="x.telephone.errors.pattern">Invalid Phone Number </div>
           <div *ngIf="x.telephone.errors.minlength">Phone Number  must contain two characters at least</div>
         </div>
@@ -275,27 +275,27 @@
       <div class="cfield">
         <input type="text" placeholder="Email" formControlName="email"  [ngClass]="{ 'is-invalid': x.email.touched  && x.email.errors }" />
         <div *ngIf="x.email.touched && x.email.errors" class="invalid-feedback">
-          <div *ngIf="x.email.errors.required">Email is required</div>
+          <div *ngIf="x.email.errors.required">Email est obligatoire</div>
           <div *ngIf="x.email.errors.email">Email est incorrect</div>
         </div>
         <i class="la la-envelope-o"></i>
       </div>
 
       <div class="cfield">
-        <input [type]="getType()" placeholder="Password"  formControlName="password" [ngClass]="{ 'is-invalid': submitted && x.password.errors }" />
+        <input [type]="getType()" placeholder="Mot de passe"  formControlName="password" [ngClass]="{ 'is-invalid': submitted && x.password.errors }" />
 
         <div *ngIf="submitted && x.password.errors" class="invalid-feedback">
-          <div *ngIf="x.password.errors.required">Password is required</div>
+          <div *ngIf="x.password.errors.required">Mot de passe est obligatoire</div>
           <div *ngIf="x.password.errors.minlength">Password must be at least 6 characters</div>
         </div>
         <i class="la la-eye" (click)="toggleTextPassword()"></i>
       </div>
 
       <div class="cfield">
-        <input [type]="getType()" placeholder="Confirm Password" formControlName="confirmpassword" [ngClass]="{ 'is-invalid': submitted && x.confirmpassword.errors }" />
+        <input [type]="getType()" placeholder="Confirm mot de passe" formControlName="confirmpassword" [ngClass]="{ 'is-invalid': submitted && x.confirmpassword.errors }" />
         <div *ngIf="submitted && f.confirmpassword.errors" class="invalid-feedback">
-          <div *ngIf="x.confirmpassword.errors.required">Confirm Password est incorrect</div>
-        <div *ngIf="x.confirmpassword.errors.mustMatch">Passwords must match</div>
+          <div *ngIf="x.confirmpassword.errors.required">Confirm Mot de passe est incorrect</div>
+        <div *ngIf="x.confirmpassword.errors.mustMatch">Mot de passe doit correspondre</div>
         </div>
         <i class="la la-eye" (click)="toggleTextPassword()"></i>
       </div>
@@ -314,19 +314,19 @@
           <div class="cfield">
             <input type="text" placeholder="Username"  formControlName="username" [ngClass]="{ 'is-invalid': v.username.touched && v.username.errors }" />
             <div *ngIf="v.username.touched && v.username.errors" class="invalid-feedback">
-              <div *ngIf="v.username.errors.required">username is required</div>
-              <div *ngIf="v.username.errors.pattern">Invalid username</div>
-              <div *ngIf="v.username.errors.minlength">username must contain two characters at least</div>
+              <div *ngIf="v.username.errors.required">le nom d'utilisateur est obligatoire</div>
+              <div *ngIf="v.username.errors.pattern">Nom d'utilisateur invalide</div>
+              <div *ngIf="v.username.errors.minlength">le nom d'utilisateur doit contenir au moins 2 caractères</div>
             </div>
             <i class="la la-user-times"></i>
           </div>
 
           <div class="cfield">
-            <input type="text" placeholder="First Name"  formControlName="nom" [ngClass]="{ 'is-invalid': v.nom.touched  && v.nom.errors }" />
+            <input type="text" placeholder="Nom"  formControlName="nom" [ngClass]="{ 'is-invalid': v.nom.touched  && v.nom.errors }" />
             <div *ngIf="v.nom.touched && v.nom.errors" class="invalid-feedback">
-              <div *ngIf="v.nom.errors.required">name is required</div>
-              <div *ngIf="v.nom.errors.pattern">Invalid name</div>
-              <div *ngIf="v.nom.errors.minlength">name must contain two characters at least</div>
+              <div *ngIf="v.nom.errors.required">Nom est obligatoire</div>
+              <div *ngIf="v.nom.errors.pattern">nom invalide</div>
+              <div *ngIf="v.nom.errors.minlength">nom doit contenir au moins 2 caractères</div>
 
 
             </div>
@@ -334,21 +334,21 @@
           </div>
 
           <div class="cfield">
-            <input type="text" placeholder="Last Name"  formControlName="prenom" lass="form-control" [ngClass]="{ 'is-invalid': v.prenom.touched && v.prenom.errors }" />
+            <input type="text" placeholder="Prénom"  formControlName="prenom" lass="form-control" [ngClass]="{ 'is-invalid': v.prenom.touched && v.prenom.errors }" />
             <div *ngIf="v.prenom.touched && v.prenom.errors" class="invalid-feedback">
-              <div *ngIf="v.prenom.errors.required">Last Name est incorrect</div>
-              <div *ngIf="v.prenom.errors.pattern">Invalid Last Name </div>
-              <div *ngIf="v.prenom.errors.minlength">Last Name  must contain two characters at least</div>
+              <div *ngIf="v.prenom.errors.required">Prénom est obligatoire</div>
+              <div *ngIf="v.prenom.errors.pattern">Prénom invalide</div>
+              <div *ngIf="v.prenom.errors.minlength">Prénom doit contenir au moins 2 caractères</div>
             </div>
             <i class="la la-users"></i>
           </div>
 
 
           <div class="cfield">
-            <input type="text" placeholder="Adress"  formControlName="adresse"  [ngClass]="{ 'is-invalid': v.adresse.touched && v.adresse.errors }" />
+            <input type="text" placeholder="Adresse"  formControlName="adresse"  [ngClass]="{ 'is-invalid': v.adresse.touched && v.adresse.errors }" />
             <div *ngIf="v.adresse.touched && v.adresse.errors" class="invalid-feedback">
               <div *ngIf="v.adresse.errors.required">adresseis required</div>
-              <div *ngIf="v.adresse.errors.minlength">Adresse  must contain ten characters at least</div>
+              <div *ngIf="v.adresse.errors.minlength">Adresse doit contenir au moins 5 caractères</div>
 
             </div>
             <i class="la la-map-marker"></i>
@@ -357,17 +357,17 @@
           <div class="cfield">
             <input type="text" placeholder="Description"  formControlName="description"  [ngClass]="{ 'is-invalid': v.description.touched && v.description.errors }" />
             <div *ngIf="v.description.touched && v.description.errors" class="invalid-feedback">
-              <div *ngIf="v.description.errors.required">description is required</div>
-              <div *ngIf="v.description.errors.minlength">description must contain 30 characters at least</div>
+              <div *ngIf="v.description.errors.required">Description est obligatoire</div>
+              <div *ngIf="v.description.errors.minlength">Description doit contenir au moins 10 caractères</div>
 
             </div>
             <i class="la la-bars"></i>
           </div>
 
           <div class="cfield">
-            <input type="text" placeholder="Web Site"  formControlName="siteWeb"  [ngClass]="{ 'is-invalid': v.siteWeb.touched && v.siteWeb.errors }" />
+            <input type="text" placeholder="Site Web"  formControlName="siteWeb"  [ngClass]="{ 'is-invalid': v.siteWeb.touched && v.siteWeb.errors }" />
             <div *ngIf="v.siteWeb.touched && v.siteWeb.errors" class="invalid-feedback">
-              <div *ngIf="v.siteWeb.errors.required">Web Site is required</div>
+              <div *ngIf="v.siteWeb.errors.required">Site Web est obligatoire</div>
 
             </div>
             <i class="la la-user"></i>
@@ -380,7 +380,7 @@
           <div class="cfield">
             <input type="text" placeholder="Phone Number"  formControlName="telephone"  [ngClass]="{ 'is-invalid': v.telephone.touched && v.telephone.errors }" />
             <div *ngIf="v.telephone.touched && v.telephone.errors" class="invalid-feedback">
-              <div *ngIf="v.telephone.errors.required">Phone Number is required</div>
+              <div *ngIf="v.telephone.errors.required">Numéro télephone est obligatoire</div>
               <div *ngIf="v.telephone.errors.pattern">Invalid Phone Number </div>
               <div *ngIf="v.telephone.errors.minlength">Phone Number  must contain two characters at least</div>
             </div>
@@ -390,27 +390,27 @@
           <div class="cfield">
             <input type="text" placeholder="Email" formControlName="email"  [ngClass]="{ 'is-invalid': v.email.touched && v.email.errors }" />
             <div *ngIf="v.email.touched && v.email.errors" class="invalid-feedback">
-              <div *ngIf="v.email.errors.required">Email is required</div>
+              <div *ngIf="v.email.errors.required">Email est obligatoire</div>
               <div *ngIf="v.email.errors.email">Email est incorrect</div>
             </div>
             <i class="la la-envelope-o"></i>
           </div>
 
           <div class="cfield">
-            <input [type]="getType()" placeholder="Password"  formControlName="password" [ngClass]="{ 'is-invalid': submitted && v.password.errors }" />
+            <input [type]="getType()" placeholder="Mot de passe"  formControlName="password" [ngClass]="{ 'is-invalid': submitted && v.password.errors }" />
     
             <div *ngIf="submitted && v.password.errors" class="invalid-feedback">
-              <div *ngIf="v.password.errors.required">Password is required</div>
-              <div *ngIf="v.password.errors.minlength">Password must be at least 6 characters</div>
+              <div *ngIf="v.password.errors.required">Mot de passe est obligatoire</div>
+              <div *ngIf="v.password.errors.minlength">Mot de passe doit contenir au moins 10 caractères</div>
             </div>
             <i class="la la-eye" (click)="toggleTextPassword()"></i>
           </div>
     
           <div class="cfield">
-            <input [type]="getType()" placeholder="Confirm Password" formControlName="confirmpassword" [ngClass]="{ 'is-invalid': submitted && v.confirmpassword.errors }" />
+            <input [type]="getType()" placeholder="Confirm Mot de passe" formControlName="confirmpassword" [ngClass]="{ 'is-invalid': submitted && v.confirmpassword.errors }" />
             <div *ngIf="submitted && v.confirmpassword.errors" class="invalid-feedback">
-              <div *ngIf="v.confirmpassword.errors.required">Confirm Password est incorrect</div>
-            <div *ngIf="v.confirmpassword.errors.mustMatch">Passwords must match</div>
+              <div *ngIf="v.confirmpassword.errors.required">Confirm Mot de passe est incorrect</div>
+            <div *ngIf="v.confirmpassword.errors.mustMatch"> Mot de passe doit correspondre</div>
             </div>
             <i class="la la-eye" (click)="toggleTextPassword()"></i>
           </div>
@@ -453,7 +453,7 @@
     <div class="cfield">
       <input type="text" placeholder="description"  formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
       <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
-        <div *ngIf="f.description.errors.required">description is required</div>
+        <div *ngIf="f.description.errors.required">Description est obligatoire</div>
       </div>
       <i class="la la-bars"></i>
     </div>

@@ -8,6 +8,7 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
 import {UtilisateurService} from '../../services/utilisateur.service';
 import {AuthentificationService} from '../../services/authentification.service';
 import { CounterService } from 'src/app/services/counter.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -33,7 +34,7 @@ export class NavbarComponent implements OnInit {
   choix = 'candidat';
 listfavoriebycandidat;
   constructor(private responsableCentreService: ResponsableCentreService, private modalService: BsModalService,
-              private candudatservice: CandidatService,
+              private candudatservice: CandidatService, private router: Router,
               private formBuilder: FormBuilder, private authenService: AuthentificationService,
               private responsabelSocietyService: ResponsabelSocietyService,private counterService: CounterService) {
     if (localStorage.getItem('connecte') === 'true') {
@@ -118,7 +119,8 @@ getfavoriebycandidat(){
     localStorage.setItem('connecte', 'false');
     localStorage.removeItem('iduser');
     localStorage.removeItem('role');
-    window.location.reload();
+    this.router.navigate(['']);
+    //window.location.reload();
   }
 
   choisircandiat() {

@@ -1,3 +1,4 @@
+
 <section>
     <div class="block no-padding">
         <div class="container fluid">
@@ -5,11 +6,8 @@
                 <div class="col-lg-12">
                     <div class="main-featured-sec">
                         <ul class="main-slider-sec text-arrows">
-                            <button type="button"  class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;">Previous</button>
                             <li class="slideHome"><img src="/assets/images/resource/mslider3.jpg" alt="" /></li>
-                            <li class="slideHome"><img src="/assets/images/resource/mslider2.jpg" alt="" /></li>
-                            <li class="slideHome"><img src="/assets/images/resource/mslider1.jpg" alt="" /></li>
-                        </ul>
+                         </ul>
                         <div class="job-search-sec">
                             <div class="job-search">
                                 <h3>Le moyen le plus simple d'obtenir votre nouvel emploi</h3>
@@ -18,20 +16,23 @@
                                     <div class="row">
                                         <div class="col-lg-7 col-md-5 col-sm-12 col-xs-12">
                                             <div class="job-field">
-                                                <input type="text"  placeholder="Job title, keywords or company name" />
+                                                <input type="text" [ngModelOptions]="{standalone: true}"  [(ngModel)]="term"   placeholder="Job title, keywords or company name" />
                                                 <i class="la la-keyboard-o"></i>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
                                             <div class="job-field">
-                                                <input type="text"  [(ngModel)]="term" placeholder="Job title, keywords or company name" />
-                                                <i class="la la-map-marker"></i>
+                                                <input type="text" [ngModelOptions]="{standalone: true}"  [(ngModel)]="term1"  placeholder="Job title, keywords or company name" />
+                                                <i class="la la-map-marker"></i>   
                                             </div>
-
+                                         
 
                                         </div>
                                         <div class="col-lg-1 col-md-2 col-sm-12 col-xs-12">
-                                            <button type="submit"><i class="la la-search"></i></button>
+                                            <button *ngIf="term" routerLink='offre/{{term}}' type="submit"><i class="la la-search"></i></button>
+                                       
+                                            <button *ngIf="term1" routerLink='offre/{{term1}}' type="submit"><i class="la la-search"></i></button>
+                                    
                                         </div>
                                     </div>
                                 </form>

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 import { CandidatService } from 'src/app/services/candidat.service';
 import {TravailleService} from '../../services/travaille.service';
 
@@ -9,13 +11,19 @@ import {TravailleService} from '../../services/travaille.service';
 })
 export class TravailleComponent implements OnInit {
 
+  roleuser;
+  prenomuser;
+  nomuser;
+  userconnectee;
   termTravaille;
   listtravaille;
   p=1;
-  constructor(private travailleservice: TravailleService,private candidatservice:CandidatService) { }
+  constructor(private router: Router, private authservice: AuthentificationService,private travailleservice: TravailleService,private candidatservice:CandidatService) { }
 
   ngOnInit() {
     this.all();
+    this.roleuser=localStorage.getItem('role');
+   // this.getprofile()
   }
   addfavorie(idoffer){
     this.candidatservice.addfavorie({},idoffer,localStorage.getItem('iduser')).subscribe(res=>{
@@ -31,4 +39,16 @@ export class TravailleComponent implements OnInit {
     });
 
   }
+
+  /*getprofile() {
+    this.authservice.getprofile().subscribe(res => {
+      console.log(res);
+      this.userconnectee = res;
+      localStorage.setItem('iduser', this.userconnectee.id)
+      this.nomuser=res['nom'];
+      this.prenomuser=res['prenom'];
+   
+  
+    })
+  }*/
 }

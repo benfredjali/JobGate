@@ -44,8 +44,8 @@
 						</div><!-- Job Head -->
 					    </div>
 				 					<div class="col-lg-4">
-				 						<a [hidden]="roleuser==='ResponsableCentre'" class="apply-thisjob" href="#" title=""><i class="la la-paper-plane"></i>Apply for job</a>
-										 <a [hidden]="roleuser==='Candidat'"  routerLink="/formation/update/{{formation.id}}" class="apply-thisjob" href="#" title=""><i class="la la-paper-plane"></i>Modifier Votre Formation</a>
+				 						<a  [hidden]="roleuser ==='ResponsableCentre'" class="apply-thisjob" href="#" title=""><i class="la la-paper-plane"></i>Apply for job</a>
+										 <a  [hidden]="roleuser ==='Candidat'"  routerLink="/formation/update/{{formation.id}}" class="apply-thisjob" href="#" title=""><i class="la la-paper-plane"></i>Modifier Votre Formation</a>
 				 					</div>
 				 				</div>
 				 			</div>
@@ -68,7 +68,7 @@
 											 	<div class="job-listings-sec no-border">
 													<div class="job-listing wtabs"  *ngFor="let comentaire of listcommentaire  | paginate: { itemsPerPage: 9, currentPage: p }">
 														<div class="job-title-sec">
-															<div class="c-logo"> <img src="http://localhost:8080/upload/files/{{comentaire.candidat.photo}}" alt="" /> </div>
+															<div class="c-logo"> <img src="http://localhost:8080/upload/files/{{comentaire.candidat.logo}}" alt="" /> </div>
 															<h3><a href="#" title="">{{comentaire.candidat.nom}} &nbsp;{{comentaire.candidat.prenom}}</a></h3>
 															
 															<div class="job-lctn"><i class="la la-map-marker"></i>{{comentaire.candidat.adresse}}</div>
@@ -83,6 +83,25 @@
 														</div>
 													</div>
 													
+												</div>
+
+												<div class="comment-sec">
+													<h3>{{listcommentaire.length}} Commentaires</h3>
+													<ul>
+														
+														<li>
+															<div class="comment" *ngFor="let comentaire of listcommentaire  | paginate: { itemsPerPage: 9, currentPage: p }">
+																<div class="comment-avatar"> <img img src="http://localhost:8080/upload/files/{{comentaire.candidat.logo}}" alt="" /> </div>
+																<div class="comment-detail">
+																	<h3>{{comentaire.candidat.nom}} &nbsp;{{comentaire.candidat.prenom}}</h3>
+																	<div class="date-comment"><a href="#" title=""><i class="la la-calendar-o"></i>{{comentaire.date | date:'M/d/yy, h:mm a'}} am</a></div>
+																	<p>{{comentaire.description}} </p>
+																	<a href="#" title=""><i class="la la-reply"></i>Reply</a>
+																</div>
+															</div>
+														</li>
+														
+													</ul>
 												</div>
 												<div class="job-listing wtabs">
 													<div class="job-title-sec">

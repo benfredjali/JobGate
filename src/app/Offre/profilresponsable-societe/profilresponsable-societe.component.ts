@@ -119,6 +119,13 @@ export class ProfilresponsableSocieteComponent implements OnInit {
      
   
   edit() {
+    // if(this.role==='rs'){
+      
+    // }
+    // elseif(this.role=='rc'){
+      
+
+    // }
       let data =this.updateUserForm.value;
      /* {
         nom : this.candidat.nom,                     

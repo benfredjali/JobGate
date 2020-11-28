@@ -10,7 +10,7 @@ export class TravailleService {
   constructor(private http: HttpClient) {
 
   }
-  postuler(idcandidat,idoffer,data){
+  postuler(idoffer,idcandidat,data){
     return this.http.post(environment.url+'postuler/add/'+idoffer+'/'+idcandidat,data);
   }
   getall() {

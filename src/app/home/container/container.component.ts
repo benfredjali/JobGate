@@ -10,6 +10,7 @@ import { OffreService } from 'src/app/services/offre.service';
 export class ContainerComponent implements OnInit {
 
   term;
+  term1;
   listannonce;
 
 

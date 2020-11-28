@@ -36,6 +36,7 @@ import { TravaildetailComponent } from './Offre/travaildetail/travaildetail.comp
 import {NgxPaginationModule} from 'ngx-pagination';
 import { ProfilresponsableCentreComponent } from './formation/profilresponsable-centre/profilresponsable-centre.component';
 import { ProfilresponsableSocieteComponent } from './Offre/profilresponsable-societe/profilresponsable-societe.component';
+import { OffrebyadreeseComponent } from './Offre/offrebyadreese/offrebyadreese.component';
 
 
 
@@ -68,7 +69,8 @@ import { ProfilresponsableSocieteComponent } from './Offre/profilresponsable-soc
     StagedetailComponent,
     TravaildetailComponent,
     ProfilresponsableCentreComponent,
-    ProfilresponsableSocieteComponent
+    ProfilresponsableSocieteComponent,
+    OffrebyadreeseComponent
     
   ],
   imports: [

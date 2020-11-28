@@ -20,6 +20,7 @@ import { StagedetailComponent } from './Offre/stagedetail/stagedetail.component'
 import { TravaildetailComponent } from './Offre/travaildetail/travaildetail.component';
 import { ProfilresponsableCentreComponent } from './formation/profilresponsable-centre/profilresponsable-centre.component';
 import { ProfilresponsableSocieteComponent } from './Offre/profilresponsable-societe/profilresponsable-societe.component';
+import { OffrebyadreeseComponent } from './Offre/offrebyadreese/offrebyadreese.component';
 
 
 
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path:'formation/candidat', component:CandidatComponent},
   {path:'erreur', component:Erreur404Component},
   {path:'offre/employers', component:EmployersComponent},
+  {path:'offre/:adresse',component:OffrebyadreeseComponent},
   {path:'stage', component:StageComponent},
   {path:'stage/:id', component:StagedetailComponent},
   {path:'sajouter', component:AjouterStageComponent},
@@ -44,7 +46,7 @@ const routes: Routes = [
   {path:'travaille/:id', component:TravaildetailComponent},
   {path:'tajouter', component:AjouterTravailleComponent},
   {path:'candidat/profil', component:ProfilComponent},
-  {path:'candidat/list', component:ListComponent},
+  {path:'candidatlist', component:ListComponent},
   {path:'favorielist', component:FavorieslistComponent},
   {path:'pcentre', component:ProfilresponsableCentreComponent},
   {path:'psociete', component:ProfilresponsableSocieteComponent},

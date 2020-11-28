@@ -70,13 +70,22 @@ export class HomeComponent implements OnInit {
       ])),
       username: new FormControl('',Validators.compose([
         Validators.required,
-        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+        Validators.minLength(2)
       ])),
-      adresse: ['', Validators.required],
+      adresse: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.minLength(2)
+      ])),
       dateNaiss: ['', Validators.required],
-      niveauEtude: ['', Validators.required],
+      niveauEtude: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.minLength(2)
+      ])),
       compteLinkedin: ['', Validators.required],
-      description: ['', Validators.required],
+      description: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.minLength(10)
+      ])),
 
       //siteWeb: ['', Validators.required],
       telephone: new FormControl('',Validators.compose([
@@ -103,20 +112,18 @@ export class HomeComponent implements OnInit {
         Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
       ])),
       prenom: new FormControl('',Validators.compose([
-        Validators.required,
-        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+        Validators.required
       ])),
       username: new FormControl('',Validators.compose([
         Validators.required,
-        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+        Validators.minLength(2)
       ])),
       adresse: new FormControl('',Validators.compose([
-        Validators.required,
-        Validators.pattern("[a-z .'-]+"),Validators.minLength(5)
+        Validators.required,Validators.minLength(5)
       ])),
       description: new FormControl('',Validators.compose([
         Validators.required,
-        Validators.pattern("[a-z .'-]+"),Validators.minLength(5)
+        Validators.minLength(10)
       ])),
       siteWeb: new FormControl('',Validators.compose([
          Validators.required,
@@ -145,15 +152,15 @@ export class HomeComponent implements OnInit {
       ])),
       username: new FormControl('',Validators.compose([
         Validators.required,
-        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+        Validators.minLength(2)
       ])),
       adresse: new FormControl('',Validators.compose([
         Validators.required,
-        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(5)
+        Validators.minLength(5)
       ])),
       description: new FormControl('',Validators.compose([
         Validators.required,
-        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(5)
+        Validators.minLength(10)
       ])),
       siteWeb: ['', Validators.required],
 
@@ -248,20 +255,29 @@ this.reset();
         console.log(rest)   
       })
       console.log(result);
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Inscription avec succées',
+        showConfirmButton: false,
+        timer: 4000
+      })
+      window.location.reload();
+      this.registerCandidatForm.reset();
+    }
+    
+    , error2 => {
 
 
-    });
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Inscription avec succées',
-      showConfirmButton: false,
-      timer: 4000
-    })
-    window.location.reload();
-    this.registerCandidatForm.reset();
-
-
+      Swal.fire(
+        'OPPs',
+        'Vérifier vos coordonnées:)',
+        'error'
+      );
+    }
+    
+    );
+    
 
   }
 
@@ -295,21 +311,31 @@ this.reset();
     this.responsabelSocietyService.register(data).subscribe(result => {
       this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
         console.log(rest)
-      });
+      })
       console.log("resultsaversoc",result);
-
-    });
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Inscription avec succées',
-      showConfirmButton: false,
-      timer: 4000
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Inscription avec succées',
+        showConfirmButton: false,
+        timer: 4000
+      
     })
-  
-   window.location.reload();
-    this.registerSocieteForm.reset();
+    window.location.reload();
+    this.registerCandidatForm.reset();  
+  }
+     , error2 => {
 
+
+      Swal.fire(
+        'OPPs',
+        'Vérifier vos coordonnées:)',
+        'error'
+      );
+    }
+     
+    );
+  
   }
 
 
@@ -341,29 +367,26 @@ this.reset();
     this.responsableCentreService.register(data).subscribe(result => {
     this.imageservice.uploadFile(this.filesToUpload[0]).subscribe(rest => {
         console.log(rest)
-        this.toastr.success('successful registration', 'Toastr fun!', {timeOut: 5000});
 
-     
-      });
-      this.toastr.success('successful registration', 'Toastr fun!', {timeOut: 5000});
-
+      })
       console.log(result);
-    
-    });
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Inscription avec succées',
-      showConfirmButton: true,
-      timer: 5000
-    })
-
-    
-   window.location.reload();
-  this.registerCentreForm.reset(); 
-
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Inscription avec succées',
+        showConfirmButton: false,
+        timer: 4000
+      })
+      window.location.reload();
+      this.registerCandidatForm.reset();
+    }, error2 => {
+      Swal.fire(
+        'OPPs',
+        'Vérifier vos coordonnées:)',
+        'error'
+      );}  
+    );
   }
-
 
 
   public toggleTextPassword(): void {
@@ -440,7 +463,7 @@ this.reset();
   recuperFile(file) {
     this.filesToUpload = file.target.files;
 console.log(this.filesToUpload);
-    //this.photo = file.target.files[0]['name'];
+   
     this.logo= file.target.files[0]['name'];
   }
 }

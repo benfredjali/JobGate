@@ -48,8 +48,8 @@
             <div class="row" >
 
 
-              <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" *ngFor=" let e of listformation | paginate: { itemsPerPage: 9, currentPage: p }">
-                <div class="job-grid border">
+              <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12" *ngFor=" let e of listformation | paginate: { itemsPerPage: 9, currentPage: p };let i=index">
+                <div class="job-grid border" *ngIf="i<3">
                   <div class="job-title-sec">
                     <div class="c-logo"> <img src="/assets/images/resource/jg1.png" alt="" /> </div>
                     <h3><a href="#" title="">Web Designer / Developer</a></h3>

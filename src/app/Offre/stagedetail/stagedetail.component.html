@@ -59,9 +59,9 @@
                              <p><i class="la la-phone"></i> {{stage?.responsableSociete?.telephone}}</p>
                              <p><i class="la la-envelope-o"></i>
                                  <a href="https://grandetest.com/cdn-cgi/l/email-protection" 
-                                 class="__cf_email__" data-cfemail="b0d1dcd99ec4c5d6d1def0dadfd2d8c5dec49ed3dfdd">{{stage.responsableSociete.email}}</a></p>
+                                 class="__cf_email__" data-cfemail="b0d1dcd99ec4c5d6d1def0dadfd2d8c5dec49ed3dfdd">{{stage?.responsableSociete?.email}}</a></p>
                          </div>
-                          <div [hidden]="!affichcvinput"><input  type="file" class="form-control" (change)="handleFileInput($event.target.files)" />
+                          <div [hidden]="affichcvinput"><input  type="file" class="form-control" (change)="handleFileInput($event.target.files)" />
                         </div>  
                           <a (click)="postuler()"  class="apply-job-btn"><i class="la la-paper-plane"></i>Apply for job</a>
                     
