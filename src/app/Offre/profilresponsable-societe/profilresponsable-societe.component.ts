@@ -44,7 +44,7 @@ export class ProfilresponsableSocieteComponent implements OnInit {
       ])),
       username: new FormControl('',Validators.compose([
         Validators.required,
-        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+        Validators.minLength(2)
       ])),
       adresse: ['', Validators.required],
   

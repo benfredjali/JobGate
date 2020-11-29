@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { Formation } from 'src/app/model/formation';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { FormationService } from 'src/app/services/Formation/formation.service';
 import { SecteurService } from 'src/app/services/Secteur/secteur.service';
@@ -12,21 +14,36 @@ import Swal from 'sweetalert2';
   styleUrls: ['./update.component.css']
 })
 export class UpdateComponent implements OnInit {
-  listsecteur;
+
+  listsecteur
   listFormation;
   submitted = false;
   UpdateFormationForm: FormGroup;
   userconnectee;
   idformation;
+  idsecteur;
+  user;
+  nomuser;
+  prenomuser;
+  niveauEtude; compteLinkedin; logo;
+iduser;
+
+  telephone;
+  email;
+  formation;
+  id;
+
  
   constructor(private activatedroute:ActivatedRoute,private formBuilder: FormBuilder,
     private formationservice: FormationService,
     private router: Router, private authservice: AuthentificationService,
-    private secteurservice: SecteurService) {
+    private secteurservice: SecteurService ,private toastr: ToastrService) {
 
          
   console.log(this.activatedroute.params)
   this.idformation=this.activatedroute.params['_value']['id'] 
+  this.getbyid(this.idformation)
+  
      }
 
   ngOnInit(): void {
@@ -40,11 +57,13 @@ export class UpdateComponent implements OnInit {
       duree: ['', Validators.required],
       nombre: ['', Validators.required],
       prix: ['', Validators.required],
+      adresse: ['', Validators.required],
       description: ['', Validators.required],
 
 
     });
     this.all();
+    this.getprofile();
   }
   get f() {
     return this.UpdateFormationForm.controls;
@@ -62,43 +81,64 @@ export class UpdateComponent implements OnInit {
   }
 
   
-  getone(id){
-    this.formationservice.getbyid(id).subscribe(res=>{
+  getone(idformation){
+    this.formationservice.getbyid(idformation).subscribe(res=>{
       this.listFormation=res
       console.log(res)
     })
-}
-
-    
-    edit() {
-    this.submitted = true;
-    console.log(this.UpdateFormationForm.value);
-    // stop here if form is invalid
-    if (this.UpdateFormationForm.invalid) {
-      return;
-    }
-
-    this.formationservice.Modifier(this.idformation.value, localStorage.getItem('iduser'), this.idformation.value.idsecteur).subscribe(result => {
-      console.log(result);
-
-    
-    });
-    Swal.fire({
-      position: 'top-end',
-      icon: 'success',
-      title: 'Modifié avec Succees',
-      showConfirmButton: false,
-      timer: 1500
-    })
-    this.submitted = false;
-    this.UpdateFormationForm.reset();
 
   }
-  getprofile() {
-    this.authservice.getprofile().subscribe(res => {
+
+  getbyid(id){
+    this.formationservice.getbyid(id).subscribe(res=>{
+      console.log(res)
+  this.formation=res;
+  this.UpdateFormationForm.patchValue({
+      idsecteur : this.formation.idsecteur,                     
+      titre:this.formation.titre,  
+      date_deb:this.formation.date_deb,
+      date_fin:this.formation.date_fin,
+      duree:this.formation.duree,
+      nombre:this.formation.nombre,
+      prix:this.formation.prix,
+      adresse:this.formation.adresse,
+      description:this.formation.description,
+  
+  })
+    })
+  }
+
+
+
+    
+     
+  
+  edit() {
+    let data =this.UpdateFormationForm.value;
+ 
+  console.log(data)
+ 
+    this.formationservice.modifier(this.UpdateFormationForm.value.idsecteur,localStorage.getItem('iduser'),data).subscribe(res=>{
+     
+          console.log(res);
+          this.toastr.success(' Formation Modifié  !', 'Merci!', { timeOut: 3000, });
+
+     
+    })
+
+  }
+  getprofile(){
+    this.authservice.getprofile().subscribe(res=>{
       console.log(res);
-      this.userconnectee = res;
-      localStorage.setItem('iduser', this.userconnectee.id)
-    })
-  }
+      this.user=res;
+      localStorage.setItem('iduser',this.user['id']);
+      this.nomuser=res['nom'];
+      this.prenomuser=res['prenom'];
+      this.niveauEtude=res['niveauEtude'];
+      this.compteLinkedin=res['compteLinkedin'];
+      this.telephone=res['telephone'];
+      this.email=res['email'];
+      this.logo=res['logo'];
+    
+    })}
 }

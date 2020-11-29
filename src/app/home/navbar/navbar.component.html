@@ -136,7 +136,7 @@
                 <a href="index.html" title=""><img class="hidesticky" src="/assets/images/resource/logo.png" alt="" /><img class="showsticky" src="/assets/images/resource/logo10.png" alt="" /></a>
             </div><!-- Logo -->
             <div class="btn-extars">
-                <a [hidden]="roleuser==='Candidat'" routerLink="tajouter" title="" class="post-job-btn"><i class="la la-plus"></i>Ajouter Jobs</a>
+                <a *ngIf="roleuser==='ResponsableSociete'" routerLink="tajouter" title="" class="post-job-btn"><i class="la la-plus"></i>Ajouter Jobs</a>
 				<a *ngIf="roleuser==='ResponsableCentre'" routerLink="fajouter" title="" class="post-job-btn"><i class="la la-plus"></i>Ajouter Formation</a>
 
 				<ul class="account-btns" [hidden]="ison">
@@ -191,10 +191,7 @@
                     </li>
                     <li class="menu-item-has-children">
                         <a href="#"  routerLink="/formation" title="">Formation</a>
-                        <ul>
-                            <li><a href="" routerLink="/formation/candidat"  title="">Candidat</a></li>  
-                          </ul>
-
+                       
                     </li>
                     <li class="menu-item-has-children">
                         <a href="#" title="">Contact</a>
