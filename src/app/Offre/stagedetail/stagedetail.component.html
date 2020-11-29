@@ -1,6 +1,6 @@
 <section class="overlape">
     <div class="block no-padding">
-        <div data-velocity="-.1" style="background: url(images/resource/mslider1.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+        <div data-velocity="-.1" style="background: url(/assets/images/resource/mslider1.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
         <div class="container fluid">
             <div class="row">
                 <div class="col-lg-12">
@@ -23,15 +23,16 @@
                              <div class="job-title2"><h3>{{stage.technologie}}</h3><span class="job-is ft">{{stage.type}}</span><i class="la la-heart-o"></i></div>
                              <ul class="tags-jobs">
                                  <li><i class="la la-map-marker"></i> {{stage.adresse}}</li>
-                                 <li><i class="la la-money"></i> Monthly Salary : <span>$3000 - $5000</span></li>
+                                 <li><i class="la la-money"></i> Monthly Salary : <span>{{stage.typeContrat}}</span></li>
                                  <li><i class="la la-calendar-o"></i> Post Date: {{stage.date_deb}}</li>
                              </ul>
-                             <span><strong>type</strong> : {{stage.typeStage}}</span>
+                             <span><strong>type</strong> : {{stage.type}}</span>
                          </div><!-- Job Head -->
                          <div class="job-details">
-                             <h3>Job Description</h3>
+                             <h3> Description</h3>
                              <p>{{stage.description}}</p>
-                        
+
+                        <p>Nécessité de soulever des charges pour l’épicerie et la participation aux leçons de natation. Le travail se déroulera dans la maison et la collectivité de la personne.</p>
                          </div>
                          <div class="job-overview">
                              <h3>Job Overview</h3>
@@ -44,14 +45,12 @@
                                  <li><i class="la la-line-chart "></i><h3>Qualification</h3><span>Bachelor Degree</span></li>
                              </ul>
                          </div><!-- Job Overview -->
-                         <div class="share-bar">
-                             <span>Share</span><a href="#" title="" class="share-fb"><i class="fa fa-facebook"></i></a><a href="#" title="" class="share-twitter"><i class="fa fa-twitter"></i></a>
-                         </div>
+                        
                      </div>
                  </div>
                  <div class="col-lg-4 column">
                      <div class="job-single-head style2">
-                         <div class="job-thumb"> <img src="images/resource/sjs.png" alt="" /> </div>
+                         <div class="job-thumb"> <img src="http://localhost:8080/upload/files/{{stage?.responsableSociete?.logo}}"  alt="" /> </div>
                          <div class="job-head-info">
                              <h4>{{stage.titre}}</h4>
                              <span>{{stage?.responsableSociete?.adresse}}</span>
@@ -61,9 +60,19 @@
                                  <a href="https://grandetest.com/cdn-cgi/l/email-protection" 
                                  class="__cf_email__" data-cfemail="b0d1dcd99ec4c5d6d1def0dadfd2d8c5dec49ed3dfdd">{{stage?.responsableSociete?.email}}</a></p>
                          </div>
-                          <div [hidden]="affichcvinput"><input  type="file" class="form-control" (change)="handleFileInput($event.target.files)" />
-                        </div>  
-                          <a (click)="postuler()"  class="apply-job-btn"><i class="la la-paper-plane"></i>Apply for job</a>
+                          <!-- <div [hidden]="affichcvinput"><input  type="file" class="form-control" (change)="handleFileInput($event.target.files)" />
+                        </div> -->
+                        
+                        <div class="uploadbox" style="margin-left: 80px;">
+                            <label for="file-upload" class="custom-file-upload">
+                                <i class="la la-cloud-upload"></i> <span>Choisir fichier</span>
+                            </label>
+                            <div> <input id="file-upload" style="display: none;" type="file" class="form-control" (change)="handleFileInput($event.target.files)" />
+                            </div>
+                            </div>
+                           
+                        
+                          <a (click)="postuler()" style="margin-top: 20px;" class="apply-job-btn"><i class="la la-paper-plane"></i>postuler a l'offre</a>
                     
                          <a routerLink='/stage' title="" class="viewall-jobs">View all Jobs</a>
                      </div><!-- Job Head -->

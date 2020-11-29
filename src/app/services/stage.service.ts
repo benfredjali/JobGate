@@ -17,6 +17,7 @@ export class StageService {
 {
   return this.http.get(environment.url+'stage/getone/'+id);
 }
+
   getall() {
 
     return this.http.get(environment.url + 'stage/all');

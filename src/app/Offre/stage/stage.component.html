@@ -136,11 +136,12 @@
                     <div class="job-lctn"><i class="la la-map-marker"></i>{{e?.responsableSociete?.adresse}}</div>
                   </div>
                   <div class="job-style-bx">
-                    <span class="job-is ft">Full time</span>
-                    <span routerLink='/stage/{{e.id}}' class="job-is ft">voir détail</span>
+                    <span class="job-is ft">{{e.type}}</span>
   
-                    <span (click)="addfavorie(e.id)" class="fav-job"><i  class="la la-heart-o"></i></span>
-                    <i>{{e.duree}}</i>
+                    <span (click)="addfavorie(e.id)" class="fav-job"><i  [hidden]="roleuser !=='Candidat'" class="la la-heart-o"></i></span>
+                    <i></i>
+
+                    <i><a routerLink='/stage/{{e.id}}'>voir détail</a></i>
                   </div>
                 </div>
   

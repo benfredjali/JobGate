@@ -44,9 +44,18 @@
 						</div><!-- Job Head -->
 					    </div>
 				 					<div class="col-lg-4">
-				 						<a  [hidden]="roleuser ==='ResponsableCentre'" class="apply-thisjob" href="#" title=""><i class="la la-paper-plane"></i>Apply for job</a>
-										 <a  [hidden]="roleuser ==='Candidat'"  routerLink="/formation/update/{{formation.id}}" class="apply-thisjob" href="#" title=""><i class="la la-paper-plane"></i>Modifier Votre Formation</a>
-				 					</div>
+										
+				 						<a (click)="postuler()" class="apply-thisjob"  ><i class="la la-paper-plane"></i>Envoyer</a>
+										<!-- <a  [hidden]="roleuser ==='Candidat'"  routerLink="/formation/update/{{formation.id}}" class="apply-thisjob" href="#" title=""><i class="la la-paper-plane"></i>Modifier Votre Formation</a> -->
+									
+									 <div class="uploadbox" style="margin-left: 100px; margin-top: 20px;">
+										<label for="file-upload" class="custom-file-upload">
+											<i class="la la-cloud-upload"></i> <span>Choisir CV </span>
+										</label>
+										<div> <input id="file-upload" style="display: none;" type="file" class="form-control" (change)="handleFileInput($event.target.files)" />
+										</div>
+										</div>
+									</div>		
 				 				</div>
 				 			</div>
 				 	<div class="job-wide-devider">
@@ -55,116 +64,101 @@
 								<div class="job-details">
 									<h3>Job Description</h3>
 									<p>{{formation?.description}}</p>
+									<p>Far much that one rank beheld bluebird after outside ignobly allegedly more when oh arrogantly vehement irresistibly fussy penguin insect additionally wow absolutely crud meretriciously hastily dalmatian a glowered inset one echidna cassowary some parrot and much as goodness some froze the sullen much connected bat wonderfully on instantaneously eel valiantly petted this along across highhandedly much. </p>
+
 												
 								</div>
-							 			
-							 			<div class="extra-job-info">
-								 			<span><i class="la la-clock-o"></i><strong>{{listcommentaire.length}}</strong> Comments</span>
-								 		
-								 		</div>
-								 		<div class="recent-jobs">
-							 				<h3>Listes des Commntaires:</h3>
-							 				<div class="job-list-modern">
-											 	<div class="job-listings-sec no-border">
-													<div class="job-listing wtabs"  *ngFor="let comentaire of listcommentaire  | paginate: { itemsPerPage: 9, currentPage: p }">
-														<div class="job-title-sec">
-															<div class="c-logo"> <img src="http://localhost:8080/upload/files/{{comentaire.candidat.logo}}" alt="" /> </div>
-															<h3><a href="#" title="">{{comentaire.candidat.nom}} &nbsp;{{comentaire.candidat.prenom}}</a></h3>
-															
-															<div class="job-lctn"><i class="la la-map-marker"></i>{{comentaire.candidat.adresse}}</div>
-														
-														
-															<h4>{{comentaire.description}}</h4>
-														</div>
-														<div class="job-style-bx">
-															
-															<span class="fav-job"><i class="la la-time-o"></i>	{{comentaire.date | date:'M/d/yy, h:mm a'}}</span>
+						
+						<div class="extra-job-info">
+							<span><i class="la la-clock-o"></i><strong>{{listcommentaire.length}}</strong> Comments</span>
+						
+						</div>
+						
+
+								<div class="comment-sec">
+									<h3>{{listcommentaire.length}} Commentaires</h3>
+									<ul>
+										
+										<li>
+											<div class="comment" *ngFor="let comentaire of listcommentaire  | paginate: { itemsPerPage: 9, currentPage: p }">
+												<div class="comment-avatar"> <img img src="http://localhost:8080/upload/files/{{comentaire.candidat.logo}}" alt="" /> </div>
+												<div class="comment-detail">
+													<h3>{{comentaire.candidat.nom}} &nbsp;{{comentaire.candidat.prenom}}	</h3>
+																										
+													<div class="date-comment"><a href="#" title=""><i class="la la-calendar-o"></i>{{comentaire.date | date:'M/d/yy, h:mm a'}} </a></div>
+													<p><i class="la la-map-marker"></i>{{comentaire.candidat.adresse}}</p>
+													<p>{{comentaire.description}} </p>
+													<a href="#" title=""><i class="la la-reply"></i>Reply</a>
+												</div>
+											</div>
+										</li>
+										
+									</ul>
+								</div>
+								<div class="commentform-sec">
+									<div class="jo">
+										<form [formGroup]="myForm" (ngSubmit)="savecommentaire()">
+											<div class="form-group">
+											
 												
-														</div>
-													</div>
-													
-												</div>
+											<div class="col-lg-12">
+											<span class="pf-title" >Description</span>
+											<div class="pf-field">
+												<textarea   placeholder=" write a Comment" class="form-control" id="description"  formControlName="description" ></textarea>
+											</div>
+										</div>
+											
+									
+									
+										</div>
+											
+										<div class="col-lg-12">
+											<button type="submit"  type="submit" style="background-color: green;">Commenter</button>
+										</div>
+										   
 
-												<div class="comment-sec">
-													<h3>{{listcommentaire.length}} Commentaires</h3>
-													<ul>
-														
-														<li>
-															<div class="comment" *ngFor="let comentaire of listcommentaire  | paginate: { itemsPerPage: 9, currentPage: p }">
-																<div class="comment-avatar"> <img img src="http://localhost:8080/upload/files/{{comentaire.candidat.logo}}" alt="" /> </div>
-																<div class="comment-detail">
-																	<h3>{{comentaire.candidat.nom}} &nbsp;{{comentaire.candidat.prenom}}</h3>
-																	<div class="date-comment"><a href="#" title=""><i class="la la-calendar-o"></i>{{comentaire.date | date:'M/d/yy, h:mm a'}} am</a></div>
-																	<p>{{comentaire.description}} </p>
-																	<a href="#" title=""><i class="la la-reply"></i>Reply</a>
-																</div>
-															</div>
-														</li>
-														
-													</ul>
-												</div>
-												<div class="job-listing wtabs">
-													<div class="job-title-sec">
-														<form [formGroup]="myForm" (ngSubmit)="savecommentaire()">
-															<div class="form-group">
-															
-															  
-														   <input type="text"  placeholder=" write a Comment" class="form-control" id="description"  formControlName="description" >
-													
-														 
-													
-													
-														</div>
-														 
-															<button  class="submit" type="submit" >add</button>
-															</form> 	
-													</div>
-													
-												</div>
-											 </div>
-							 			</div>
-							 		</div>
-							 		<div class="col-lg-4 column">
-							 			<div class="job-overview">
-								 			<h3>Job Overview</h3>
-								 			<ul>
-								 				<li><i class="la la-shield"></i><h3>Titre</h3><span>£15,000 - £20,000</span></li>
-								 				<li><i class="la la-mars-double"></i><h3>durée</h3><span>Female</span></li>
-								 				<li><i class="la la-line-chart "></i><h3>Date</h3><span>Executive</span></li>
-								 				<li><i class="la la-puzzle-piece"></i><h3>Nombre</h3><span>Management</span></li>
-								 				<li><i class="la la-money"></i><h3>Prix</h3><span>2 Years</span></li>
-								 				<li><i class="la la-line-chart "></i><h3>Téléphone</h3><span>Bachelor Degree</span></li>
-								 			</ul>
-								 		</div><!-- Job Overview -->
-								 		<div class="quick-form-job">
-								 			<h3>Contact</h3>
-								 			<form>
-								 				<input type="text" placeholder="Enter your Name *" />
-								 				<input type="text" placeholder="Email Address*" />
-								 				<input type="text" placeholder="Phone Number" />
-								 				<textarea placeholder="Message should have more than 50 characters"></textarea>
-								 				<button class="submit">Envoyer Email</button>
-								 				<span>Vous acceptez nos conditions générales</span>
-								 			</form>
-								 		</div>
-							 		</div>
-							 	</div>
-							 </div>
-					 	</div>
-				 	</div>
+									
+											</form> 
+											
+									</div>
+									
+								</div>
+								
+								
+								
+					</div>
+					<div class="col-lg-4 column">
+						<div class="job-overview" >
+							
+							<h3>Aperçu détaille</h3>
+							<ul>
+							<li><i class="la la-shield"></i><h3>Titre</h3><span>{{formation.titre}}</span></li>
+							<li><i  class="la la-line-chart "></i><h3>Durée</h3><span>{{formation.duree}}</span></li>
+							<li><i class="la la-line-chart "></i><h3>Date</h3><span>{{formation.date_deb}}</span></li>
+							<li><i class="la la-puzzle-piece"></i><h3>Nombre</h3><span>{{formation.nombre}}</span></li>
+							<li><i class="la la-money"></i><h3>Prix</h3><span>{{formation.prix}}</span></li>
+							<li><i class="la la-line-chart "></i><h3>Téléphone</h3><span>{{formation?.responsableCentre?.telephone}}</span></li>
+							</ul>
+						</div><!-- Job Overview -->
+					
+					</div>
 				</div>
-			</div>
-        </div>
-        
-		<div class="pagination">
-            <ul>
-           
-              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+				</div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
 
-            </ul>
-          </div><!-- Pagination -->
+
+<div class="pagination">
+	<ul>
    
-	</section>
+	  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+	</ul>
+  </div><!-- Pagination -->
+</section>
 
 
 

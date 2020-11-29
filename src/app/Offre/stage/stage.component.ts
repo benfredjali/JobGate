@@ -9,6 +9,8 @@ import {StageService} from '../../services/stage.service';
   styleUrls: ['./stage.component.css']
 })
 export class StageComponent implements OnInit {
+
+  roleuser;
   liststage;
   term;
   p=1;
@@ -17,6 +19,7 @@ export class StageComponent implements OnInit {
 
   ngOnInit() {
     this.all();
+    this.roleuser=localStorage.getItem('role');
   }
   addfavorie(idoffer){
     this.candidatservice.addfavorie({},idoffer,localStorage.getItem('iduser')).subscribe(res=>{

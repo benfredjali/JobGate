@@ -142,8 +142,14 @@
 						<div class="job-lctn">{{formation?.date_deb}}</div>
 					</div>
 					<div class="job-list-del">
-						<a href="" (click)="supprimer(formation.id)" title=""><i class="la la-trash-o"></i></a>
+						<ul class="action_job">
+						<li><span>Détail</span><a href="" routerLink="/formation/{{formation.id}}"  title=""><i class="la la-pencil"></i></a></li>
+						<li><span>Supprimer</span><a href="" (click)="supprimer(formation.id)" title=""><i class="la la-trash-o"></i></a></li>
+
+					</ul>
+						
 					</div>
+					
 				</div><!-- Job -->
 			</div>
 					 	

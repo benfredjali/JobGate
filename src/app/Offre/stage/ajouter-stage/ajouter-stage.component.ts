@@ -12,7 +12,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./ajouter-stage.component.css']
 })
 export class AjouterStageComponent implements OnInit {
-
+  nomuser;
+  prenomuser;
   listsecteur;
   submitted = false;
   AjouterStageForm: FormGroup;
@@ -29,13 +30,13 @@ export class AjouterStageComponent implements OnInit {
     this.AjouterStageForm = this.formBuilder.group({
       idsecteur: ['', Validators.required],
       titre: ['', Validators.required],
+      technologie: ['', Validators.required],
       date_deb: ['', Validators.required],
-      date_fin: ['', Validators.required],
-      duree: ['', Validators.required],
-      nombre: ['', Validators.required],
-      prix: ['', Validators.required],
+      typeContrat: ['', Validators.required],
+      type: ['', Validators.required],
+      adresse: ['', Validators.required],
+      siege: ['', Validators.required],
       description: ['', Validators.required],
-
 
     });
     this.all();
@@ -58,6 +59,8 @@ export class AjouterStageComponent implements OnInit {
       console.log(res);
       this.userconnectee = res;
       localStorage.setItem('iduser', this.userconnectee.id)
+      this.nomuser=res['nom'];
+      this.prenomuser=res['prenom'];
     })
   }
 

@@ -227,7 +227,11 @@
 	</div>
 	<div class="tree_widget-sec">
 		<ul>
-			<li><a routerLink="/candidat/profil" title=""><i class="la la-file-text"></i>Profil</a></li>
+			<li><a *ngIf="roleuser==='Candidat'"  routerLink="/candidat/profil" title=""><i class="la la-file-text"></i>Profil</a></li>
+			<li><a *ngIf="roleuser==='ResponsableSociete'"  routerLink="/psociete" title=""><i class="la la-file-text"></i>Profil-Société</a></li>
+
+			<li><a *ngIf="roleuser==='ResponsableCentre'"  routerLink="/pcentre" title=""><i class="la la-file-text"></i>Profil-Centre</a></li>
+
 			<li><a href="candidates_my_resume.html" title=""><i class="la la-briefcase"></i>Resume</a></li>
 			<li><a href="candidates_applied_jobs.html" title=""><i class="la la-paper-plane"></i>Mes souscriptions</a></li>
 			<li><a href="candidates_cv_cover_letter.html" title=""><i class="la la-file-text"></i>Mes inscriptions</a></li>

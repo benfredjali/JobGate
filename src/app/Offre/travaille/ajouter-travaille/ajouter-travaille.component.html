@@ -1,5 +1,8 @@
 
 
+
+
+
 <div class="theme-layout" id="scrollup">
 
 
@@ -55,63 +58,90 @@
                       <div class="col-lg-6">
                         <span class="pf-title">Secteur</span>
 
-                      <!--   <select  class="pf"  [ngClass]="{ 'is-invalid': submitted && f.titre.errors }" >
+                      <!--   <select  class="pf"  [ngClass]="{ 'is-invalid': touched && f.titre.errors }" >
 
                           <option  *ngFor=" let e of listsecteur" value="{{e.id}}"  >{{e.nom}}</option>
                         </select> -->
                      
-                        <select  formControlName="idsecteur" id="idsecteur" class="form-control"  [ngClass]="{ 'is-invalid': submitted && f.idsecteur.errors }" >
+                        <select  formControlName="idsecteur" id="idsecteur" class="form-control"  [ngClass]="{ 'is-invalid': f.idsecteur.touched && f.idsecteur.errors }" >
 
                           <option  *ngFor=" let e of listsecteur" value="{{e.id}}"  >{{e.nom}}</option>
+                          <div *ngIf="f.idsecteur.touched && f.idsecteur.errors" class="invalid-feedback">
+                            <div *ngIf="f.idsecteur.errors.required"> champ est obligatoire</div>
+                            </div>
                         </select>
                      
                     </div>
                       <div class="col-lg-12">
                         <span class="pf-title">Titre</span>
                         <div class="pf-field">
-                          <input placeholder="Titre.." formControlName="titre" [ngClass]="{ 'is-invalid': submitted && f.titre.errors }" type="text">
+                          <input placeholder="Titre.." formControlName="titre" [ngClass]="{ 'is-invalid': f.titre.touched && f.titre.errors }" type="text">
+                          <div *ngIf="f.titre.touched && f.titre.errors" class="invalid-feedback">
+                            <div *ngIf="f.titre.errors.required"> champ est obligatoire</div>
+                            </div>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <span class="pf-title">Technologie</span>
                         <div class="pf-field">
-                          <input placeholder="Technologie.." type="text"  formControlName="technologie" [ngClass]="{ 'is-invalid': submitted && f.technologie.errors }" >
+                          <input placeholder="Technologie.." type="text"  formControlName="technologie" [ngClass]="{ 'is-invalid': f.technologie.touched && f.technologie.errors }" >
+                          <div *ngIf="f.technologie.touched && f.technologie.errors" class="invalid-feedback">
+                            <div *ngIf="f.technologie.errors.required"> champ est obligatoire</div>
+                            </div>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <span class="pf-title">Date Debut</span>
                         <div class="pf-field">
-                          <input placeholder="06.11.2012" type="date" class="datepicker" formControlName="date_deb"  [ngClass]="{ 'is-invalid': submitted && f.date_deb.errors }" >
+                          <input placeholder="06.11.2012" type="date" class="datepicker" formControlName="date_deb"  [ngClass]="{ 'is-invalid': f.date_deb.touched && f.date_deb.errors }" >
+                          <div *ngIf="f.date_deb.touched && f.date_deb.errors" class="invalid-feedback">
+                            <div *ngIf="f.date_deb.errors.required"> champ est obligatoire</div>
+                            </div>
                         </div>
                       </div>
                       <div class="col-lg-6">
-                        <span class="pf-title">Prix</span>
+                        <span class="pf-title">Type de Contrat</span>
                         <div class="pf-field">
-                          <input type="text" placeholder="Prix.."class="datepicker" formControlName="typeContrat" [ngClass]="{ 'is-invalid': submitted && f.typeContrat.errors }">
+                          <input type="text" placeholder="Prix.."class="datepicker" formControlName="typeContrat" [ngClass]="{ 'is-invalid': f.typeContrat.touched && f.typeContrat.errors }">
+                          <div *ngIf="f.typeContrat.touched && f.typeContrat.errors" class="invalid-feedback">
+                            <div *ngIf="f.typeContrat.errors.required"> champ est obligatoire</div>
+                            </div>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <span class="pf-title">Type de offre</span>
                         <div class="pf-field">
-                          <input type="text" placeholder="Type.." formControlName="type"  [ngClass]="{ 'is-invalid': submitted && f.type.errors }" >
+                          <input type="text" placeholder="Type.." formControlName="type"  [ngClass]="{ 'is-invalid': f.type.touched && f.type.errors }" >
+                          <div *ngIf="f.type.touched && f.type.errors" class="invalid-feedback">
+                            <div *ngIf="f.type.errors.required"> champ est obligatoire</div>
+                            </div>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <span class="pf-title">Adresse</span>
                         <div class="pf-field">
-                          <input type="text" placeholder="Adresse.." class="datepicker" formControlName="adresse" [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }">
+                          <input type="text" placeholder="Adresse.." class="datepicker" formControlName="adresse" [ngClass]="{ 'is-invalid': f.adresse.touched && f.adresse.errors }">
+                          <div *ngIf="f.adresse.touched && f.adresse.errors" class="invalid-feedback">
+                            <div *ngIf="f.adresse.errors.required"> champ est obligatoire</div>
+                            </div>
                         </div>
                       </div>
                       <div class="col-lg-6">
                         <span class="pf-title">Siege</span>
                         <div class="pf-field">
-                          <input type="text" class="datepicker" formControlName="siege"  [ngClass]="{ 'is-invalid': submitted && f.siege.errors }">
+                          <input type="text" class="datepicker" formControlName="siege"  [ngClass]="{ 'is-invalid': f.siege.touched && f.siege.errors }">
+                          <div *ngIf="f.siege.touched && f.siege.errors" class="invalid-feedback">
+                            <div *ngIf="f.siege.errors.required"> champ est obligatoire</div>
+                            </div>
                         </div>
                       </div>
                       <div class="col-lg-12">
                         <span class="pf-title" >Description</span>
                         <div class="pf-field">
-                          <textarea    formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" ></textarea>
+                          <textarea    formControlName="description" [ngClass]="{ 'is-invalid': f.description.touched && f.description.errors }" ></textarea>
+                          <div *ngIf="f.description.touched && f.description.errors" class="invalid-feedback">
+                            <div *ngIf="f.description.errors.required"> champ est obligatoire</div>
+                            </div>
                         </div>
                       </div>
                       <div class="col-lg-12">

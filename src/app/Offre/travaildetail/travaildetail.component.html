@@ -1,6 +1,6 @@
 <section class="overlape">
     <div class="block no-padding">
-        <div data-velocity="-.1" style="background: url(images/resource/mslider1.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+        <div data-velocity="-.1" style="background: url(/assets/images/resource/mslider1.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
         <div class="container fluid">
             <div class="row">
                 <div class="col-lg-12">
@@ -29,14 +29,16 @@
                              <span><strong>type</strong> : {{travaille.type}}</span>
                          </div><!-- Job Head -->
                          <div class="job-details">
-                             <h3>Job Description</h3>
+                             <h3>Description</h3>
                              <p>{{travaille.description}}</p>
+                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+
                         
                          </div>
                          <div class="job-overview">
-                             <h3>Job Overview</h3>
+                             <h3>détails</h3>
                              <ul>
-                                 <li><i class="la la-money"></i><h3>Offerd Salary</h3><span>£15,000 - £20,000</span></li>
+                                 <li><i class="la la-money"></i><h3>Salaire</h3><span>£15,000 - £20,000</span></li>
                                  <li><i class="la la-mars-double"></i><h3>Gender</h3><span>Female</span></li>
                                  <li><i class="la la-thumb-tack"></i><h3>Career Level</h3><span>Executive</span></li>
                                  <li><i class="la la-puzzle-piece"></i><h3>Industry</h3><span>Management</span></li>
@@ -44,9 +46,7 @@
                                  <li><i class="la la-line-chart "></i><h3>Qualification</h3><span>Bachelor Degree</span></li>
                              </ul>
                          </div><!-- Job Overview -->
-                         <div class="share-bar">
-                             <span>Share</span><a href="#" title="" class="share-fb"><i class="fa fa-facebook"></i></a><a href="#" title="" class="share-twitter"><i class="fa fa-twitter"></i></a>
-                         </div>
+                        
                      </div>
                  </div>
                  <div class="col-lg-4 column">
@@ -61,15 +61,27 @@
                                  <a href="https://grandetest.com/cdn-cgi/l/email-protection" 
                                  class="__cf_email__" data-cfemail="b0d1dcd99ec4c5d6d1def0dadfd2d8c5dec49ed3dfdd">{{travaille?.responsableSociete?.email}}</a></p>
                          </div>
-                          <div><input  type="file" class="form-control" (change)="handleFileInput($event.target.files)" />
-                        </div>  
-                          <a (click)="postuler()"  class="apply-job-btn"><i class="la la-paper-plane"></i>Apply for job</a>
+                         <div class="uploadbox" style="margin-left: 80px;">
+                            <label for="file-upload" class="custom-file-upload">
+                                <i class="la la-cloud-upload"></i> <span>Choisir Fichier</span>
+                            </label>
+                            <div> <input id="file-upload" style="display: none;" type="file" class="form-control" (change)="handleFileInput($event.target.files)" />
+                            </div>
+                            </div>
+                           
+                        
+                           
+                          <a (click)="postuler()" style="margin-top: 20px;" class="apply-job-btn"><i class="la la-paper-plane"></i>postuler a l'offre</a>
                     
                          <a routerLink='/travaille' title="" class="viewall-jobs">View all Jobs</a>
                      </div><!-- Job Head -->
+                     
                  </div>
+                 
             </div>
         </div>
     </div>
+
+    
 </section>
 

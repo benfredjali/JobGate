@@ -2,6 +2,7 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import Swal from 'sweetalert2';
 import { CommentairService } from '../services/commentair.service';
 import { FormationService } from '../services/Formation/formation.service';
 
@@ -12,6 +13,7 @@ import { FormationService } from '../services/Formation/formation.service';
 })
 export class FormationdetailComponent implements OnInit {
 idformation;
+fileToUpload: File = null;
 formation;
 listcommentaire;
 myForm: FormGroup;
@@ -48,7 +50,8 @@ this.formation=res;
     this.commentaire.addcommentaire(data,this.idformation,localStorage.getItem('iduser')).subscribe(res=>{
       console.log(res);
       this.getallcomentaire();
-    })  
+    }) 
+    this.myForm.reset();   
 } 
 getallcomentaire(){
   
@@ -56,6 +59,30 @@ getallcomentaire(){
     console.log(res);
     this.listcommentaire=res;
   })
+}
+
+handleFileInput(files: FileList) {
+  this.fileToUpload = files.item(0);
+  console.log(this.fileToUpload);
+
+}
+
+
+postuler(){
+  const formdata=new FormData();
+  formdata.append('file',this.fileToUpload)
+  
+  this.formationservice.postuler(this.idformation,localStorage.getItem('iduser'),formdata).subscribe(res=>{
+    console.log(res);
+  })
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'Demande envoyé avec succées',
+    showConfirmButton: false,
+    timer: 1500
+  })
+
 }
 
 

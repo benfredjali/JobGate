@@ -36,4 +36,8 @@ export class FormationService {
 
     return this.http.delete(environment.url + 'formation/delete/' + id);
   }
+
+  postuler(idformation,idcandidat,data){
+    return this.http.post(environment.url+'demande/add/'+idformation+'/'+idcandidat,data);
+  }
 }
