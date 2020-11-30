@@ -25,7 +25,7 @@ getbyid(id) {
 }
 
 modifier(id,data){
-  return this.http.put(environment.url + 'responsablesociete/modif/'+id ,data)
+  return this.http.put(environment.url + 'responsableSociete/modif/'+id ,data)
 }
 
 }

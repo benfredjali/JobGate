@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Respsociete } from 'src/app/model/respsociete';
 import { AuthentificationService } from 'src/app/services/authentification.service';
+import { OffreService } from 'src/app/services/offre.service';
 import { ResponsabelSocietyService } from 'src/app/services/responsabel-society.service';
+import { TravailleService } from 'src/app/services/travaille.service';
 
 @Component({
   selector: 'app-profilresponsable-societe',
@@ -13,6 +16,10 @@ import { ResponsabelSocietyService } from 'src/app/services/responsabel-society.
 export class ProfilresponsableSocieteComponent implements OnInit {
   updateUserForm: FormGroup;
   user;
+  adresse;
+  siteWeb;
+  listtravaille;
+  idtravaille;
   nomuser;
   prenomuser;
   photo;
@@ -25,11 +32,17 @@ export class ProfilresponsableSocieteComponent implements OnInit {
   submitted = false;
   detaillformation = new Respsociete();
 
-  constructor(private formBuilder: FormBuilder,private authenService: AuthentificationService,
-    private respcentreservice: ResponsabelSocietyService, private router:Router) {
+  constructor(private formBuilder: FormBuilder,private authenService: AuthentificationService
+    ,private offreservice: OffreService,
+    private respsocieteservice: ResponsabelSocietyService,
+    private travailleservice:TravailleService,
+    private router:Router,private toastr: ToastrService) {
 
       this.id =  localStorage.getItem('iduser');
       this.getbyid(this.id)
+      //this.idoffre=localStorage.getItem('iduser');
+      this.idtravaille=localStorage.getItem('iduser');
+
     }
 
   ngOnInit(): void {
@@ -48,7 +61,6 @@ export class ProfilresponsableSocieteComponent implements OnInit {
       ])),
       adresse: ['', Validators.required],
   
-      niveauEtude: ['', Validators.required],
       siteWeb: ['', Validators.required],
       description: ['', Validators.required],
 
@@ -66,6 +78,7 @@ export class ProfilresponsableSocieteComponent implements OnInit {
 
 
     this.getprofile();
+    this.getallcomentaire()
    
 
     
@@ -77,9 +90,9 @@ export class ProfilresponsableSocieteComponent implements OnInit {
       localStorage.setItem('iduser',this.user['id']);
       this.nomuser=res['nom'];
       this.prenomuser=res['prenom'];
-      this.niveauEtude=res['niveauEtude'];
-      this.compteLinkedin=res['compteLinkedin'];
       this.telephone=res['telephone'];
+      this.siteWeb=res['siteWeb'];
+      this.adresse=res['adresse'];
       this.email=res['email'];
       this.logo=res['logo'];
     
@@ -94,20 +107,18 @@ export class ProfilresponsableSocieteComponent implements OnInit {
     }
     
     getbyid(id){
-      this.respcentreservice.getbyid(id).subscribe(res=>{
+      this.respsocieteservice.getbyid(id).subscribe(res=>{
         console.log(res)
     this.candidat=res;
     this.updateUserForm.patchValue({
       nom : this.candidat.nom,                     
       prenom:this.candidat.prenom,
       adresse:this.candidat.adresse,
-      dateNaiss:this.candidat.dateNaiss,
       username:this.candidat.username,
-      niveauEtude:this.candidat.niveauEtude,
+      siteWeb:this.candidat.siteWeb,
       telephone:this.candidat.telephone,
       description:this.candidat.description,
-      email:this.candidat.email,
-      compteLinkedin:this.candidat.compteLinkedin
+      email:this.candidat.email
 
 
 
@@ -115,17 +126,10 @@ export class ProfilresponsableSocieteComponent implements OnInit {
       })
     }
 
-    
+
      
   
   edit() {
-    // if(this.role==='rs'){
-      
-    // }
-    // elseif(this.role=='rc'){
-      
-
-    // }
       let data =this.updateUserForm.value;
      /* {
         nom : this.candidat.nom,                     
@@ -142,17 +146,41 @@ export class ProfilresponsableSocieteComponent implements OnInit {
     }*/
     console.log(data)
    
-      this.respcentreservice.modifier(localStorage.getItem('iduser'),data).subscribe(res=>{
-       
+      this.respsocieteservice.modifier(localStorage.getItem('iduser'),data).subscribe(res=>{
+
             console.log(res);
+            
+            this.toastr.success(' Profil Modifié  !', 'Merci!', { timeOut: 3000, });
+
        
       })
-  
+      
+   // window.location.reload();
+    
     }
 
-    
+    getallcomentaire(){
+  
+      this.travailleservice.gettravaille(this.idtravaille).subscribe(res=>{
+        console.log(res);
+        this.listtravaille=res;
+      })
+    }
       //this.submitted = false;
       //this.updateUserForm.reset();
      // window.location.reload();
-    
+ 
+
+    supprimer(id) {
+      this.travailleservice.supprimer(id).subscribe(res => {
+        console.log(res);
+
+        this.toastr.error(' Offre Supprimé  !', 'Merci!', { timeOut: 3000, });
+
+        
+      });
+      
+      //window.location.reload();
+      
+    }
 }

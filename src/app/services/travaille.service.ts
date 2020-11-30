@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { AuthentificationService } from './authentification.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TravailleService {
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private authService:AuthentificationService) {
 
   }
   postuler(idoffer,idcandidat,data){
@@ -24,4 +25,18 @@ export class TravailleService {
   Ajouter(data,idsociete,idsecteur) {
     return this.http.post(environment.url + 'travaille/save/'+idsecteur+'/'+idsociete, data);
   }
+ getoffre(idoffre) {
+    return this.http.get(environment.url + 'formation/getbycentre/'+idoffre);
+  }
+
+  gettravaille(idsociete) {
+    return this.http.get(environment.url + 'travaille/getbytravaille/'+idsociete);
+  }
+
+  supprimer(id) {
+    let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
+
+    return this.http.delete(environment.url + 'formation/delete/' + id);
+  }
+
 }
