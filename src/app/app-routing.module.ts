@@ -21,6 +21,7 @@ import { TravaildetailComponent } from './Offre/travaildetail/travaildetail.comp
 import { ProfilresponsableCentreComponent } from './formation/profilresponsable-centre/profilresponsable-centre.component';
 import { ProfilresponsableSocieteComponent } from './Offre/profilresponsable-societe/profilresponsable-societe.component';
 import { OffrebyadreeseComponent } from './Offre/offrebyadreese/offrebyadreese.component';
+import { CandidatSingleComponent } from './candidat/candidat-single/candidat-single.component';
 
 
 
@@ -50,6 +51,10 @@ const routes: Routes = [
   {path:'favorielist', component:FavorieslistComponent},
   {path:'pcentre', component:ProfilresponsableCentreComponent},
   {path:'psociete', component:ProfilresponsableSocieteComponent},
+  {path:'travailledetail/:id', component:CandidatSingleComponent},
+
+
+  
 
 
 

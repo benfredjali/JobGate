@@ -14,13 +14,16 @@ export class ContainerComponent implements OnInit {
   term1;
   listannonce;
   listformation;
+  listcandidat;
+  p=1;
 
-  constructor(private offreservice: OffreService, private formationservice:FormationService) {
+  constructor(private offreservice: OffreService, private formationservice:FormationService, private candidatservice:CandidatService) {
   }
 
   ngOnInit() {
     this.all();
     this.allformation()
+    this.allCandidat()
    
   }
 
@@ -35,6 +38,13 @@ export class ContainerComponent implements OnInit {
     this.formationservice.getall().subscribe(res => {
       console.log(res);
       this.listformation = res;
+    });
+
+  }
+  allCandidat() {
+    this.candidatservice.getall().subscribe(res => {
+      console.log(res);
+      this.listcandidat = res;
     });
 
   }
