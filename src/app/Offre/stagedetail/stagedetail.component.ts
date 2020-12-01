@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PostulerService } from 'src/app/services/postuler.service';
 import { StageService } from 'src/app/services/stage.service';
 import Swal from 'sweetalert2';
 
@@ -12,14 +13,17 @@ export class StagedetailComponent implements OnInit {
 idstage;
 fileToUpload: File = null;
 stage;
+listpostuler
 affichcvinput=false;
-  constructor(private activatedroute:ActivatedRoute,private stageservice:StageService ) {
+p=1;
+  constructor(private postulersrv: PostulerService, private activatedroute:ActivatedRoute,private stageservice:StageService ) {
     console.log(this.activatedroute.params)
     this.idstage=this.activatedroute.params['_value']['id'] 
    }
 
   ngOnInit(): void {
     this.getone(this.idstage);
+    this.getallpostuler();
   }
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
@@ -50,6 +54,14 @@ postuler(){
     title: 'Demande envoyé avec succées',
     showConfirmButton: false,
     timer: 1500
+  })
+}
+
+getallpostuler(){
+  
+  this.postulersrv.getpostuler(this.idstage).subscribe(res=>{
+    console.log(res);
+    this.listpostuler=res;
   })
 }
 }

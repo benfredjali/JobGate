@@ -40,4 +40,6 @@ export class FormationService {
   postuler(idformation,idcandidat,data){
     return this.http.post(environment.url+'demande/add/'+idformation+'/'+idcandidat,data);
   }
+
+
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PostulerService } from 'src/app/services/postuler.service';
 import { TravailleService } from 'src/app/services/travaille.service';
 import Swal from 'sweetalert2';
 
@@ -13,13 +14,17 @@ export class TravaildetailComponent implements OnInit {
   fileToUpload: File = null;
   travaille;
   affichcvinput=false;
-    constructor(private activatedroute:ActivatedRoute,private travailleservice:TravailleService ) {
+  listpostuler;
+  p=1;
+    constructor(private activatedroute:ActivatedRoute,
+      private travailleservice:TravailleService, private postulersrv:PostulerService ) {
       console.log(this.activatedroute.params)
       this.idtravaille=this.activatedroute.params['_value']['id'] 
      }
   
     ngOnInit(): void {
       this.getone(this.idtravaille);
+      this.getallpostuler();
     }
     handleFileInput(files: FileList) {
       this.fileToUpload = files.item(0);
@@ -52,6 +57,15 @@ export class TravaildetailComponent implements OnInit {
       timer: 1500
     })
   
+  }
+
+
+  getallpostuler(){
+  
+    this.postulersrv.getpostuler(this.idtravaille).subscribe(res=>{
+      console.log(res);
+      this.listpostuler=res;
+    })
   }
   }
   

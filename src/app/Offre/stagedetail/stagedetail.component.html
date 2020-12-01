@@ -78,6 +78,45 @@
                      </div><!-- Job Head -->
                  </div>
             </div>
+
+            <div class="col-lg-9 column">
+                <div class="modrn-joblist">
+                  
+                  <div class="filterbar">
+                    <div class="sortby-sec">
+                   </div>
+                    <h5>{{listpostuler.length}} Offre & Postulation</h5>
+                  </div>
+                </div><!-- MOdern Job LIst -->
+                <div class="job-list-modern">
+                  <div class="job-listings-sec">
+                    <div class="emply-resume-list square" *ngFor= "let list of listpostuler | paginate: { itemsPerPage: 5, currentPage: p } ">
+                        <div class="emply-resume-thumb">
+                            <img src="http://localhost:8080/upload/files/{{list?.candidat?.logo}}" alt="" />
+                        </div>
+                        <div class="emply-resume-info">
+                            <h3><a href="#" title="">{{list?.candidat?.nom}}&nbsp;{{list?.candidat?.prenom}}</a></h3>
+                            <span><i>{{list?.candidat?.compteLinkedin}}</i> at Atract Solutions</span>
+                            <p><i class="la la-map-marker"></i>{{list?.candidat?.adresse}}</p>
+                            <div style="font-size: 13px;"><a href="#" title=""><i class="la la-calendar-o"></i>{{list.date | date:'M/d/yy, h:mm a'}} </a></div>
+
+                        </div>
+                        <div class="shortlists">
+                            <a href="#" title="">Message <i class="la la-plus"></i></a>
+                        </div>
+                 </div>
+      
+      
+                  </div>
+      
+                  <div class="pagination">
+                    <ul>
+                        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                     </ul>
+                    </div>            
+                  </div>
+                
+              </div>
         </div>
     </div>
 </section>

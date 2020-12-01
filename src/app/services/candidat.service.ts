@@ -12,9 +12,7 @@ export class CandidatService {
   }
 
   getall() {
-    let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
-
-    return this.http.get(environment.url + 'candidat/all',{headers: headers});
+    return this.http.get(environment.url + 'candidat/all');
   }
   getfavoriebycandidat(idcandidat) {
     let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
