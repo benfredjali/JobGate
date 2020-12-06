@@ -62,7 +62,7 @@
               <div class="filterbar">
                 <div class="sortby-sec">
                </div>
-                <h5>{{listtravaille.length}} Jobs & Vacancies</h5>
+                <h5>{{listtravaille.length}} Emplois et postes vacants</h5>
               </div>
             </div><!-- MOdern Job LIst -->
             <div class="job-list-modern">
@@ -72,10 +72,10 @@
                     <div class="c-logo"> <img src="http://localhost:8080/upload/files/{{e?.responsableSociete?.logo}}" alt="" /> </div>
                     <h3><a href="#" title="">{{e.titre}}</a></h3>
                     <span>{{e.technologie}}</span>
-                    <div class="job-lctn"><i class="la la-map-marker"></i>Sacramento, California</div>
+                    <div class="job-lctn"><i class="la la-map-marker"></i>{{e.adresse}}</div>
                   </div>
                   <div class="job-style-bx">
-                    <span class="job-is ft">Full time</span>
+                    <span class="job-is ft">{{e.type}}</span>
 
                     <span  class="fav-job"(click)="addfavorie(e.id)"><i  [hidden]="roleuser !=='Candidat'" class="la la-heart-o"></i></span>
                     <i><a routerLink='/travaille/{{e.id}}'>voir détail</a></i>

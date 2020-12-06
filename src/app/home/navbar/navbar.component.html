@@ -107,21 +107,7 @@
 								<li><a href="job-single3.html">Job Single 3</a></li>
 							</ul>
 						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Pages</a>
-							<ul>
-								<li><a href="about.html" title="">About Us</a></li>
-								<li><a href="404.html" title="">404 Error</a></li>
-								<li><a href="contact.html" title="">Contact Us 1</a></li>
-								<li><a href="contact2.html" title="">Contact Us 2</a></li>
-								<li><a href="faq.html" title="">FAQ's</a></li>
-								<li><a href="how_it_works.html" title="">How it works</a></li>
-								<li><a href="login.html" title="">Login</a></li>
-								<li><a href="pricing.html" title="">Pricing Plans</a></li>
-								<li><a href="register.html" title="">Register</a></li>
-								<li><a href="terms_and_condition.html" title="">Terms & Condition</a></li>
-							</ul>
-						</li>
+					
 					</ul>
 			</div>
 		</div>
@@ -140,8 +126,8 @@
 				<a *ngIf="roleuser==='ResponsableCentre'" routerLink="/fajouter" title="" class="post-job-btn"><i class="la la-plus"></i>Ajouter Formation</a>
 
 				<ul class="account-btns" [hidden]="ison">
-                    <li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
-                    <li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
+                    <li class="signup-popup"><a title=""><i class="la la-key"></i> Inscription</a></li>
+                    <li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Connexion</a></li>
 				</ul>
 				
                 <div  class="my-profiles-sec" [hidden]="!ison">
@@ -150,19 +136,29 @@
 				</div>
 				<!--[hidden]="roleuser==='ResponsableCentre'" [hidden]="roleuser==='ResponsableSociete'"-->
 				<div class="wishlist-dropsec"   [hidden]="!ison">
-					<span [hidden]="roleuser !=='Candidat'" ><i class="la la-heart"></i><strong>{{listfavoriebycandidat?.length}}</strong></span>
+					<span [hidden]="roleuser !=='Candidat'" style="color:rgb(184, 218, 218)" ><i  class="la la-heart"></i><strong >{{listfavoriebycandidat?.length}}</strong></span>
 					<div class="wishlist-dropdown">
-						<ul class="scrollbar">
+						<ul class="scrollbar" >
 							<li>
-								<div class="job-listing">
-									<div class="job-title-sec" *ngFor="let f of listfavoriebycandidat">
+
+								<div style="margin-bottom: -50px; " *ngFor="let f of listfavoriebycandidat ;let i=index">
+									<div class="job-listing wtabs"*ngIf="i<2" >
 										<div class="c-logo"> <img src="http://localhost:8080/upload/files/{{f?.offre?.responsableSociete?.logo}}" alt="" /> </div>										
 										<h3><a href="#" title="">{{f?.offre.titre}}</a></h3>
 										<span>{{f?.offre.responsableSociete?.nom}}</span>									
 									</div>
+
+
 								</div><!-- Job -->
+								<div>
+									<span><a style="text-align: center;margin-left: 100px;" routerLink="/favorielist"> Liste Favories</a>
+
+									</span>
+								</div>
+
 							</li>
 						</ul>
+
 					</div>
 				</div>
              <!--  <ul class="account-btns" [hidden]="!ison">
@@ -177,7 +173,7 @@
 					</li>
 					
                     <li class="menu-item-has-children">
-                        <a routerLink="/candidatlist" title="">Candidat</a>
+                        <a [hidden]="!ison"  *ngIf="roleuser !=='Candidat'" routerLink="/candidatlist" title="">Candidat</a>
                   
                     </li>
                     <li class="menu-item-has-children">
@@ -192,9 +188,13 @@
                     <li class="menu-item-has-children">
                         <a href="#"  routerLink="/formation" title="">Formation</a>
                        
+					</li>
+					<li class="menu-item-has-children">
+                        <a  [hidden]="ison" routerLink="/howitworks">A propos</a>
+
                     </li>
                     <li class="menu-item-has-children">
-                        <a href="#" title="">Contact</a>
+                        <a href="#" routerLink="/contact">Contact</a>
 
                     </li>
                   <!--  <li class="menu-item-has-children">
@@ -221,7 +221,7 @@
        
 
 		<div class="cst"><img src="http://localhost:8080/upload/files/{{logo}}" alt="" /></div>
-		<h3 class="menu-item-has-children">  {{nomuser}}&nbsp;{{prenomuser}}</h3>
+		<h3 class="menu-item-has-children">  {{nomuser}}&nbsp;{{prenomuser }} </h3>
 		<p><a href="https://grandetest.com/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7516071014011c031019140c100706454d4d351218141c195b161a18">{{user?.email}}</a></p>
 		<p><i class="la la-map-marker"></i>{{user?.adresse}}</p>
 	</div>

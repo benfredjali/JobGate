@@ -22,6 +22,8 @@ import { ProfilresponsableCentreComponent } from './formation/profilresponsable-
 import { ProfilresponsableSocieteComponent } from './Offre/profilresponsable-societe/profilresponsable-societe.component';
 import { OffrebyadreeseComponent } from './Offre/offrebyadreese/offrebyadreese.component';
 import { CandidatSingleComponent } from './candidat/candidat-single/candidat-single.component';
+import { HowitworksComponent } from './howitworks/howitworks.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 
@@ -52,6 +54,10 @@ const routes: Routes = [
   {path:'pcentre', component:ProfilresponsableCentreComponent},
   {path:'psociete', component:ProfilresponsableSocieteComponent},
   {path:'travailledetail/:id', component:CandidatSingleComponent},
+  {path:'howitworks', component:HowitworksComponent},
+  {path:'contact', component:ContactComponent},
+
+  
 
 
   

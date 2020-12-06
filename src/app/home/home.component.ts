@@ -111,9 +111,7 @@ export class HomeComponent implements OnInit {
         Validators.required,
         Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
       ])),
-      prenom: new FormControl('',Validators.compose([
-        Validators.required
-      ])),
+     
       username: new FormControl('',Validators.compose([
         Validators.required,
         Validators.minLength(2)
@@ -287,7 +285,7 @@ this.reset();
 
     const data = {
       nom: this.registerSocieteForm.value["nom"],
-      prenom: this.registerSocieteForm.value["prenom"],
+      renom: this.registerSocieteForm.value["prenom"],
       username: this.registerSocieteForm.value["username"],
       adresse: this.registerSocieteForm.value["adresse"],
       description: this.registerSocieteForm.value["description"],

@@ -31,11 +31,11 @@
             <div class="widget">
               <div class="tree_widget-sec">
                 <ul>
-                  <li><a href="candidates_profile.html" title=""><i class="la la-file-text"></i>My Profile</a></li>
-                  <li><a href="candidates_my_resume.html" title=""><i class="la la-briefcase"></i>My Resume</a></li>
-                  <li><a href="candidates_applied_jobs.html" title=""><i class="la la-paper-plane"></i>Applied Job</a></li>
-                  <li><a href="candidates_job_alert.html" title=""><i class="la la-user"></i>Job Alerts</a></li>
-                  <li><a href="candidates_change_password.html" title=""><i class="la la-flash"></i>Change Password</a></li>
+                	<li><a routerLink="/psociete" title=""><i class="la la-file-text"></i>My Profile</a></li>
+									<li><a href="candidates_my_resume.html" title=""><i class="la la-briefcase"></i>My Resume</a></li>
+									<li><a routerLink="/tajouter"  title=""><i class="la la-file-text"></i>Ajouter Nouveau travaille</a></li>
+									<li><a routerLink="/sajouter" title=""><i class="la la-file-text"></i>Ajouter Nouveau Stage</a></li>
+
                   <li><a href="#" title=""><i class="la la-unlink"></i>Logout</a></li>
                 </ul>
               </div>
@@ -100,7 +100,7 @@
                         </div>
                       </div>
                       <div class="col-lg-6">
-                        <span class="pf-title">Type de Contrat</span>
+                        <span class="pf-title">Prix</span>
                         <div class="pf-field">
                           <input type="text" placeholder="Prix.."class="datepicker" formControlName="typeContrat" [ngClass]="{ 'is-invalid': f.typeContrat.touched && f.typeContrat.errors }">
                           <div *ngIf="f.typeContrat.touched && f.typeContrat.errors" class="invalid-feedback">

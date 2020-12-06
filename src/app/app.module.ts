@@ -38,6 +38,8 @@ import { ProfilresponsableCentreComponent } from './formation/profilresponsable-
 import { ProfilresponsableSocieteComponent } from './Offre/profilresponsable-societe/profilresponsable-societe.component';
 import { OffrebyadreeseComponent } from './Offre/offrebyadreese/offrebyadreese.component';
 import { CandidatSingleComponent } from './candidat/candidat-single/candidat-single.component';
+import { ContactComponent } from './contact/contact.component';
+import { HowitworksComponent } from './howitworks/howitworks.component';
 
 
 
@@ -72,7 +74,9 @@ import { CandidatSingleComponent } from './candidat/candidat-single/candidat-sin
     ProfilresponsableCentreComponent,
     ProfilresponsableSocieteComponent,
     OffrebyadreeseComponent,
-    CandidatSingleComponent
+    CandidatSingleComponent,
+    ContactComponent,
+    HowitworksComponent
     
   ],
   imports: [
