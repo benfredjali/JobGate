@@ -24,6 +24,7 @@ import { OffrebyadreeseComponent } from './Offre/offrebyadreese/offrebyadreese.c
 import { CandidatSingleComponent } from './candidat/candidat-single/candidat-single.component';
 import { HowitworksComponent } from './howitworks/howitworks.component';
 import { ContactComponent } from './contact/contact.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 
@@ -34,7 +35,7 @@ const routes: Routes = [
   {path:'', component:HomeComponent,children:
   [{path:'',component:ContainerComponent},
   {path:'formation', component:FormationComponent},
-  {path:'formation/:id', component:FormationdetailComponent},
+  {path:'formation/:id', component:FormationdetailComponent,canActivate: [AuthGuardService]},
   {path:'fajouter', component:AjouterFormationComponent},
   //{path:'formation/detail', component:FormationdetailComponent},
   {path:'formation/update/:id', component:UpdateComponent},
@@ -42,11 +43,11 @@ const routes: Routes = [
   {path:'erreur', component:Erreur404Component},
   {path:'offre/employers', component:EmployersComponent},
   {path:'offre/:adresse',component:OffrebyadreeseComponent},
-  {path:'stage', component:StageComponent},
-  {path:'stage/:id', component:StagedetailComponent},
+  {path:'stage', component:StageComponent },
+  {path:'stage/:id', component:StagedetailComponent,canActivate: [AuthGuardService]},
   {path:'sajouter', component:AjouterStageComponent},
   {path:'travaille', component:TravailleComponent},
-  {path:'travaille/:id', component:TravaildetailComponent},
+  {path:'travaille/:id', component:TravaildetailComponent,canActivate: [AuthGuardService]},
   {path:'tajouter', component:AjouterTravailleComponent},
   {path:'candidat/profil', component:ProfilComponent},
   {path:'candidatlist', component:ListComponent},
