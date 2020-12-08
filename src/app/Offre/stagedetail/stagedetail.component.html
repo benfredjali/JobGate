@@ -35,16 +35,16 @@
                         <p>Nécessité de soulever des charges pour l’épicerie et la participation aux leçons de natation. Le travail se déroulera dans la maison et la collectivité de la personne.</p>
                          </div>
                          <div class="job-overview">
-                             <h3>Job Overview</h3>
-                             <ul>
-                                 <li><i class="la la-money"></i><h3>Offerd Salary</h3><span>£15,000 - £20,000</span></li>
-                                 <li><i class="la la-mars-double"></i><h3>Gender</h3><span>Female</span></li>
-                                 <li><i class="la la-thumb-tack"></i><h3>Career Level</h3><span>Executive</span></li>
-                                 <li><i class="la la-puzzle-piece"></i><h3>Industry</h3><span>Management</span></li>
-                                 <li><i class="la la-shield"></i><h3>Experience</h3><span>2 Years</span></li>
-                                 <li><i class="la la-line-chart "></i><h3>Qualification</h3><span>Bachelor Degree</span></li>
-                             </ul>
-                         </div><!-- Job Overview -->
+                            <h3>détaille de l'offre</h3>
+                            <ul>
+                               <li><i class="la la-puzzle-piece"></i><h3>Titre</h3><span>{{stage.titre}}</span></li>
+                                <li><i class="la la-money"></i><h3>Salaire</h3><span>{{stage.typeContrat}}</span></li>
+                                <li><i class="la la-thumb-tack"></i><h3>Siege</h3><span>{{stage.siege}}</span></li>
+                                <li><i class="la la-puzzle-piece"></i><h3>Type</h3><span>{{stage.type}}</span></li>
+                                <li><i class="la la-piece"></i><h3>Date de debut</h3><span>{{stage.date_deb}}</span></li>
+                                <li><i class="la la-line-chart "></i><h3>Télephone</h3><span>{{stage?.responsableSociete?.telephone}}</span></li>
+                            </ul>
+                        </div><!-- Job Overview -->
                         
                      </div>
                  </div>
@@ -89,7 +89,7 @@
                   </div>
                 </div><!-- MOdern Job LIst -->
                 <div class="job-list-modern">
-                  <div class="job-listings-sec">
+                  <div class="job-listings-sec" *ngIf="iduser == stage?.responsableSociete?.id">
                     <div class="emply-resume-list square" *ngFor= "let list of listpostuler | paginate: { itemsPerPage: 5, currentPage: p } ">
                         <div class="emply-resume-thumb">
                             <img src="http://localhost:8080/upload/files/{{list?.candidat?.logo}}" alt="" />

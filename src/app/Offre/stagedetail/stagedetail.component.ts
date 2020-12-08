@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthentificationService } from 'src/app/services/authentification.service';
 import { PostulerService } from 'src/app/services/postuler.service';
 import { StageService } from 'src/app/services/stage.service';
 import Swal from 'sweetalert2';
@@ -15,8 +16,12 @@ fileToUpload: File = null;
 stage;
 listpostuler
 affichcvinput=false;
+user;nomuser;prenomuser;
+  adresse;siteWeb;telephone;email;logo;iduser;
 p=1;
-  constructor(private postulersrv: PostulerService, private activatedroute:ActivatedRoute,private stageservice:StageService ) {
+  constructor(private postulersrv: PostulerService,
+    private activatedroute:ActivatedRoute,private stageservice:StageService,
+    private authenService:AuthentificationService ) {
     console.log(this.activatedroute.params)
     this.idstage=this.activatedroute.params['_value']['id'] 
    }
@@ -24,6 +29,7 @@ p=1;
   ngOnInit(): void {
     this.getone(this.idstage);
     this.getallpostuler();
+    this.getprofile();
   }
   handleFileInput(files: FileList) {
     this.fileToUpload = files.item(0);
@@ -64,4 +70,21 @@ getallpostuler(){
     this.listpostuler=res;
   })
 }
+
+
+getprofile(){
+  this.authenService.getprofile().subscribe(res=>{
+    console.log(res);
+    this.user=res;
+    this.iduser= localStorage.getItem('iduser');
+    this.nomuser=res['nom'];
+    this.prenomuser=res['prenom'];
+    this.adresse=res['adresse'];
+    this.siteWeb=res['siteWeb'];
+    this.telephone=res['telephone'];
+    this.email=res['email'];
+    this.logo=res['logo'];
+  
+
+  })}
 }
