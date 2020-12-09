@@ -119,8 +119,9 @@ getfavoriebycandidat(){
     localStorage.setItem('connecte', 'false');
     localStorage.removeItem('iduser');
     localStorage.removeItem('role');
-    //this.router.navigate(['/']);
-    window.location.reload();
+    //this.router.navigate(['']);
+    //window.location.reload();
+    //this.router.navigate(['']);
   }
 
   choisircandiat() {

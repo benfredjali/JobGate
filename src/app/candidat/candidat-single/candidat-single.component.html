@@ -1,10 +1,5 @@
 
 
-<div class="page-loading">
-	<img src="/assets/images/loader.gif" alt="" />
-	<span>Skip Loader</span>
-
-</div>
 <div class="theme-layout" id="scrollup">
 	
 	<div class="responsive-header">
@@ -39,7 +34,7 @@
 		<div class="menu-sec">
 			<div class="container">
 				<div class="logo">
-					<a href="index.html" title=""><img src="images/resource/logo.png" alt="" /></a>
+					<a href="index.html" title=""><img src="/assets/images/resource/logo.png" alt="" /></a>
 				</div><!-- Logo -->
 		
 				
@@ -104,7 +99,8 @@
 				 			<div class="row">
 				 				<div class="col-lg-8 column">
 				 					<div class="cand-details" id="about">
-                                         <h2>Description</h2>
+										 <h2>Description</h2>
+										
                                          <p>{{candidat.description}}</p>
 				 						<p>Hello my name is Mark William Connor and I’m a Web Designer & Web Developer from Melbourne, Australia. In pharetra orci dignissim, blandit mi semper, ultricies diam. Suspendisse malesuada suscipit nunc non volutpat. Sed porta nulla id orci laoreet tempor non consequat enim. Sed vitae aliquam velit. Aliquam ante erat, blandit at pretium et, accumsan ac est. Integer vehicula rhoncus molestie. Morbi ornare ipsum sed sem condimentum, et pulvinar tortor luctus. Suspendisse condimentum lorem ut elementum aliquam. </p>
 				 						<div class="edu-history-sec" id="education">
@@ -113,9 +109,8 @@
 				 								<i class="la la-graduation-cap"></i>
 				 								<div class="edu-hisinfo">
 				 									<h3>University</h3>
-				 									<i>2008 - 2012</i>
-				 									<span>Middle East Technical University <i>Computer Science</i></span>
-				 									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin a ipsum tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus.</p>
+				 									<i>{{candidat.niveauEtude}}</i>
+				 									<span>{{candidat.nom}} {{candidat.prenom}} <i>{{candidat.titre}}</i></span>
 				 								</div>
 				 							</div>
 				 							
@@ -138,7 +133,101 @@
 							 			</ul>
 							 		</div><!-- Job Overview -->
 							 	
-						 		</div>
+								 </div>
+								
+								 <div class="col-lg-9 column">
+									<div class="padding-left">
+										<div class="profile-title">
+											<h3>My Profile</h3>
+									
+											
+										</div>
+										
+										<div class="profile-form-edit">
+											
+												<div class="row">
+													<div class="col-lg-6">
+														<span class="pf-title">Nom</span>
+														<div class="pf-field">
+															<input type="text"  ngModel="{{candidat.nom}}"  />
+														</div>
+													</div>
+													<div class="col-lg-6">
+														<span class="pf-title">Prénom</span>
+														<div class="pf-field">
+															<input type="text"  ngModel="{{candidat.prenom}}"  />
+														</div>
+													</div>
+													<div class="col-lg-6">
+														<span class="pf-title">Niveau d'étude</span>
+														<div class="pf-field">
+															<input type="text"  ngModel="{{candidat.niveauEtude}}"  />
+															</div>
+														</div>
+													<div class="col-lg-6">
+														<span class="pf-title">Adresse</span>
+														<div class="pf-field">
+												 <input type="text"   ngModel="{{candidat.adresse}}"  />
+														</div>
+													</div>
+													<div class="col-lg-6">
+														<span class="pf-title">Télephone</span>
+														<div class="pf-field">
+															<input type="text"  ngModel="{{candidat.telephone}}"     />
+															</div>
+													</div>
+													
+												
+													<div class="col-lg-6">
+														<span class="pf-title">Date de Naissance</span>
+															<div class="pf-field">
+															<input type="text" id="dateNaiss" ngModel="{{candidat.dateNaiss}}" name="dateNaiss" />
+														</div>
+													</div>
+													
+												
+													<div class="col-lg-12">
+														<span class="pf-title">Description</span>
+														<div class="pf-field">
+													<textarea cols="40" rows="3" id="description" ngModel="{{candidat.description}}" name="description"></textarea>
+							
+													</div>
+													</div>
+													
+													</div>
+													<div class="social-edit">
+													<h3>Sociale Contact</h3>
+													<div class="row">
+														<div class="col-lg-4">
+															<span class="pf-title">Phone Number</span>
+															<div class="pf-field">
+																<input type="text" ngModel="{{candidat.telephone}}"  />
+															</div>
+														</div>
+														<div class="col-lg-4">
+															<span class="pf-title">Email</span>
+															<div class="pf-field">
+																<input type="text"  ngModel="{{candidat.email}}"  />
+															</div>
+														</div>
+														<div class="col-lg-4">
+															<span class="pf-title">LinkidIn</span>
+															<div class="pf-field">
+																<input type="text"  ngModel="{{candidat.compteLinkedin}}"    />
+															</div>
+														</div>
+													
+												
+													</div>
+												
+							
+												</div>
+							
+										
+													 </div>
+														 
+													 </div>
+													 </div>
 				 			</div>
 				 		</div>
 					</div>

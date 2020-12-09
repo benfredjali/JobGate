@@ -150,12 +150,12 @@ export class ProfilresponsableSocieteComponent implements OnInit {
 
             console.log(res);
             
-            this.toastr.success(' Profil Modifié  !', 'Merci!', { timeOut: 3000, });
-
-       
+            this.toastr.success(' Profil Modifié  !', 'Merci!', { timeOut: 4000, });
+            //this.router.navigate(['/psociete']);
+           
+            
       })
-      
-   // window.location.reload();
+      window.location.reload();
     
     }
 
@@ -175,7 +175,7 @@ export class ProfilresponsableSocieteComponent implements OnInit {
       this.travailleservice.supprimer(id).subscribe(res => {
         console.log(res);
 
-        this.toastr.error(' Offre Supprimé  !', 'Merci!', { timeOut: 3000, });
+        this.toastr.error(' Offre Supprimé  !', 'Merci!', { timeOut: 4000, });
 
         
       });

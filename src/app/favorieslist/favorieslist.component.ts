@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { FavorieService } from '../services/favorie.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class FavorieslistComponent implements OnInit {
   listfavoriebycandidat;
   id;
   p=1;
-  constructor(private router:Router, private favorieservice: FavorieService) { }
+  constructor(private toastr: ToastrService,private router:Router, private favorieservice: FavorieService) { }
 
   ngOnInit(): void {
     this.getfavoriebycandidat();
@@ -29,6 +30,7 @@ export class FavorieslistComponent implements OnInit {
   supprimer(id) {
     this.favorieservice.supprimer(id).subscribe(res => {
       console.log(res);
+      this.toastr.error(' Favorie Supprimé  !', 'Merci!', { timeOut: 4000, });
       
     });
     window.location.reload();

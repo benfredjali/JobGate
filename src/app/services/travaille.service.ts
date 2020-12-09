@@ -36,7 +36,7 @@ export class TravailleService {
   supprimer(id) {
     let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
 
-    return this.http.delete(environment.url + 'formation/delete/' + id);
+    return this.http.delete(environment.url + 'travaille/delete/' + id,{headers: headers});
   }
 
 }
