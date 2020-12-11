@@ -327,15 +327,7 @@
             <i class="la la-user"></i>
           </div>
 
-          <div class="cfield">
-            <input type="text" placeholder="Prénom"  formControlName="prenom" lass="form-control" [ngClass]="{ 'is-invalid': v.prenom.touched && v.prenom.errors }" />
-            <div *ngIf="v.prenom.touched && v.prenom.errors" class="invalid-feedback">
-              <div *ngIf="v.prenom.errors.required">Prénom est obligatoire</div>
-              <div *ngIf="v.prenom.errors.pattern">Prénom invalide</div>
-              <div *ngIf="v.prenom.errors.minlength">Prénom doit contenir au moins 2 caractères</div>
-            </div>
-            <i class="la la-users"></i>
-          </div>
+         
 
 
           <div class="cfield">

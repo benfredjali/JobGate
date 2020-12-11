@@ -52,6 +52,7 @@ iduser;
     this.UpdateFormationForm = this.formBuilder.group({
       idsecteur: ['', Validators.required],
       titre: ['', Validators.required],
+      technologie: ['', Validators.required],
       date_deb: ['', Validators.required],
       date_fin: ['', Validators.required],
       duree: ['', Validators.required],
@@ -118,7 +119,7 @@ iduser;
  
   console.log(data)
  
-    this.formationservice.modifier(this.UpdateFormationForm.value.idsecteur,localStorage.getItem('iduser'),data).subscribe(res=>{
+    this.formationservice.modifier(this.idformation,this.UpdateFormationForm.value.idsecteur,data).subscribe(res=>{
      
           console.log(res);
           this.toastr.success(' Formation Modifié  !', 'Merci!', { timeOut: 3000, });

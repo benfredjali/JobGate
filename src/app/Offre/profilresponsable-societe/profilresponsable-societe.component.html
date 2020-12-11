@@ -33,6 +33,8 @@
 									<li><a href="candidates_my_resume.html" title=""><i class="la la-briefcase"></i>My Resume</a></li>
 									<li><a routerLink="/tajouter"  title=""><i class="la la-file-text"></i>Ajouter Nouveau travaille</a></li>
 									<li><a routerLink="/sajouter" title=""><i class="la la-file-text"></i>Ajouter Nouveau Stage</a></li>
+									<li><a routerLink="/sajouter" title=""><i class="la la-file-text"></i>Listes des Stage</a></li>
+
 
 
 							
@@ -134,7 +136,7 @@
 				
 				</form>
 				
-				<div class="border-title"><h3>Listes des travailles</h3></div>
+				<div class="border-title"><h3>Listes des travailles</h3> </div>
 				<div class="job-listing wtabs" *ngFor="let travaille of listtravaille" >
 					
 
@@ -146,12 +148,12 @@
 						<div class="job-lctn">{{travaille.date_deb}}</div>
 					</div>
 					<div class="job-list-del">
-						<ul class="action_job">
-						<li><span>Détail</span><a href="" routerLink="/travaille/{{travaille.id}}"  title=""><i class="la la-pencil"></i></a></li>
+			
+					<ul class="action_job">
+						<li><span>Détail</span><a href="" routerLink="/travaille/{{travaille.id}}"  title=""><i class="la la-eye"></i></a></li>
+						<li><span>Modifier</span><a href="" routerLink="/travaille/update/{{travaille.id}}"  title=""><i class="la la-pencil"></i></a></li>
 						<li><span>Supprimer</span><a  (click)="supprimer(travaille.id)" title=""><i class="la la-trash-o"></i></a></li>
-
 					</ul>
-						
 					</div>
 					
 				</div><!-- Job -->

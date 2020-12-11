@@ -142,11 +142,13 @@
 						<div class="job-lctn">{{formation?.date_deb}}</div>
 					</div>
 					<div class="job-list-del">
+					
 						<ul class="action_job">
-						<li><span>Détail</span><a href="" routerLink="/formation/{{formation.id}}"  title=""><i class="la la-pencil"></i></a></li>
-						<li><span>Supprimer</span><a href="" (click)="supprimer(formation.id)" title=""><i class="la la-trash-o"></i></a></li>
+							<li><span>Détail</span><a href="" routerLink="/formation/{{formation.id}}"  title=""><i class="la la-eye"></i></a></li>
+							<li><span>Modifier</span><a href="" routerLink="/formation/update/{{formation.id}}" title=""><i class="la la-pencil"></i></a></li>
+							<li><span>Supprimer</span><a href="" (click)="supprimer(formation.id)" title=""><i class="la la-trash-o"></i></a></li>
+						</ul>
 
-					</ul>
 						
 					</div>
 					

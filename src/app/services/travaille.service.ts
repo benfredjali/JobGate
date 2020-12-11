@@ -38,5 +38,12 @@ export class TravailleService {
 
     return this.http.delete(environment.url + 'travaille/delete/' + id,{headers: headers});
   }
+  getbyid(id) {
 
+    return this.http.get(environment.url + 'travaille/getone/'+id);
+  }
+  modifier(id,idsecteur,data) {
+    
+    return this.http.put(environment.url + 'travaille/modif/'+id+'/'+ idsecteur, data);
+  }
 }

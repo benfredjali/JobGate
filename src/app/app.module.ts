@@ -41,6 +41,8 @@ import { CandidatSingleComponent } from './candidat/candidat-single/candidat-sin
 import { ContactComponent } from './contact/contact.component';
 import { HowitworksComponent } from './howitworks/howitworks.component';
 import { TruncatePipe } from './services/truncate.pipe';
+import { UpdateTravailleComponent } from './Offre/travaille/update-travaille/update-travaille.component';
+import { UpdateStageComponent } from './Offre/stage/update-stage/update-stage.component';
 
 
 
@@ -78,7 +80,9 @@ import { TruncatePipe } from './services/truncate.pipe';
     OffrebyadreeseComponent,
     CandidatSingleComponent,
     ContactComponent,
-    HowitworksComponent
+    HowitworksComponent,
+    UpdateTravailleComponent,
+    UpdateStageComponent
     
   ],
   imports: [

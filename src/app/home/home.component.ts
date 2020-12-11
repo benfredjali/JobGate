@@ -144,10 +144,7 @@ export class HomeComponent implements OnInit {
         Validators.required,
         Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
       ])),
-      prenom: new FormControl('',Validators.compose([
-        Validators.required,
-        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
-      ])),
+     
       username: new FormControl('',Validators.compose([
         Validators.required,
         Validators.minLength(2)
@@ -341,7 +338,7 @@ this.reset();
   registerResponsableCentre() {
     const data = {
       nom: this.registerCentreForm.value["nom"],
-      prenom: this.registerCentreForm.value["prenom"],
+      pSrenom: this.registerCentreForm.value["prenom"],
       username: this.registerCentreForm.value["username"],
       adresse: this.registerCentreForm.value["adresse"],
       description: this.registerCentreForm.value["description"],

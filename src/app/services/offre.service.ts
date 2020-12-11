@@ -27,5 +27,6 @@ export class OffreService {
 
     return this.http.delete(environment.url + 'offre/delete/' + id);
   }
+  
  
 }

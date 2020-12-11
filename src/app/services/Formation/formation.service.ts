@@ -22,8 +22,8 @@ export class FormationService {
     return this.http.post(environment.url + 'formation/save/'+idsecteur+'/'+idcentre, data ,{headers: headers});
   }
   modifier(id,idsecteur,data) {
-    let headers = new HttpHeaders({'authorization': 'Bearer ' + this.authService.jwt});
-    return this.http.put(environment.url + 'formation/modif/'+id+'/'+ idsecteur, data,{headers: headers});
+    
+    return this.http.put(environment.url + 'formation/modif/'+id+'/'+ idsecteur, data);
   }
 
 

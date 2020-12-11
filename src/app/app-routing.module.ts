@@ -25,11 +25,13 @@ import { CandidatSingleComponent } from './candidat/candidat-single/candidat-sin
 import { HowitworksComponent } from './howitworks/howitworks.component';
 import { ContactComponent } from './contact/contact.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { UpdateTravailleComponent } from './Offre/travaille/update-travaille/update-travaille.component';
+import { UpdateStageComponent } from './Offre/stage/update-stage/update-stage.component';
 
 
 
 const routes: Routes = [
-  //{path:'**',component:Erreur404Component},
+
   
 
   {path:'', component:HomeComponent,children:
@@ -45,9 +47,13 @@ const routes: Routes = [
   {path:'offre/:adresse',component:OffrebyadreeseComponent},
   {path:'stage', component:StageComponent },
   {path:'stage/:id', component:StagedetailComponent},
+  {path:'stage/update/:id', component:UpdateStageComponent},
+
   {path:'sajouter', component:AjouterStageComponent},
   {path:'travaille', component:TravailleComponent},
   {path:'travaille/:id', component:TravaildetailComponent},
+  {path:'travaille/update/:id', component:UpdateTravailleComponent},
+
   {path:'tajouter', component:AjouterTravailleComponent},
   {path:'candidat/profil', component:ProfilComponent},
   {path:'candidatlist', component:ListComponent},
@@ -58,7 +64,8 @@ const routes: Routes = [
   {path:'howitworks', component:HowitworksComponent},
   {path:'contact', component:ContactComponent},
 
-  
+  {path:'not-found' ,component:Erreur404Component},
+  { path: '**', redirectTo: 'not-found' },
 
 
   

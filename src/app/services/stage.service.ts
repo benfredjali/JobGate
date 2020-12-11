@@ -26,4 +26,17 @@ export class StageService {
   Ajouter(data,idsociete,idsecteur) {
     return this.http.post(environment.url + 'stage/save/'+idsecteur+'/'+idsociete, data);
   }
+
+  getbyid(id) {
+
+    return this.http.get(environment.url + 'stage/getone/'+id);
+  }
+  modifier(id,idsecteur,data) {
+    
+    return this.http.put(environment.url + 'stage/modif/'+id+'/'+ idsecteur, data);
+  }
+
+  getstage(idsociete) {
+    return this.http.get(environment.url + 'stage/getbystage/'+idsociete);
+  }
 }

@@ -1,0 +1,157 @@
+
+
+
+
+
+<div class="theme-layout" id="scrollup">
+
+
+
+
+    <section class="overlape">
+      <div class="block no-padding">
+        <div data-velocity="-.1" style="background: url(/assets/images/resource/mslider1.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+        <div class="container fluid">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="inner-header">
+                <h3>Bienvenue {{nomuser}}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section>
+      <div class="block remove-top">
+        <div class="container">
+          <div class="row no-gape">
+            <aside class="col-lg-3 column border-right">
+              <div class="widget">
+                <div class="tree_widget-sec">
+                  <ul>
+                      <li><a routerLink="/psociete" title=""><i class="la la-file-text"></i>My Profile</a></li>
+                                      <li><a href="candidates_my_resume.html" title=""><i class="la la-briefcase"></i>My Resume</a></li>
+                                      <li><a routerLink="/tajouter"  title=""><i class="la la-file-text"></i>Ajouter Nouveau travaille</a></li>
+                                      <li><a routerLink="/sajouter" title=""><i class="la la-file-text"></i>Ajouter Nouveau Stage</a></li>
+  
+                    <li><a href="#" title=""><i class="la la-unlink"></i>Logout</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="widget">
+                <div class="skill-perc">
+                  <h3>Votre Profile </h3>
+                
+                </div>
+              </div>
+            </aside>
+            <div class="col-lg-9 column">
+              <div class="padding-left">
+                <div class="manage-jobs-sec">
+                  <div class="border-title"><h3 style="color: #fb236a">Ajouter un offre de travaille</h3><a class="cancel" (click)="reset()"  title=""><i class="la la-close"></i> Cancel</a></div>
+  
+                  <form  [formGroup]="UpdateStageForm">
+                    <div class="resumeadd-form">
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <span class="pf-title">Secteur</span>
+  
+                        <!--   <select  class="pf"  [ngClass]="{ 'is-invalid': touched && f.titre.errors }" >
+  
+                            <option  *ngFor=" let e of listsecteur" value="{{e.id}}"  >{{e.nom}}</option>
+                          </select> -->
+                       
+                          <select  formControlName="idsecteur" id="idsecteur" class="form-control"   >
+  
+                            <option  *ngFor=" let e of listsecteur" value="{{e.id}}"  >{{e.nom}}</option>
+                           
+                          </select>
+                       
+                      </div>
+                        <div class="col-lg-12">
+                          <span class="pf-title">Titre</span>
+                          <div class="pf-field">
+                            <input  id="titre" name="titre"  formControlName="titre" >
+                              
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <span class="pf-title">Technologie</span>
+                          <div class="pf-field">
+                            <input  type="text"  formControlName="technologie" id="technologie" name="technologie" >
+                              
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <span class="pf-title">Date Debut</span>
+                          <div class="pf-field">
+                            <input  type="date" class="datepicker" formControlName="date_deb" id="date_deb" name="date_deb"  >
+                             
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <span class="pf-title">Salaire</span>
+                          <div class="pf-field">
+                            <input type="text" class="datepicker" formControlName="typeContrat" id="typeContrat" name="typeContrat" >
+                              
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <span class="pf-title">Type de offre</span>
+                         
+                          <select  formControlName="type" id="type" name="type" class="form-control"  >
+  
+                            <option   value="Full Time"  >Full Time</option>
+                            <option  value="Part Time"  >Part Time</option>
+                            <option  value="Freelance"  >Freelance</option>
+  
+  
+            
+                          </select>
+                        </div>
+                        <div class="col-lg-6">
+                          <span class="pf-title">Adresse</span>
+                          <div class="pf-field">
+                            <input type="text"  class="datepicker" formControlName="adresse" id="adresse" name="adresse" >
+                             
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <span class="pf-title">Siege</span>
+                          <div class="pf-field">
+                            <input type="text"  formControlName="siege" id="siege" name="siege"  >
+                             
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <span class="pf-title" >Description</span>
+                          <div class="pf-field">
+                            <textarea   formControlName="description" id="description" name="description" >
+                            </textarea>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <button type="submit" (click)="edit()" >Ajouter</button>
+                        </div>
+                      </div>
+                    </div>
+  
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+  
+  
+  
+  
+  <!-- Include Date Range Picker -->
+  
+  </div>
+  

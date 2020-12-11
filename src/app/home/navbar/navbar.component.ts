@@ -120,7 +120,7 @@ getfavoriebycandidat(){
     localStorage.removeItem('iduser');
     localStorage.removeItem('role');
     //this.router.navigate(['']);
-    //window.location.reload();
+    window.location.reload();
     //this.router.navigate(['']);
   }
 

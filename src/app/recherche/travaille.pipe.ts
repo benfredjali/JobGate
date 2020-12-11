@@ -10,6 +10,7 @@ export class TravaillePipe implements PipeTransform {
     if (termTravaille == null) {
       return value;
     } else {
+ 
       return value.filter(item => (item.titre.includes(termTravaille)));
 
     }

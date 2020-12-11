@@ -110,12 +110,18 @@
                       </div>
                       <div class="col-lg-6">
                         <span class="pf-title">Type de offre</span>
-                        <div class="pf-field">
-                          <input type="text" placeholder="Type.." formControlName="type"  [ngClass]="{ 'is-invalid': f.type.touched && f.type.errors }" >
+                       
+                        <select  formControlName="type" id="type" class="form-control"  [ngClass]="{ 'is-invalid': f.type.touched && f.type.errors }" >
+
+                          <option   value="Full Time"  >Full Time</option>
+                          <option  value="Part Time"  >Part Time</option>
+                          <option  value="Freelance"  >Freelance</option>
+
+
                           <div *ngIf="f.type.touched && f.type.errors" class="invalid-feedback">
                             <div *ngIf="f.type.errors.required"> champ est obligatoire</div>
                             </div>
-                        </div>
+                        </select>
                       </div>
                       <div class="col-lg-6">
                         <span class="pf-title">Adresse</span>

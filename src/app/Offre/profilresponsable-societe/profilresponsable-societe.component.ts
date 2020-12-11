@@ -6,6 +6,7 @@ import { Respsociete } from 'src/app/model/respsociete';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { OffreService } from 'src/app/services/offre.service';
 import { ResponsabelSocietyService } from 'src/app/services/responsabel-society.service';
+import { StageService } from 'src/app/services/stage.service';
 import { TravailleService } from 'src/app/services/travaille.service';
 
 @Component({
@@ -20,6 +21,8 @@ export class ProfilresponsableSocieteComponent implements OnInit {
   siteWeb;
   listtravaille;
   idtravaille;
+  idstage;
+  liststage;
   nomuser;
   prenomuser;
   photo;
@@ -36,12 +39,15 @@ export class ProfilresponsableSocieteComponent implements OnInit {
     ,private offreservice: OffreService,
     private respsocieteservice: ResponsabelSocietyService,
     private travailleservice:TravailleService,
-    private router:Router,private toastr: ToastrService) {
+    private router:Router,private toastr: ToastrService,
+    private stageservice: StageService) {
 
       this.id =  localStorage.getItem('iduser');
       this.getbyid(this.id)
       //this.idoffre=localStorage.getItem('iduser');
       this.idtravaille=localStorage.getItem('iduser');
+      this.idstage=localStorage.getItem('iduser');
+
 
     }
 
@@ -79,6 +85,7 @@ export class ProfilresponsableSocieteComponent implements OnInit {
 
     this.getprofile();
     this.getallcomentaire()
+    this.getallstage()
    
 
     
@@ -164,6 +171,13 @@ export class ProfilresponsableSocieteComponent implements OnInit {
       this.travailleservice.gettravaille(this.idtravaille).subscribe(res=>{
         console.log(res);
         this.listtravaille=res;
+      })
+    }
+    getallstage(){
+  
+      this.stageservice.getstage(this.idstage).subscribe(res=>{
+        console.log(res);
+        this.liststage=res;
       })
     }
       //this.submitted = false;
