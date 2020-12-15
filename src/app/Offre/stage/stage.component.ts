@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { CandidatService } from 'src/app/services/candidat.service';
 import {StageService} from '../../services/stage.service';
@@ -9,6 +10,10 @@ import {StageService} from '../../services/stage.service';
   styleUrls: ['./stage.component.css']
 })
 export class StageComponent implements OnInit {
+  titre = new FormControl("");
+  adresse = new FormControl(""); 
+  typesControle = new FormControl("");
+  type = "";
 
   roleuser;
   liststage;

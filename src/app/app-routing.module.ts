@@ -37,7 +37,7 @@ const routes: Routes = [
   {path:'', component:HomeComponent,children:
   [{path:'',component:ContainerComponent},
   {path:'formation', component:FormationComponent},
-  {path:'formation/:id', component:FormationdetailComponent},
+  {path:'formation/:id', component:FormationdetailComponent,canActivate: [AuthGuardService]},
   {path:'fajouter', component:AjouterFormationComponent},
   //{path:'formation/detail', component:FormationdetailComponent,canActivate: [AuthGuardService]},
   {path:'formation/update/:id', component:UpdateComponent},
@@ -46,12 +46,12 @@ const routes: Routes = [
   {path:'offre/employers', component:EmployersComponent},
   {path:'offre/:adresse',component:OffrebyadreeseComponent},
   {path:'stage', component:StageComponent },
-  {path:'stage/:id', component:StagedetailComponent},
+  {path:'stage/:id', component:StagedetailComponent,canActivate: [AuthGuardService]},
   {path:'stage/update/:id', component:UpdateStageComponent},
 
   {path:'sajouter', component:AjouterStageComponent},
   {path:'travaille', component:TravailleComponent},
-  {path:'travaille/:id', component:TravaildetailComponent},
+  {path:'travaille/:id', component:TravaildetailComponent,canActivate: [AuthGuardService]},
   {path:'travaille/update/:id', component:UpdateTravailleComponent},
 
   {path:'tajouter', component:AjouterTravailleComponent},
@@ -60,7 +60,7 @@ const routes: Routes = [
   {path:'favorielist', component:FavorieslistComponent},
   {path:'pcentre', component:ProfilresponsableCentreComponent},
   {path:'psociete', component:ProfilresponsableSocieteComponent},
-  {path:'travailledetail/:id', component:CandidatSingleComponent},
+  {path:'travailledetail/:id', component:CandidatSingleComponent,canActivate: [AuthGuardService]},
   {path:'howitworks', component:HowitworksComponent},
   {path:'contact', component:ContactComponent},
 

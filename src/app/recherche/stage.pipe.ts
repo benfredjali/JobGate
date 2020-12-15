@@ -4,19 +4,17 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'stage'
 })
 export class StagePipe implements PipeTransform {
-
-
-  transform(value: any, term: any): any {
-
-    if (term == null) {
-      return value;
-    } else {
-      return value.filter(item => (item.titre.includes(term)));
-
-    }
-
-
+  transform(list: any[], value: any[], key: any[]): any[] {
+    value.forEach((name, index) => {
+      if (name) {
+        list = list.filter((item) => {
+          return (item[key[index]]
+            .toString()
+            .toLowerCase()
+            .indexOf(name) !== -1)
+        });
+      }
+    });
+    return list;
   }
-
-
 }

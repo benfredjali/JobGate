@@ -4,16 +4,17 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'travaille'
 })
 export class TravaillePipe implements PipeTransform {
-
-  transform(value: any, termTravaille: any): any {
-
-    if (termTravaille == null) {
-      return value;
-    } else {
- 
-      return value.filter(item => (item.titre.includes(termTravaille)));
-
-    }
+  transform(list: any[], value: any[], key: any[]): any[] {
+    value.forEach((name, index) => {
+      if (name) {
+        list = list.filter((item) => {
+          return (item[key[index]]
+            .toString()
+            .toLowerCase()
+            .indexOf(name) !== -1)
+        });
+      }
+    });
+    return list;
   }
-
 }

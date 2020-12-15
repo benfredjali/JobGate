@@ -23,11 +23,11 @@
             <div class="widget">
               <div class="search_widget_job">
                 <div class="field_w_search">
-                  <input type="text" [(ngModel)]="term" placeholder="Search Keywords" />
+                  <input type="text"  id="titre" [formControl]="titre"/>
                   <i class="la la-search"></i>
                 </div><!-- Search Widget -->
                 <div class="field_w_search">
-                  <input type="text" placeholder="All Locations" />
+                  <input type="text" id="adresse" [formControl]="adresse" />
                   <i class="la la-map-marker"></i>
                 </div><!-- Search Widget -->
               </div>
@@ -43,14 +43,15 @@
               </div>
             </div>
             <div class="widget">
-              <h3 class="sb-title open">Type de job</h3>
-              <div class="type_widget">
-                <p class="flchek"><input type="checkbox" name="choosetype" id="33r"><label for="33r">Freelance </label></p>
-                <p class="ftchek"><input type="checkbox" name="choosetype" id="dsf"><label for="dsf">Full Time </label></p>
-                <p class="ischek"><input type="checkbox" name="choosetype" id="sdd"><label for="sdd">Internship </label></p>
-                <p class="ptchek"><input type="checkbox" name="choosetype" id="sadd"><label for="sadd">Part Time </label></p>
-                <p class="tpchek"><input type="checkbox" name="choosetype" id="assa"><label for="assa">Temporary </label></p>
-              </div>
+              <h3 class="sb-title open">Type de stage</h3>
+              <div class="type_widget" >
+
+                <p class=""><input type="text"  value=""  [formControl]="typesControle" [(ngModel)]="type"></p>
+                <p class="flchek"><input  value="freelance" type="radio" name="type"   [formControl]="typesControle" [(ngModel)]="type"id="33r"><label for="33r">Freelance </label></p>
+                <p class="ischek"><input  value="full time" type="radio" name="type"   [formControl]="typesControle" [(ngModel)]="type" id="sdd"><label for="sdd">Full Time </label></p>
+                <p class="ptchek"><input type="radio"     value="part time" [formControl]="typesControle" [(ngModel)]="type" id="sadd"><label for="sadd">Part Time </label></p>
+                
+                </div>
             </div>
           
            
@@ -69,7 +70,7 @@
             </div><!-- MOdern Job LIst -->
             <div class="job-list-modern">
               <div class="job-listings-sec">
-                <div class="job-listing wtabs"  *ngFor=" let e of liststage| stage:term | paginate: { itemsPerPage: 5, currentPage: p }">
+                <div class="job-listing wtabs"  *ngFor=" let e of liststage | stage: [titre.value, adresse.value,type]: ['titre', 'adresse', 'type'] | paginate: { itemsPerPage: 5, currentPage: p }">
                   <div class="job-title-sec" >
                   <div *ngIf="e?.responsableSociete" class="c-logo"> <img src="http://localhost:8080/upload/files/{{e?.responsableSociete?.logo}}" alt="" /> </div>
                   <h3><a routerLink="/stage/{{e.id}}" title="">{{e.titre}}</a></h3>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthentificationService } from 'src/app/services/authentification.service';
 import { CandidatService } from 'src/app/services/candidat.service';
@@ -10,6 +11,11 @@ import {TravailleService} from '../../services/travaille.service';
   styleUrls: ['./travaille.component.css']
 })
 export class TravailleComponent implements OnInit {
+  titre = new FormControl("");
+  adresse = new FormControl(""); 
+  typesControle = new FormControl("");
+  type = "";
+
 
   roleuser;
   prenomuser;
