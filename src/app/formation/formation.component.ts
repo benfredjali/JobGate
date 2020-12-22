@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { AuthentificationService } from '../services/authentification.service';
 import { CandidatService } from '../services/candidat.service';
 import {FormationService} from '../services/Formation/formation.service';
 import { OffreService } from '../services/offre.service';
@@ -10,14 +12,18 @@ import { OffreService } from '../services/offre.service';
 })
 export class FormationComponent implements OnInit {
   listformation;
-  term;
   p=1;
+  nomuser;roleuser;user;
+  titre = new FormControl("");
+  adresse = new FormControl(""); 
+
 
   constructor(private formationservice: FormationService,
-    private candidatservice:CandidatService) {
+    private candidatservice:CandidatService, private authenService: AuthentificationService) {
   }
 
   ngOnInit() {
+    this.getprofile();
     this.all();
     this.onShowLog();
   }
@@ -39,5 +45,18 @@ export class FormationComponent implements OnInit {
 // this.candidatservice.addfavorie({},idoffer,localStorage.getItem('idusser')).subscribe(res=>{
 //   console.log(res);
 // })  }
+
+getprofile(){
+  this.authenService.getprofile().subscribe(res=>{
+    console.log(res);
+    this.user=res;
+    this.roleuser=localStorage.getItem('role');
+
+    localStorage.setItem('iduser',this.user['id']);
+    this.nomuser=res['nom'];
+
+  
+
+  })}
 
 }

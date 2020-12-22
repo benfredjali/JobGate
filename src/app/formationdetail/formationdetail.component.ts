@@ -1,8 +1,10 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import Swal from 'sweetalert2';
+import { AuthentificationService } from '../services/authentification.service';
 import { CommentairService } from '../services/commentair.service';
 import { FormationService } from '../services/Formation/formation.service';
 
@@ -17,11 +19,14 @@ fileToUpload: File = null;
 formation;
 listcommentaire;
 myForm: FormGroup;
-roleuser;
+roleuser;iduser;
 p=1;
+user;nomuser;roluser;
 
 
-constructor(private activatedroute:ActivatedRoute,  private formbuilder: FormBuilder,private formationservice:FormationService,private commentaire:CommentairService) { 
+constructor(private activatedroute:ActivatedRoute,
+   private router:Router,private toastr: ToastrService,  private formbuilder: FormBuilder,private formationservice:FormationService,
+   private commentaire:CommentairService,private authenService:AuthentificationService) { 
    
   console.log(this.activatedroute.params)
     this.idformation=this.activatedroute.params['_value']['id'] 
@@ -29,6 +34,7 @@ constructor(private activatedroute:ActivatedRoute,  private formbuilder: FormBui
   }
 
   ngOnInit(): void {
+    this.getprofile();
     this.roleuser=localStorage.getItem('role');
     this.getone(this.idformation);
     this.getallcomentaire();
@@ -85,5 +91,29 @@ postuler(){
 
 }
 
+supprimer(id) {
+  this.commentaire.supprimer(id).subscribe(res => {
+    console.log(res);
+
+    this.toastr.error(' Commentaire Supprimé  !', 'Merci!', { timeOut: 3000, });
+
+    
+  });
+  
+  //window.location.reload();
+  
+}
+getprofile(){
+  this.authenService.getprofile().subscribe(res=>{
+    console.log(res);
+    this.user=res;
+    this.roleuser=localStorage.getItem('role');
+
+    this.iduser= localStorage.getItem('iduser');
+    this.nomuser=res['nom'];
+
+  
+
+  })}
 
 }

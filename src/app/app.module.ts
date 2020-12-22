@@ -43,6 +43,7 @@ import { HowitworksComponent } from './howitworks/howitworks.component';
 import { TruncatePipe } from './services/truncate.pipe';
 import { UpdateTravailleComponent } from './Offre/travaille/update-travaille/update-travaille.component';
 import { UpdateStageComponent } from './Offre/stage/update-stage/update-stage.component';
+import { FormationPipe } from './recherche/formation.pipe';
 
 
 
@@ -82,7 +83,8 @@ import { UpdateStageComponent } from './Offre/stage/update-stage/update-stage.co
     ContactComponent,
     HowitworksComponent,
     UpdateTravailleComponent,
-    UpdateStageComponent
+    UpdateStageComponent,
+    FormationPipe
     
   ],
   imports: [

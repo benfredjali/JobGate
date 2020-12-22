@@ -24,6 +24,8 @@ import { NotificationService } from '../notification.service';
 export class HomeComponent implements OnInit {
 
   password;
+  user;roleuser;
+  prenomuser;nomuser;valid;
   Confirmpassword;
   loading = false;
   loginForm: FormGroup;
@@ -57,7 +59,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
+    this.getprofile();
 
     this.registerCandidatForm = this.formBuilder.group({
       nom: new FormControl('',Validators.compose([
@@ -412,7 +414,7 @@ this.reset();
     this.authenService.isresponsableSociete();
   }
 
-  onlogin() {
+   /*onlogin() {
 
     this.submitted = true;
     const data = {
@@ -435,6 +437,72 @@ this.reset();
       }
       , error2 => {
 
+        Swal.fire(
+          'OPPs',
+          'Vérifier vos coordonnées:)',
+          'error'
+        );
+      }
+    );
+
+    if (this.loginForm.invalid) {
+      return;
+    }
+
+  } */
+
+
+  onlogin() {
+
+    this.submitted = true;
+    const data = {
+      username: this.loginForm.value.username,
+
+      password: this.loginForm.value.password,
+    };
+
+    this.authenService.login(data).subscribe(res => {
+      const jwt = res.headers.get('Authorization');
+      this.authenService.saveToken(jwt);
+        this.authenService.getprofile().subscribe(res=>{
+          console.log(res);
+          this.user=res;
+          this.roleuser=localStorage.getItem('role');
+
+          this.valid=res['valid'];
+    
+          console.log(this.valid);
+
+      
+     
+    if((this.valid == true ) || (this.roleuser === 'Candidat')){
+      this.ison = true;
+      localStorage.setItem('connecte', 'true');
+      console.log(res);
+      console.log(this.valid);
+
+    
+
+      this.refresh();
+     }
+     else{
+      this.authenService.logout();
+      localStorage.removeItem('iduser');
+      localStorage.removeItem('role');
+      localStorage.setItem('connecte', 'false');
+
+      Swal.fire(
+        'OPPs',
+        'Votre compte est désactiver!',
+        'error'
+      );
+      
+     }
+    }); 
+
+      }
+      , error2 => {
+
 
         Swal.fire(
           'OPPs',
@@ -450,6 +518,8 @@ this.reset();
 
   }
 
+
+
   refresh(): void {
     window.location.reload();
   }
@@ -461,4 +531,20 @@ console.log(this.filesToUpload);
    
     this.logo= file.target.files[0]['name'];
   }
+
+  getprofile(){
+    this.authenService.getprofile().subscribe(res=>{
+      console.log(res);
+      this.user=res;
+      this.roleuser=localStorage.getItem('role');
+
+      localStorage.setItem('iduser',this.user['id']);
+      this.nomuser=res['nom'];
+      this.prenomuser=res['prenom'];
+      this.valid=res['valid'];
+
+      this.logo=res['logo'];
+    
+  
+    })}
 }

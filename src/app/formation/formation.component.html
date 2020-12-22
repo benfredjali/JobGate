@@ -12,7 +12,7 @@
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="inner-header">
-							<h3>Employer</h3>
+							<h3>{{nomuser}}</h3>
 						</div>
 					</div>
 				</div>
@@ -27,14 +27,14 @@
 				 	<aside class="col-lg-3 column border-right">
 				 		<div class="widget">
 				 			<div class="search_widget_job">
-				 				<div class="field_w_search">
-				 					<input type="text" placeholder="Search Keywords" />
-				 					<i class="la la-search"></i>
-				 				</div><!-- Search Widget -->
-				 				<div class="field_w_search">
-				 					<input type="text" placeholder="All Locations" />
-				 					<i class="la la-map-marker"></i>
-				 				</div><!-- Search Widget -->
+								<div class="field_w_search">
+									<input type="text"  id="titre" [formControl]="titre"/>
+									<i class="la la-search"></i>
+								  </div><!-- Search Widget -->
+								  <div class="field_w_search">
+									<input type="text" id="adresse" [formControl]="adresse" />
+									<i class="la la-map-marker"></i>
+								  </div><!-- Search Widget -->
 				 			</div>
 				 		</div>
 				 
@@ -46,7 +46,7 @@
                </div>
 				 		<div class="emply-list-sec">
                
-				 			<div class="emply-list"  *ngFor=" let e of listformation | paginate: { itemsPerPage: 9, currentPage: p };let i=index">
+				 			<div class="emply-list"  *ngFor=" let e of listformation | formation: [titre.value, adresse.value]: ['titre', 'adresse']| paginate: { itemsPerPage: 9, currentPage: p };let i=index">
 				 				<div class="emply-list-thumb">
 				 					<a href="#" title=""><img src="http://localhost:8080/upload/files/{{e?.responsableCentre?.logo}}" alt="" /></a>
 				 				</div>

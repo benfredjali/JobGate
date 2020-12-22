@@ -26,7 +26,7 @@ export class CommentairService {
     return this.http.put(environment.url + 'commentaire/modif/'+id,data )
   }
   
-  deletecommentaire(id){
+  supprimer(id){
     return this.http.delete(environment.url + 'commentaire/delete/'+id )
   }
 }

@@ -16,6 +16,7 @@ export class AuthentificationService {
   url = 'http://localhost:8080/';
   jwt: string;
   username: string;
+  
   public roles;
 
 
@@ -75,7 +76,7 @@ export class AuthentificationService {
   }
 
   isAuthenticated() {
-
+  
     return this.roles && (this.isAdmin() || this.isCandidat() || this.isresponsableSociete() || this.isresponsableCentre());
   }
 

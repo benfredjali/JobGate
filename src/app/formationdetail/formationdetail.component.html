@@ -75,7 +75,7 @@
 						</div>
 						
 
-								<div class="comment-sec">
+								<div class="comment-sec" >
 									<h3>{{listcommentaire.length}} Commentaires</h3>
 									<ul>
 										
@@ -85,10 +85,18 @@
 												<div class="comment-detail">
 													<h3>{{comentaire.candidat.nom}} &nbsp;{{comentaire.candidat.prenom}}	</h3>
 																										
-													<div class="date-comment"><a href="#" title=""><i class="la la-calendar-o"></i>{{comentaire.date | date:'M/d/yy, h:mm a'}} </a></div>
+													<div class="date-comment"><a href="" title=""><i class="la la-calendar-o"></i>{{comentaire.date | date:'M/d/yy, h:mm a'}} </a>
+													
+															
+													
+													</div>
+												
 													<p><i class="la la-map-marker"></i>{{comentaire.candidat.adresse}}</p>
 													<p>{{comentaire.description}} </p>
 													<a href="#" title=""><i class="la la-reply"></i>Reply</a>
+													
+													<li *ngIf="iduser == comentaire.candidat.id || iduser == formation?.responsableCentre?.id"  style="margin-left: 600px;"><a  (click)="supprimer(comentaire.id)" title=""><i class="la la-trash-o"></i></a></li>
+											
 												</div>
 											</div>
 										</li>
