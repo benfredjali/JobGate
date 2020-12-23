@@ -9,7 +9,7 @@ import { CandidatService } from 'src/app/services/candidat.service';
   styleUrls: ['./container.component.css']
 })
 export class ContainerComponent implements OnInit {
-
+titre;
   term;
   term1;
   listannonce;

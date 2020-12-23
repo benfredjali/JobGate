@@ -19,6 +19,10 @@ export class OffreService {
 
     return this.http.get(environment.url + 'offre/findbyadresse/' +adresse);
   }
+  getallbytitre(titre) {
+
+    return this.http.get(environment.url + 'offre/findbytitre/' +titre);
+  }
   getoffre(idoffre) {
     return this.http.get(environment.url + 'offre/getbycentre/'+idoffre);
   }

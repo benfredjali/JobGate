@@ -44,6 +44,7 @@ import { TruncatePipe } from './services/truncate.pipe';
 import { UpdateTravailleComponent } from './Offre/travaille/update-travaille/update-travaille.component';
 import { UpdateStageComponent } from './Offre/stage/update-stage/update-stage.component';
 import { FormationPipe } from './recherche/formation.pipe';
+import { OffrebytitreComponent } from './Offre/offrebytitre/offrebytitre.component';
 
 
 
@@ -84,7 +85,8 @@ import { FormationPipe } from './recherche/formation.pipe';
     HowitworksComponent,
     UpdateTravailleComponent,
     UpdateStageComponent,
-    FormationPipe
+    FormationPipe,
+    OffrebytitreComponent
     
   ],
   imports: [
