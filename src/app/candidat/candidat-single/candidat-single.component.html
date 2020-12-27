@@ -2,33 +2,7 @@
 
 <div class="theme-layout" id="scrollup">
 	
-	<div class="responsive-header">
-		<div class="responsive-menubar">
-			<div class="res-logo"><a href="index.html" title=""><img src="/assets/images/resource/logo.png" alt="" /></a></div>
-			<div class="menu-resaction">
-				<div class="res-openmenu">
-					<img src="/assets/images/icon.png" alt="" /> Menu
-				</div>
-				<div class="res-closemenu">
-					<img src="/assets/images/icon2.png" alt="" /> Close
-				</div>
-			</div>
-		</div>
-		<div class="responsive-opensec">
-			<div class="btn-extars">
-				<a href="#" title="" class="post-job-btn"><i class="la la-plus"></i>Post Jobs</a>
-				<ul class="account-btns">
-					<li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
-					<li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
-				</ul>
-			</div><!-- Btn Extras -->
-			<form class="res-search">
-				<input type="text" placeholder="Job title, keywords or company name" />
-				<button type="submit"><i class="la la-search"></i></button>
-			</form>
-		
-		</div>
-	</div>
+
 
 	<header class="stick-top">
 		<div class="menu-sec">
@@ -53,15 +27,14 @@
 								<div class="row">
 									<div class="col-lg-6">
 										<div class="skills-btn">
-											<a href="#" title="">{{candidat.titre}}</a>
 											<a href="#" title="">Designers</a>
 											<a href="#" title="">Illustrator</a>
 										</div>
 									</div>
 									<div class="col-lg-6">
 										<div class="action-inner">
-											<a href="#" title=""><i class="la la-paper-plane"></i>Save Resume</a>
-											<a href="#" title=""><i class="la la-envelope-o"></i>Contact David</a>
+											<a href="#" title=""><i class="la la-paper-plane"></i> Resume</a>
+											<a href="#" title=""><i class="la la-envelope-o"></i>Contact{{candidat.nom}}</a>
 										</div>
 									</div>
 								</div>
@@ -108,9 +81,8 @@
 				 							<div class="edu-history">
 				 								<i class="la la-graduation-cap"></i>
 				 								<div class="edu-hisinfo">
-				 									<h3>University</h3>
+				 									<h3>Profile</h3>
 				 									<i>{{candidat.niveauEtude}}</i>
-				 									<span>{{candidat.nom}} {{candidat.prenom}} <i>{{candidat.titre}}</i></span>
 				 								</div>
 				 							</div>
 				 							
@@ -138,7 +110,7 @@
 								 <div class="col-lg-9 column">
 									<div class="padding-left">
 										<div class="profile-title">
-											<h3>My Profile</h3>
+										
 									
 											
 										</div>

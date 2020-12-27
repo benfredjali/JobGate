@@ -109,8 +109,8 @@ export class ProfilresponsableSocieteComponent implements OnInit {
 
       this.authenService.logout();
       localStorage.setItem('connecte', 'false');
-      //this.router.navigate(['']);
-      window.location.reload();
+      this.router.navigate(['']);
+      //window.location.reload();
     }
     
     getbyid(id){

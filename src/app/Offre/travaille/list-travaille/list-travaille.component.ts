@@ -2,47 +2,69 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Respcentre } from 'src/app/model/respcentre';
+import { Respsociete } from 'src/app/model/respsociete';
 import { AuthentificationService } from 'src/app/services/authentification.service';
-import { FormationService } from 'src/app/services/Formation/formation.service';
-import { ResponsableCentreService } from 'src/app/services/responsabelcentre.service';
+import { OffreService } from 'src/app/services/offre.service';
+import { ResponsabelSocietyService } from 'src/app/services/responsabel-society.service';
+import { StageService } from 'src/app/services/stage.service';
+import { TravailleService } from 'src/app/services/travaille.service';
 
 @Component({
-  selector: 'app-profilresponsable-centre',
-  templateUrl: './profilresponsable-centre.component.html',
-  styleUrls: ['./profilresponsable-centre.component.css']
+  selector: 'app-list-travaille',
+  templateUrl: './list-travaille.component.html',
+  styleUrls: ['./list-travaille.component.css']
 })
-export class ProfilresponsableCentreComponent implements OnInit {
+export class ListTravailleComponent implements OnInit {
   updateUserForm: FormGroup;
   user;
-  listformation;
+  adresse;
+  siteWeb;
+  listtravaille;
+  idtravaille;
+  idstage;
+  liststage;
   nomuser;
   prenomuser;
-  adresse;
-  logo; 
-  siteWeb;
+  photo;
+  logo; niveauEtude;
+  compteLinkedin;
   telephone;
   email;
   candidat;
   id;
-  idformation;
   submitted = false;
-  listformations;
-  detaillformation = new Respcentre();
+  detaillformation = new Respsociete();
 
-  constructor(private formationservice: FormationService, private formBuilder: FormBuilder,private authenService: AuthentificationService,
-    private respcentreservice: ResponsableCentreService, private router:Router,private toastr: ToastrService) {
+  constructor(private formBuilder: FormBuilder,private authenService: AuthentificationService
+    ,private offreservice: OffreService,
+    private respsocieteservice: ResponsabelSocietyService,
+    private travailleservice:TravailleService,
+    private router:Router,private toastr: ToastrService,
+    private stageservice: StageService) {
 
       this.id =  localStorage.getItem('iduser');
       this.getbyid(this.id)
-      this.idformation=localStorage.getItem('iduser');
+      //this.idoffre=localStorage.getItem('iduser');
+      this.idtravaille=localStorage.getItem('iduser');
+      this.idstage=localStorage.getItem('iduser');
+
+
     }
 
   ngOnInit(): void {
     this.updateUserForm = this.formBuilder.group({
-      nom: ['', Validators.required],
-      prenom:['', Validators.required],
-      username: ['', Validators.required],
+      nom: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+      ])),
+      prenom: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.pattern("[a-zA-Z .'-]+"),Validators.minLength(2)
+      ])),
+      username: new FormControl('',Validators.compose([
+        Validators.required,
+        Validators.minLength(2)
+      ])),
       adresse: ['', Validators.required],
   
       siteWeb: ['', Validators.required],
@@ -63,6 +85,7 @@ export class ProfilresponsableCentreComponent implements OnInit {
 
     this.getprofile();
     this.getallcomentaire()
+    this.getallstage()
    
 
     
@@ -74,9 +97,9 @@ export class ProfilresponsableCentreComponent implements OnInit {
       localStorage.setItem('iduser',this.user['id']);
       this.nomuser=res['nom'];
       this.prenomuser=res['prenom'];
-      this.adresse=res['adresse'];
-      this.siteWeb=res['siteWeb'];
       this.telephone=res['telephone'];
+      this.siteWeb=res['siteWeb'];
+      this.adresse=res['adresse'];
       this.email=res['email'];
       this.logo=res['logo'];
     
@@ -91,25 +114,25 @@ export class ProfilresponsableCentreComponent implements OnInit {
     }
     
     getbyid(id){
-      this.respcentreservice.getbyid(id).subscribe(res=>{
+      this.respsocieteservice.getbyid(id).subscribe(res=>{
         console.log(res)
     this.candidat=res;
     this.updateUserForm.patchValue({
       nom : this.candidat.nom,                     
+      prenom:this.candidat.prenom,
       adresse:this.candidat.adresse,
-      dateNaiss:this.candidat.dateNaiss,
       username:this.candidat.username,
       siteWeb:this.candidat.siteWeb,
       telephone:this.candidat.telephone,
       description:this.candidat.description,
-      email:this.candidat.email,
-      compteLinkedin:this.candidat.compteLinkedin
+      email:this.candidat.email
 
 
 
     })
       })
     }
+
 
      
   
@@ -130,38 +153,45 @@ export class ProfilresponsableCentreComponent implements OnInit {
     }*/
     console.log(data)
    
-      this.respcentreservice.modifier(localStorage.getItem('iduser'),data).subscribe(res=>{
+      this.respsocieteservice.modifier(localStorage.getItem('iduser'),data).subscribe(res=>{
 
             console.log(res);
             
-            this.toastr.success(' Profil Modifié  !', 'Merci!', { timeOut: 3000, });
-
-       
+            this.toastr.success(' Profil Modifié  !', 'Merci!', { timeOut: 4000, });
+            //this.router.navigate(['/psociete']);
+           
+            
       })
-      
-   // window.location.reload();
+      window.location.reload();
     
     }
 
-    
+    getallcomentaire(){
+  
+      this.travailleservice.gettravaille(this.idtravaille).subscribe(res=>{
+        console.log(res);
+        this.listtravaille=res;
+      })
+    }
+    getallstage(){
+  
+      this.stageservice.getstage(this.idstage).subscribe(res=>{
+        console.log(res);
+        this.liststage=res;
+      })
+    }
       //this.submitted = false;
       //this.updateUserForm.reset();
      // window.location.reload();
-     getallcomentaire(){
-  
-      this.formationservice.getformation(this.idformation).subscribe(res=>{
-        console.log(res);
-        this.listformation=res;
-      })
-    }
+ 
 
     supprimer(id) {
-      this.formationservice.supprimer(id).subscribe(res => {
+      this.travailleservice.supprimer(id).subscribe(res => {
         console.log(res);
 
-        this.toastr.error(' Formation Supprimé  !', 'Merci!', { timeOut: 3000, });
-       this.getallcomentaire();
-        
+        this.toastr.error(' Offre Supprimé  !', 'Merci!', { timeOut: 4000, });
+        this.getallstage();
+        this.getallcomentaire();        
       });
       
       //window.location.reload();

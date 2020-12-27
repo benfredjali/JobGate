@@ -8,11 +8,11 @@ import { FormationService } from 'src/app/services/Formation/formation.service';
 import { ResponsableCentreService } from 'src/app/services/responsabelcentre.service';
 
 @Component({
-  selector: 'app-profilresponsable-centre',
-  templateUrl: './profilresponsable-centre.component.html',
-  styleUrls: ['./profilresponsable-centre.component.css']
+  selector: 'app-list-formation',
+  templateUrl: './list-formation.component.html',
+  styleUrls: ['./list-formation.component.css']
 })
-export class ProfilresponsableCentreComponent implements OnInit {
+export class ListFormationComponent implements OnInit {
   updateUserForm: FormGroup;
   user;
   listformation;

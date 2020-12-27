@@ -1,0 +1,88 @@
+
+
+<div class="theme-layout" id="scrollup">
+	
+	
+	
+
+
+	<section class="overlape">
+		<div class="block no-padding">
+			<div data-velocity="-.1" style="background: url(/assets/images/resource/mslider1.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner-header">
+							<h3>Welcome {{nomuser}} {{prenomuser}}</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="block no-padding">
+			<div class="container">
+				 <div class="row no-gape">
+				 	<aside class="col-lg-3 column border-right">
+				 		<div class="widget">
+				 			<div class="tree_widget-sec">
+				 				<ul>
+				 					<li><a routerLink="/pcentre" title=""><i class="la la-file-text"></i>Profile</a></li>
+									<li><a routerLink="/howitworks" title=""><i class="la la-briefcase"></i> Resume</a></li>
+									<li><a href="/listformation" title=""><i class="la la-paper-plane"></i>Liste Formation</a></li>
+							
+									<li><a (click)="deconecter()"  title=""><i class="la la-unlink"></i>Logout</a></li>
+				 				</ul>
+				 			</div>
+				 		</div>
+				 		
+				 	</aside>
+				 	<div class="col-lg-9 column">
+		<div class="padding-left">
+		
+			<div class="profile-form-edit">
+				
+				<div class="profile-title">
+                  <h3 style="color: #fb236a;">Listes des Formations</h3></div>
+				<div class="job-listing wtabs" *ngFor="let formation of listformation" >
+					
+
+
+					<div class="job-title-sec" >
+						<div class="c-logo"> <img src="http://localhost:8080/upload/files/{{logo}}" alt="" /> </div>
+                        <h3><a routerLink="/stage/{{formation.id}}" title="">{{formation.titre}}</a></h3>
+                        <span><i class="la la-calendar-o"></i> Date Debut: {{formation.date_deb | date:'M/d/yy'}}</span>
+                        <div class="job-lctn"><i class="la la-map-marker"></i>{{formation?.adresse}}</div>
+					</div>
+					<div class="job-list-del">
+					
+						<ul class="action_job">
+							<li><span>Détail</span><a href="" routerLink="/formation/{{formation.id}}"  title=""><i class="la la-eye"></i></a></li>
+							<li><span>Modifier</span><a href="" routerLink="/formation/update/{{formation.id}}" title=""><i class="la la-pencil"></i></a></li>
+							<li><span>Supprimer</span><a  (click)="supprimer(formation.id)" title=""><i class="la la-trash-o"></i></a></li>
+						</ul>
+
+						
+					</div>
+					
+                </div><!-- Job -->
+                <div class="border-title"></div>
+
+			</div>
+					 	
+					 		
+					 	</div>
+					</div>
+				 </div>
+			</div>
+		</div>
+	</section>
+
+
+
+</div>
+
+
+

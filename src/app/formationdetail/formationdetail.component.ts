@@ -96,7 +96,7 @@ supprimer(id) {
     console.log(res);
 
     this.toastr.error(' Commentaire Supprimé  !', 'Merci!', { timeOut: 3000, });
-
+    this.getallcomentaire();
     
   });
   

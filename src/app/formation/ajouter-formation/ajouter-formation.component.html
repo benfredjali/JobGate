@@ -38,27 +38,13 @@
             <div class="widget">
               <div class="tree_widget-sec">
                 <ul>
-                  <li><a href="candidates_profile.html" title=""><i class="la la-file-text"></i>My Profile</a></li>
-                  <li><a href="candidates_applied_jobs.html" title=""><i class="la la-paper-plane"></i>Applied Job</a></li>
-                  <li><a href="candidates_job_alert.html" title=""><i class="la la-user"></i>Job Alerts</a></li>
-                  <li><a href="#" title=""><i class="la la-unlink"></i>Logout</a></li>
+                  <li><a routerLink="/pcentre" title=""><i class="la la-file-text"></i>Profile</a></li>
+                  <li><a routerLink="/listformation" title=""><i class="la la-paper-plane"></i>Liste Formation</a></li>
+                  <li><a (click)="deconecter()"   title=""><i class="la la-unlink"></i>Logout</a></li>
                 </ul>
               </div>
             </div>
-            <div class="widget">
-              <div class="skill-perc">
-                <h3>Skills Percentage </h3>
-                <p>Put value for "Cover Image" field to increase your skill up to "15%"</p>
-                <div class="skills-bar">
-                  <span>85%</span>
-                  <div
-                    class="second circle"
-                    data-size="155"
-                    data-thickness="60">
-                  </div>
-                </div>
-              </div>
-            </div>
+           
           </aside>
           <div class="col-lg-9 column">
             <div class="padding-left">
@@ -110,7 +96,7 @@
                     <div class="col-lg-6">
                       <span class="pf-title">Prix de Formation</span>
                       <div class="pf-field">
-                        <input type="text" placeholder="duree.." class="datepicker" formControlName="prix"  [ngClass]="{ 'is-invalid': submitted && f.prix.errors }">
+                        <input type="text" placeholder="Prix.." class="datepicker" formControlName="prix"  [ngClass]="{ 'is-invalid': submitted && f.prix.errors }">
                       </div>
                     </div>
                     <div class="col-lg-6">

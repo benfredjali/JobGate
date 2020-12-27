@@ -22,7 +22,8 @@ export class AjouterFormationComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private formationservice: FormationService,
               private router: Router, private authservice: AuthentificationService,
-              private secteurservice: SecteurService,private toastr: ToastrService) {
+              private secteurservice: SecteurService,private toastr: ToastrService,
+              private authenService:AuthentificationService) {
   }
 
   ngOnInit(): void {
@@ -35,6 +36,7 @@ export class AjouterFormationComponent implements OnInit {
       duree: ['', Validators.required],
       nombre: ['', Validators.required],
       prix: ['', Validators.required],
+      adresse: ['', Validators.required],
       description: ['', Validators.required],
 
 
@@ -85,5 +87,12 @@ export class AjouterFormationComponent implements OnInit {
   reset() {
     this.submitted = false;
     this.AjouterFormationForm.reset();
+  }
+  deconecter() {
+
+    this.authenService.logout();
+    localStorage.setItem('connecte', 'false');
+    //this.router.navigate(['']);
+    window.location.reload();
   }
 }

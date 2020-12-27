@@ -14,11 +14,59 @@
 		</div>
 		<div class="responsive-opensec">
 			<div class="btn-extars">
-				<a href="#" title="" class="post-job-btn"><i class="la la-plus"></i>Post Jobs</a>
 				<ul class="account-btns">
-					<li class="signup-popup"><a title=""><i class="la la-key"></i> Sign Up</a></li>
-					<li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Login</a></li>
-				</ul>
+				
+					<ul class="account-btns" [hidden]="ison">
+						<li class="signup-popup"><a title=""><i class="la la-key"></i> Inscription</a></li>
+						<li class="signin-popup"><a title=""><i class="la la-external-link-square"></i> Connexion</a></li>
+					</ul>
+					
+					<div  class="my-profiles-sec" [hidden]="!ison">
+						<span  style="color:rgb(184, 218, 218) ;font-size: 100%;"><img  width="55px" height="55px" src="http://localhost:8080/upload/files/{{logo}}" alt="" /> {{nomuser}}&nbsp;{{prenomuser}}
+							<i class="la la-bars"></i> </span>
+					</div>
+					<!--[hidden]="roleuser==='ResponsableCentre'" [hidden]="roleuser==='ResponsableSociete'"-->
+					<div class="wishlist-dropsec"   [hidden]="!ison">
+						<span [hidden]="roleuser !=='Candidat'" style="color:rgb(184, 218, 218)" ><i  class="la la-heart"></i><strong >{{listfavoriebycandidat?.length}}</strong></span>
+						<div class="wishlist-dropdown">
+							<ul class="scrollbar" >
+								<li>
+	
+									<div style="margin-bottom: -50px; " *ngFor="let f of listfavoriebycandidat ;let i=index">
+										<div class="job-listing wtabs"*ngIf="i<2" >
+											<div class="c-logo"> <img src="http://localhost:8080/upload/files/{{f?.offre?.responsableSociete?.logo}}" alt="" /> </div>										
+											<h3><a href="#" title="">{{f?.offre.titre}}</a></h3>
+											<span>{{f?.offre.responsableSociete?.nom}}</span>									
+										</div>
+	
+	
+									</div><!-- Job -->
+									<div>
+										<span><a style="text-align: center;margin-left: 100px;" routerLink="/favorielist"> Liste Favories</a>
+	
+										</span>
+									</div>
+	
+								</li>
+							</ul>
+	
+						</div>
+						<div class="tree_widget-sec">
+							<ul>
+								<li><a *ngIf="roleuser==='Candidat'"  routerLink="/candidat/profil" title=""><i class="la la-file-text"></i>Profil</a></li>
+								<li><a *ngIf="roleuser==='ResponsableSociete'"  routerLink="/psociete" title=""><i class="la la-file-text"></i>Profil-Société</a></li>
+					
+								<li><a *ngIf="roleuser==='ResponsableCentre'"  routerLink="/pcentre" title=""><i class="la la-file-text"></i>Profil-Centre</a></li>
+					
+								<li><a routerLink="howitworks" title=""><i class="la la-briefcase"></i>Resume</a></li>
+								<li><a (click)="deconecter()"  title=""><i class="la la-unlink"></i>Logout</a></li>
+							</ul>
+						</div>
+					</div>
+				 <!--  <ul class="account-btns" [hidden]="!ison">
+				 <li ><a (click)="deconecter()" title=""><i  class="la la-external-link-square"></i> decoonecter</a></li>
+				  </ul> -->
+				<!-- Btn Extras --></ul>
 			</div><!-- Btn Extras -->
 			<form class="res-search">
 				<input type="text" placeholder="Job title, keywords or company name" />
@@ -26,89 +74,51 @@
 			</form>
 			<div class="responsivemenu">
 				<ul>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Home</a>
-							<ul>
-								<li><a href="index.html" title="">Home Layout 1</a></li>
-								<li><a href="index2.html" title="">Home Layout 2</a></li>
-								<li><a href="index3.html" title="">Home Layout 3</a></li>
-								<li><a href="index4.html" title="">Home Layout 4</a></li>
-								<li><a href="index5.html" title="">Home Layout 5</a></li>
-								<li><a href="index6.html" title="">Home Layout 6</a></li>
-								<li><a href="index7.html" title="">Home Layout 7</a></li>
-								<li><a href="index8.html" title="">Home Layout 8</a></li>
-							</ul>
-						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Employers</a>
-							<ul>
-								<li><a href="employer_list1.html" title=""> Employer List 1</a></li>
-								<li><a href="employer_list2.html" title="">Employer List 2</a></li>
-								<li><a href="employer_list3.html" title="">Employer List 3</a></li>
-								<li><a href="employer_list4.html" title="">Employer List 4</a></li>
-								<li><a href="employer_single1.html" title="">Employer Single 1</a></li>
-								<li><a href="employer_single2.html" title="">Employer Single 2</a></li>
-								<li class="menu-item-has-children">
-									<a href="#" title="">Employer Dashboard</a>
-									<ul>
-										<li><a href="employer_manage_jobs.html" title="">Employer Job Manager</a></li>
-										<li><a href="employer_packages.html" title="">Employer Packages</a></li>
-										<li><a href="employer_post_new.html" title="">Employer Post New</a></li>
-										<li><a href="employer_profile.html" title="">Employer Profile</a></li>
-										<li><a href="employer_resume.html" title="">Employer Resume</a></li>
-										<li><a href="employer_transactions.html" title="">Employer Transaction</a></li>
-										<li><a href="employer_job_alert.html" title="">Employer Job Alert</a></li>
-										<li><a href="employer_change_password.html" title="">Employer Change Password</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Candidates</a>
-							<ul>
-								<li><a href="candidates_list.html" title="">Candidates List 1</a></li>
-								<li><a href="candidates_list2.html" title="">Candidates List 2</a></li>
-								<li><a href="candidates_list3.html" title="">Candidates List 3</a></li>
-								<li><a href="candidates_single.html" title="">Candidates Single 1</a></li>
-								<li><a href="candidates_single2.html" title="">Candidates Single 2</a></li>
-								<li class="menu-item-has-children">
-									<a href="#" title="">Candidates Dashboard</a>
-									<ul>
-										<li><a href="candidates_my_resume.html" title="">Candidates Resume</a></li>
-										<li><a href="candidates_my_resume_add_new.html" title="">Candidates Resume new</a></li>
-										<li><a href="candidates_profile.html" title="">Candidates Profile</a></li>
-										<li><a href="candidates_shortlist.html" title="">Candidates Shortlist</a></li>
-										<li><a href="candidates_job_alert.html" title="">Candidates Job Alert</a></li>
-										<li><a href="candidates_dashboard.html" title="">Candidates Dashboard</a></li>
-										<li><a href="candidates_cv_cover_letter.html" title="">CV Cover Letter</a></li>
-										<li><a href="candidates_change_password.html" title="">Change Password</a></li>
-										<li><a href="candidates_applied_jobs.html" title="">Candidates Applied Jobs</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Blog</a>
-							<ul>
-								<li><a href="blog_list.html"> Blog List 1</a></li>
-								<li><a href="blog_list2.html">Blog List 2</a></li>
-								<li><a href="blog_list3.html">Blog List 3</a></li>
-								<li><a href="blog_single.html">Blog Single</a></li>
-							</ul>
-						</li>
-						<li class="menu-item-has-children">
-							<a href="#" title="">Job</a>
-							<ul>
-								<li><a href="job_list_classic.html">Job List Classic</a></li>
-								<li><a href="job_list_grid.html">Job List Grid</a></li>
-								<li><a href="job_list_modern.html">Job List Modern</a></li>
-								<li><a href="job_single1.html">Job Single 1</a></li>
-								<li><a href="job_single2.html">Job Single 2</a></li>
-								<li><a href="job-single3.html">Job Single 3</a></li>
-							</ul>
-						</li>
-					
-					</ul>
+					<nav>
+						<ul>
+							<li class="menu-item-has-children">
+								<a  routerLink="/" title="">Accueil</a>
+							   
+							</li>
+							
+							<li class="menu-item-has-children">
+								<a [hidden]="!ison"  *ngIf="roleuser !=='Candidat'" routerLink="/candidatlist" title="">Candidat</a>
+						  
+							</li>
+							<li class="menu-item-has-children">
+								<a title="">Offre</a>
+								<ul>
+								  <li><a  routerLink="/stage" title="">Stage</a></li>
+								  <li><a  routerLink="/travaille" title="">Travaille</a></li>
+								  
+		
+								</ul>
+							</li>
+							<li class="menu-item-has-children">
+								<a href="#"  routerLink="/formation" title="">Formation</a>
+							   
+							</li>
+							<li class="menu-item-has-children">
+								<a  [hidden]="ison" routerLink="/howitworks">A propos</a>
+		
+							</li>
+							<li class="menu-item-has-children">
+								<a href="#" routerLink="/contact">Contact</a>
+		
+							</li>
+						  <!--  <li class="menu-item-has-children">
+								<a href="#" title="">Pages</a>
+								<ul>
+									<li><a href="about.html" title="">About Us</a></li>
+									<li><a href="404.html" title="">404 Error</a></li>
+									<li><a href="contact.html" title="">Contact Us 1</a></li>
+									<li><a href="pricing.html" title="">Pricing Plans</a></li>
+									<li><a href="terms_and_condition.html" title="">Terms & Condition</a></li>
+								</ul>
+							</li>-->
+						</ul>
+					</nav>
+				</ul>
 			</div>
 		</div>
 	</div>

@@ -28,6 +28,9 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { UpdateTravailleComponent } from './Offre/travaille/update-travaille/update-travaille.component';
 import { UpdateStageComponent } from './Offre/stage/update-stage/update-stage.component';
 import { OffrebytitreComponent } from './Offre/offrebytitre/offrebytitre.component';
+import { ListFormationComponent } from './formation/list-formation/list-formation.component';
+import { ListTravailleComponent } from './Offre/travaille/list-travaille/list-travaille.component';
+import { ListStageComponent } from './Offre/stage/list-stage/list-stage.component';
 
 
 
@@ -58,7 +61,7 @@ const routes: Routes = [
   {path:'travaille/update/:id', component:UpdateTravailleComponent},
 
   {path:'tajouter', component:AjouterTravailleComponent},
-  {path:'candidat/profil', component:ProfilComponent},
+  {path:'candidatlist/:id', component:ProfilComponent},
   {path:'candidatlist', component:ListComponent},
   {path:'favorielist', component:FavorieslistComponent},
   {path:'pcentre', component:ProfilresponsableCentreComponent},
@@ -66,6 +69,11 @@ const routes: Routes = [
   {path:'travailledetail/:id', component:CandidatSingleComponent},
   {path:'howitworks', component:HowitworksComponent},
   {path:'contact', component:ContactComponent},
+  {path:'listformation', component:ListFormationComponent},
+
+  {path:'listtravaille', component:ListTravailleComponent},
+  {path:'liststage', component:ListStageComponent},
+
 
   {path:'not-found' ,component:Erreur404Component},
   { path: '**', redirectTo: 'not-found' },

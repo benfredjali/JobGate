@@ -21,7 +21,8 @@ export class AjouterStageComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private stageservice: StageService,
               private router: Router, private authservice: AuthentificationService,
-              private secteurservice: SecteurService,private toastr: ToastrService) {
+              private secteurservice: SecteurService,private toastr: ToastrService,
+              private authenService:AuthentificationService) {
   }
 
 
@@ -87,5 +88,12 @@ console.log( localStorage.getItem('iduser'))
   reset() {
     this.submitted = false;
     this.AjouterStageForm.reset();
+  }
+  deconecter() {
+
+    this.authenService.logout();
+    localStorage.setItem('connecte', 'false');
+    //this.router.navigate(['']);
+    window.location.reload();
   }
 }

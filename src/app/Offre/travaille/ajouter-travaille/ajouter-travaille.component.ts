@@ -22,7 +22,8 @@ export class AjouterTravailleComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private travailleservice: TravailleService,
     private router: Router, private authservice: AuthentificationService,
-    private secteurservice: SecteurService,private toastr: ToastrService) { }
+    private secteurservice: SecteurService,private toastr: ToastrService,
+    private authenService:AuthentificationService) { }
 
   ngOnInit(): void { this.getprofile();
     this.AjouterTravailleForm = this.formBuilder.group({
@@ -91,5 +92,11 @@ export class AjouterTravailleComponent implements OnInit {
     this.AjouterTravailleForm.reset();
   }
 
-  
+  deconecter() {
+
+    this.authenService.logout();
+    localStorage.setItem('connecte', 'false');
+    //this.router.navigate(['']);
+    window.location.reload();
+  }
 }

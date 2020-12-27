@@ -25,7 +25,8 @@ export class UpdateTravailleComponent implements OnInit {
   constructor(private activatedroute:ActivatedRoute,private formBuilder: FormBuilder,
     private travailleservice: TravailleService,
     private router: Router, private authservice: AuthentificationService,
-    private secteurservice: SecteurService,private toastr: ToastrService) {
+    private secteurservice: SecteurService,private toastr: ToastrService,
+    private authenService: AuthentificationService) {
 
       console.log(this.activatedroute.params)
       this.idtravaille=this.activatedroute.params['_value']['id'] 
@@ -119,5 +120,12 @@ export class UpdateTravailleComponent implements OnInit {
     reset() {
       this.submitted = false;
       this.UpdateTravailleForm.reset();
+    }
+    deconecter() {
+
+      this.authenService.logout();
+      localStorage.setItem('connecte', 'false');
+      //this.router.navigate(['']);
+      window.location.reload();
     }
 }

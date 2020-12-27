@@ -34,7 +34,7 @@ iduser;
   id;
 
  
-  constructor(private activatedroute:ActivatedRoute,private formBuilder: FormBuilder,
+  constructor(private authenService:AuthentificationService, private activatedroute:ActivatedRoute,private formBuilder: FormBuilder,
     private formationservice: FormationService,
     private router: Router, private authservice: AuthentificationService,
     private secteurservice: SecteurService ,private toastr: ToastrService) {
@@ -142,4 +142,12 @@ iduser;
       this.logo=res['logo'];
     
     })}
+
+    deconecter() {
+
+      this.authenService.logout();
+      localStorage.setItem('connecte', 'false');
+      //this.router.navigate(['']);
+      window.location.reload();
+    }
 }

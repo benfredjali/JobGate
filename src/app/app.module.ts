@@ -45,6 +45,9 @@ import { UpdateTravailleComponent } from './Offre/travaille/update-travaille/upd
 import { UpdateStageComponent } from './Offre/stage/update-stage/update-stage.component';
 import { FormationPipe } from './recherche/formation.pipe';
 import { OffrebytitreComponent } from './Offre/offrebytitre/offrebytitre.component';
+import { ListFormationComponent } from './formation/list-formation/list-formation.component';
+import { ListTravailleComponent } from './Offre/travaille/list-travaille/list-travaille.component';
+import { ListStageComponent } from './Offre/stage/list-stage/list-stage.component';
 
 
 
@@ -86,7 +89,10 @@ import { OffrebytitreComponent } from './Offre/offrebytitre/offrebytitre.compone
     UpdateTravailleComponent,
     UpdateStageComponent,
     FormationPipe,
-    OffrebytitreComponent
+    OffrebytitreComponent,
+    ListFormationComponent,
+    ListTravailleComponent,
+    ListStageComponent
     
   ],
   imports: [
