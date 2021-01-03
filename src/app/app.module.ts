@@ -48,6 +48,7 @@ import { OffrebytitreComponent } from './Offre/offrebytitre/offrebytitre.compone
 import { ListFormationComponent } from './formation/list-formation/list-formation.component';
 import { ListTravailleComponent } from './Offre/travaille/list-travaille/list-travaille.component';
 import { ListStageComponent } from './Offre/stage/list-stage/list-stage.component';
+import { ProfilCandidatComponent } from './candidat/profil-candidat/profil-candidat.component';
 
 
 
@@ -92,7 +93,8 @@ import { ListStageComponent } from './Offre/stage/list-stage/list-stage.componen
     OffrebytitreComponent,
     ListFormationComponent,
     ListTravailleComponent,
-    ListStageComponent
+    ListStageComponent,
+    ProfilCandidatComponent
     
   ],
   imports: [

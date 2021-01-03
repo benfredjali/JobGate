@@ -1,0 +1,155 @@
+
+
+<div class="theme-layout" id="scrollup">
+	
+	
+	
+
+
+	<section class="overlape">
+		<div class="block no-padding">
+			<div data-velocity="-.1" style="background: url(/assets/images/resource/mslider1.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+			<div class="container fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="inner-header">
+							<h3>Welcome {{nomuser}} {{prenomuser}}</h3>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section>
+		<div class="block no-padding">
+			<div class="container">
+				 <div class="row no-gape">
+				 	<aside class="col-lg-3 column border-right">
+				 		<div class="widget">
+				 			<div class="tree_widget-sec">
+				 				<ul>
+				 					<li><a href="candidates_profile.html" title=""><i class="la la-file-text"></i>My Profile</a></li>
+									<li><a href="candidates_my_resume.html" title=""><i class="la la-briefcase"></i>My Resume</a></li>
+									<li><a href="candidates_shortlist.html" title=""><i class="la la-money"></i>Shorlisted Job</a></li>
+									<li><a href="candidates_applied_jobs.html" title=""><i class="la la-paper-plane"></i>Applied Job</a></li>
+									<li><a href="candidates_job_alert.html" title=""><i class="la la-user"></i>Job Alerts</a></li>
+									<li><a href="candidates_cv_cover_letter.html" title=""><i class="la la-file-text"></i>Cv & Cover Letter</a></li>
+									<li><a href="candidates_change_password.html" title=""><i class="la la-flash"></i>Change Password</a></li>
+									<li><a (click)="deconecter()"  title=""><i class="la la-unlink"></i>Logout</a></li>
+				 				</ul>
+				 			</div>
+				 		</div>
+				 		
+				 	</aside>
+				 	<div class="col-lg-9 column">
+		<div class="padding-left">
+			<div class="profile-title">
+				<h3>My Profile</h3>
+		
+				<div class="upload-img-bar">
+					<span class="round"><img src="http://localhost:8080/upload/files/{{logo}}" alt="" /><i>x</i></span>
+					<div class="upload-info">
+						<a href="#" title="">Browse</a>
+					</div>
+				</div>
+			</div>
+			<div class="profile-form-edit">
+				<form [formGroup]="updateUserForm">
+					<div class="row">
+						<div class="col-lg-6">
+							<span class="pf-title">Nom</span>
+							<div class="pf-field">
+								<input type="text" id="nom" formControlName="nom"  name="nom" />
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<span class="pf-title">Prénom</span>
+							<div class="pf-field">
+								<input type="text" id="prenom" formControlName="prenom"  name="prenom" />
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<span class="pf-title">Niveau d'étude</span>
+							<div class="pf-field">
+								<input type="text" id="niveauEtude" formControlName="niveauEtude"  name="niveauEtude" />
+								</div>
+							</div>
+						<div class="col-lg-6">
+							<span class="pf-title">Adresse</span>
+							<div class="pf-field">
+		             <input type="text"  id="adresse" formControlName="adresse"  name="adresse" />
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<span class="pf-title">Télephone</span>
+							<div class="pf-field">
+								<input type="text" id="telephone" formControlName="telephone"    name="telephone" />
+								</div>
+						</div>
+						
+					
+						<div class="col-lg-6">
+							<span class="pf-title">Date de Naissance</span>
+								<div class="pf-field">
+								<input type="text" id="dateNaiss" formControlName="dateNaiss" name="dateNaiss" />
+							</div>
+						</div>
+						
+					
+						<div class="col-lg-12">
+							<span class="pf-title">Description</span>
+							<div class="pf-field">
+						<textarea cols="40" rows="3" id="description" formControlName="description" name="description"></textarea>
+
+						</div>
+						</div>
+						
+						</div>
+						<div class="social-edit">
+						<h3>Sociale Contact</h3>
+						<div class="row">
+							<div class="col-lg-4">
+								<span class="pf-title">Phone Number</span>
+								<div class="pf-field">
+									<input type="text" formControlName="telephone" id="telephone"   name="telephone" />
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<span class="pf-title">Email</span>
+								<div class="pf-field">
+									<input type="text" id="email" formControlName="email"  name="email" />
+								</div>
+							</div>
+							<div class="col-lg-4">
+								<span class="pf-title">LinkidIn</span>
+								<div class="pf-field">
+									<input type="text" id="compteLinkedin" formControlName="compteLinkedin"   name="compteLinkedin" />
+								</div>
+							</div>
+						
+					
+						</div>
+						<div class="col-lg-12">
+							<button type="submit" (click)="edit()">Modifier</button>
+						</div>
+
+					</div>
+
+				</form>
+			</div>
+					 	
+					 		
+					 	</div>
+					</div>
+				 </div>
+			</div>
+		</div>
+	</section>
+
+
+
+</div>
+
+
+

@@ -1,0 +1,104 @@
+
+  <section class="overlape">
+    <div class="block no-padding">
+      <div data-velocity="-.1" style="background: url(/assets/images/resource/mslider1.jpg) repeat scroll 50% 422.28px transparent;" class="parallax scrolly-invisible no-parallax"></div><!-- PARALLAX BACKGROUND IMAGE -->
+      <div class="container fluid">
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="inner-header">
+              <h3>Liste de stage </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section>
+    <div class="block no-padding">
+      <div class="container">
+        <div class="row no-gape">
+          <aside class="col-lg-3 column border-right">
+            <div class="widget">
+              <div class="search_widget_job">
+                <div class="field_w_search">
+                  <input type="text"  id="titre" [formControl]="titre"/>
+                  <i class="la la-search"></i>
+                </div><!-- Search Widget -->
+                <div class="field_w_search">
+                  <input type="text" id="adresse" [formControl]="adresse" />
+                  <i class="la la-map-marker"></i>
+                </div><!-- Search Widget -->
+              </div>
+            </div>
+            <div class="widget">
+              <h3 class="sb-title open">Date de postulation</h3>
+              <div class="posted_widget">
+                <input type="radio" name="choose" id="wwqe"><label for="wwqe">Last 24 hours</label><br />
+                <input type="radio" name="choose" id="erewr"><label for="erewr">Last 7 days</label><br />
+                <input type="radio" name="choose" id="qwe"><label for="qwe">Last 14 days</label><br />
+                <input type="radio" name="choose" id="wqe"><label for="wqe">Last 30 days</label><br />
+                <input type="radio" name="choose" id="qweqw"><label class="nm" for="qweqw">All</label><br />
+              </div>
+            </div>
+            <div class="widget">
+              <h3 class="sb-title open">Type de stage</h3>
+              <div class="type_widget" >
+
+                <p class="flchek"><input  value="freelance" type="radio" name="type"   [formControl]="typesControle" [(ngModel)]="type"id="33r"><label for="33r">Freelance </label></p>
+                <p class="ischek"><input  value="full time" type="radio" name="type"   [formControl]="typesControle" [(ngModel)]="type" id="sdd"><label for="sdd">Full Time </label></p>
+                <p class="ptchek"><input type="radio"     value="part time" [formControl]="typesControle" [(ngModel)]="type" id="sadd"><label for="sadd">Part Time </label></p>
+                
+                </div>
+            </div>
+          
+           
+           
+           
+           
+          </aside>
+          <div class="col-lg-9 column">
+            <div class="modrn-joblist">
+              
+              <div class="filterbar">
+                <div class="sortby-sec">
+               </div>
+                <h5>{{liststage.length}} Jobs & Vacancies</h5>
+              </div>
+            </div><!-- MOdern Job LIst -->
+            <div class="job-list-modern">
+              <div class="job-listings-sec">
+                <div class="job-listing wtabs"  *ngFor=" let e of liststage | stage: [titre.value, adresse.value,type]: ['titre', 'adresse', 'type'] | paginate: { itemsPerPage: 5, currentPage: p }">
+                  <div class="job-title-sec" >
+                  <div *ngIf="e?.responsableSociete" class="c-logo"> <img src="http://localhost:8080/upload/files/{{e?.responsableSociete?.logo}}" alt="" /> </div>
+                  <h3><a routerLink="/stage/{{e.id}}" title="">{{e.titre}}</a></h3>
+                    <span>{{e?.responsableSociete?.nom}}</span>
+                    <div class="job-lctn"><i class="la la-map-marker"></i>{{e?.adresse}}</div>
+                  </div>
+                  <div class="job-style-bx">
+                    <span class="job-is ft">{{e.type}}</span>
+  
+                    <span (click)="addfavorie(e.id)" class="fav-job"><i  [hidden]="roleuser !=='Candidat'" class="la la-heart-o"></i></span>
+                    <i></i>
+
+                    <i><a routerLink='/stage/{{e.id}}'>voir détail</a></i>
+                  </div>
+                </div>
+  
+  
+              </div>
+  
+              <div class="pagination">
+                <ul>
+                    <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                 </ul>
+                </div>            
+              </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
