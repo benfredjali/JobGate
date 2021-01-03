@@ -31,6 +31,7 @@ import { OffrebytitreComponent } from './Offre/offrebytitre/offrebytitre.compone
 import { ListFormationComponent } from './formation/list-formation/list-formation.component';
 import { ListTravailleComponent } from './Offre/travaille/list-travaille/list-travaille.component';
 import { ListStageComponent } from './Offre/stage/list-stage/list-stage.component';
+import { ProfilCandidatComponent } from './candidat/profil-candidat/profil-candidat.component';
 
 
 
@@ -59,9 +60,11 @@ const routes: Routes = [
   {path:'travaille', component:TravailleComponent},
   {path:'travaille/:id', component:TravaildetailComponent},
   {path:'travaille/update/:id', component:UpdateTravailleComponent},
-
+  
   {path:'tajouter', component:AjouterTravailleComponent},
   {path:'candidatlist/:id', component:ProfilComponent},
+  {path:'candidat/profil', component:ProfilCandidatComponent},
+
   {path:'candidatlist', component:ListComponent},
   {path:'favorielist', component:FavorieslistComponent},
   {path:'pcentre', component:ProfilresponsableCentreComponent},
